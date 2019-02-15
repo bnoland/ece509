@@ -1,0 +1,145 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+\setenumerate{parsep=0em, listparindent=\parindent}
+
+\DeclareMathOperator{\Tr}{Tr}
+
+\title{Homework 1}
+\author{Benjamin Noland}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+\item Let $C \subseteq \mathbb{R}^n$ be a convex set, and let
+  $L \subseteq \mathbb{R}^n$ be a line. Then $L$ is also a convex
+  set. Since set intersection preserves convexity, $L \cap C$ is
+  therefore a convex set.
+
+  Conversely, let $C \subset \mathbb{R}^n$ be an arbitrary set, and
+  suppose that for every line $L \subseteq \mathbb{R}^n$, $L \cap C$
+  is convex. Let $x_1, x_2 \in C$ and $0 \leq \theta \leq 1$. Let
+  \begin{equation*}
+    L = \{\alpha x_1 + (1 - \alpha) x_2 : \alpha \in \mathbb{R}\}.
+  \end{equation*}
+  Then $L \cap C$ is convex by assumption. Thus, since
+  $x_1, x_2 \in L \cap C$,
+  $\theta x_1 + (1 - \theta) x_2 \in L \cap C$, and so
+  $\theta x_1 + (1 - \theta) x_2 \in C$ in particular. Thus $C$ is
+  convex.
+
+  \bigskip
+
+  The corresponding result for affine sets requires a short lemma: if
+  $S_1, S_2 \subseteq \mathbb{R}^n$ are affine sets, then
+  $S_1 \cap S_2$ is affine. To prove this, let
+  $x_1, x_2 \in S_1 \cap S_2$, and let $\theta \in \mathbb{R}$. Then
+  $x_1, x_2 \in S_i$ ($i = 1, 2$) in particular. Thus, since each of
+  the sets $S_1$ and $S_2$ are affine,
+  $\theta x_1 + (1 - \theta) x_2 \in S_i$ ($i = 1, 2$). Thus
+  $\theta x_1 + (1 - \theta) x_2 \in S_1 \cap S_2$, so that
+  $S_1 \cap S_2$ is affine.
+
+  Now for the main result. Let $C \subseteq \mathbb{R}^n$ be an affine
+  set, and let $L \subseteq \mathbb{R}^n$ be a line. Then $L$ is also
+  an affine set. Thus $L \cap C$ is affine by the lemma above.
+
+  Conversely, let $C \subseteq \mathbb{R}^n$ be an arbitrary set, and
+  suppose that for every line $L \subseteq \mathbb{R}^n$, $L \cap C$
+  is affine. Let $x_1, x_2 \in C$ and $\theta \in \mathbb{R}$. Let
+  \begin{equation*}
+    L = \{\alpha x_1 + (1 - \alpha) x_2 : \alpha \in \mathbb{R}\}
+  \end{equation*}
+  Then $L \cap C$ is affine by assumption. Thus since
+  $x_1, x_2 \in L \cap C$,
+  $\theta x_1 + (1 - \theta) x_2 \in L \cap C$. In particular,
+  $\theta x_1 + (1 - \theta) x_2 \in C$, so that $C$ is affine.
+
+\item Let $C \subseteq \mathbb{R}^n$ be closed and midpoint
+  convex. Let $x_1, x_2 \in C$ and $0 \leq \theta \leq 1$. I claim
+  that for every $n \in \mathbb{N}$, the set
+  \begin{equation*}
+    P_n = \left \{ \frac{m}{2^n} x_1 + \left ( 1 - \frac{m}{2^n} \right )
+      : m \in \mathbb{Z}, 0 \leq m \leq 2^n \right \}
+  \end{equation*}
+  is contained in $C$. I will proceed by induction on $n$. When
+  $n = 1$, we have
+  \begin{equation*}
+    P_1 = \left \{ x_1, \frac{1}{2} (x_1 + x_2), x_2 \right \} \subseteq C,
+  \end{equation*}
+  since $(x_1 + x_2) / 2 \in C$ since $C$ is midpoint convex. This
+  establishes the base case. Now let $n > 1$ and suppose that
+  $P_n \subseteq C$. Let $k \in \mathbb{Z}$, with
+  $0 \leq k \leq 2^{n+1}$. If $k$ is of the form $k = 2m$ for some
+  $m \in \mathbb{Z}$, $0 \leq m \leq 2^n$, then
+  \begin{equation*}
+    \frac{k}{2^{n+1}} x_1 + \left ( 1 - \frac{k}{2^{n+1}} \right ) x_2
+      = \frac{m}{2^n} x_1 + \left ( 1 - \frac{m}{2^n} \right ) x_2 \in P_n.
+  \end{equation*}
+  So suppose $k$ is of the form $k = 2m + 1$ for some
+  $m \in \mathbb{Z}$, $0 \leq m < 2^n$. Then by midpoint convexity of
+  $C$,
+  \begin{align*}
+  % TODO: Less hacky alignment job...
+  C \ni \frac{1}{2}& \left [ \frac{m}{2^n} x_1 +
+      \left ( 1 - \frac{m}{2^n} \right ) x_2 \right ] +
+  \frac{1}{2} \left [ \frac{m + 1}{2^n} x_1 +
+      \left ( 1 - \frac{m + 1}{2^n} \right ) x_2 \right ] \\
+  &= \frac{2m + 1}{2^{n+1}} x_1 +
+      \left ( 1 - \frac{2m + 1}{2^{n+1}} \right ) x_2 \\
+  &= \frac{k}{2^{n+1}} x_1 + \left ( 1 - \frac{k}{2^{n+1}} \right ) x_2.
+  \end{align*}
+  Thus $P_{n+1} \subseteq C$. Hence $P_n \subseteq C$ for every
+  $n \in \mathbb{N}$ by induction.
+
+  Next, define a sequence $\{y_n\}$ in $C$ as follows:
+  \begin{equation*}
+    y_n = \frac{m}{2^n} x_1 + \left ( 1 - \frac{m}{2^n} \right ) x_2
+    \quad \text{for every $n \in \mathbb{N}$}
+  \end{equation*}
+  where
+  \begin{equation*}
+    m = \max \left \{k \in \mathbb{Z} :
+      0 \leq k < 2^n, \frac{k}{2^n} \leq \theta \right \}.
+  \end{equation*}
+  Thus, for every $n \in \mathbb{N}$,
+  \begin{equation*}
+    \frac{m}{2^n} \leq \theta \leq \frac{m + 1}{2^n},
+  \end{equation*}
+  or equivalently (by rearranging this inequality),
+  \begin{equation*}
+    \left | \theta - \frac{m}{2^n} \right | \leq \frac{1}{2^n}.
+  \end{equation*}
+  Now let $y = \theta x_1 + (1 - \theta) x_2$. I claim that
+  $y_n \to y$ as $n \to \infty$. We have
+  \begin{align*}
+    \lVert y_n - y \rVert_2
+    &= \left \lVert \left [
+      \frac{m}{2^n} x_1 + \left ( 1 - \frac{m}{2^n} \right ) x_2 \right ] -
+      [ \theta x_1 + (1 - \theta) x_2 ] \right \rVert_2 \\
+    &= \left \lVert \left ( \frac{m}{2^n} - \theta \right ) x_1 -
+      \left ( \frac{m}{2^n} - \theta \right ) x_2 \right \rVert_2 \\
+    &= \left | \frac{m}{2^n} - \theta \right | \lVert x_1 - x_2 \rVert_2 \\
+    &\leq \frac{1}{2^n} \lVert x_1 - x_2 \rVert_2
+      \to 0 \text{ as } n \to \infty.
+  \end{align*}
+  Thus $\lVert y_n - y \rVert_2 \to 0$ as $n \to \infty$, so that
+  $y_n \to y$ as $n \to \infty$, as claimed. Thus, since $C$ is
+  closed, $y \in C$. This shows that $C$ is convex.
+
+\item Let $x, v \in \mathbb{R}^n$ and define the line
+  \begin{equation*}
+    L = \{x + \theta v : \theta \in \mathbb{R}\}.
+  \end{equation*}
+  It suffices to show that $L \cap C$ is convex.
+
+\end{enumerate}
+
+\end{document}

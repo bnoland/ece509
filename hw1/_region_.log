@@ -1,0 +1,2045 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=prv_hw1 2019.2.14)  14 FEB 2019 18:19
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**&prv_hw1 _region_.tex
+(./_region_.tex
+LaTeX2e <2018-04-01> patch level 5
+CUSTOMISED FORMAT. Preloaded files:
+        .
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size12.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+inputenc.sty    2018/04/06 v1.3b Input encoding file
+geometry.sty    2018/04/16 v5.8 Page Geometry
+  keyval.sty    2014/10/28 v1.15 key=value parser (DPC)
+   ifpdf.sty    2017/03/15 v3.2 Provides the ifpdf switch
+  ifvtex.sty    2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ amsmath.sty    2017/09/02 v2.17a AMS math features
+ amstext.sty    2000/06/29 v2.01 AMS text
+  amsgen.sty    1999/11/30 v2.0 generic functions
+  amsbsy.sty    1999/11/29 v1.2d Bold Symbols
+  amsopn.sty    2016/03/08 v2.02 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+enumitem.sty    2011/09/28 v3.5.2 Customized lists
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+        .
+No file _region_.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+(/home/bnoland/.emacs.d/elpa/auctex-12.1.1/latex/preview.sty
+Package: preview 2017/04/24 12.1 (AUCTeX/preview-latex)
+ (/home/bnoland/.emacs.d/elpa/auctex-12.1.1/latex/prtightpage.def
+\PreviewBorder=\dimen121
+) (/home/bnoland/.emacs.d/elpa/auctex-12.1.1/latex/prauctex.def
+No auxiliary output files.
+
+
+\hbadness=\count104
+\hfuzz=\dimen122
+(/home/bnoland/.emacs.d/elpa/auctex-12.1.1/latex/prauctex.cfg)) (/home/bnoland/.emacs.d/elpa/auctex-12.1.1/latex/prfootnotes.def)
+\pr@snippet=\count105
+\pr@box=\box29
+\pr@output=\toks24
+
+Preview: Fontsize 12pt
+Preview: PDFoutput 1
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(90.3375pt, 614.295pt, 90.3375pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=614.295pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-18.9325pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ !name(hw1.tex) !offset(-3) 
+! Preview: Snippet 1 started.
+<-><->
+      
+l.27 \item Let $
+                C \subseteq \mathbb{R}^n$ be a convex set, and let
+Not a real error.
+
+Preview: Tightpage -32891 -32891 32891 32891
+! Preview: Snippet 1 ended.(541764+106932x2594722).
+<-><->
+      
+l.27 \item Let $C \subseteq \mathbb{R}^n$
+                                          be a convex set, and let
+Not a real error.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+! Preview: Snippet 2 started.
+<-><->
+      
+l.28   $
+        L \subseteq \mathbb{R}^n$ be a line. Then $L$ is also a convex
+Not a real error.
+
+! Preview: Snippet 2 ended.(541764+106932x2511238).
+<-><->
+      
+l.28   $L \subseteq \mathbb{R}^n$
+                                  be a line. Then $L$ is also a convex
+Not a real error.
+
+[2]
+! Preview: Snippet 3 started.
+<-><->
+      
+l.28 ... \subseteq \mathbb{R}^n$ be a line. Then $
+                                                  L$ is also a convex
+Not a real error.
+
+! Preview: Snippet 3 ended.(537395+0x523919).
+<-><->
+      
+l.28 ...subseteq \mathbb{R}^n$ be a line. Then $L$
+                                                   is also a convex
+Not a real error.
+
+[3]
+! Preview: Snippet 4 started.
+<-><->
+      
+l.29 ...ce set intersection preserves convexity, $
+                                                  L \cap C$ is
+Not a real error.
+
+! Preview: Snippet 4 ended.(537395+0x2005131).
+<-><->
+      
+l.29 ...tersection preserves convexity, $L \cap C$
+                                                   is
+Not a real error.
+
+[4]
+! Preview: Snippet 5 started.
+<-><->
+      
+l.32   Conversely, let $
+                        C \subset \mathbb{R}^n$ be an arbitrary set, and
+Not a real error.
+
+! Preview: Snippet 5 ended.(541764+30747x2594722).
+<-><->
+      
+l.32   Conversely, let $C \subset \mathbb{R}^n$
+                                                be an arbitrary set, and
+Not a real error.
+
+[5]
+! Preview: Snippet 6 started.
+<-><->
+      
+l.33   suppose that for every line $
+                                    L \subseteq \mathbb{R}^n$, $L \cap C$
+Not a real error.
+
+! Preview: Snippet 6 ended.(541764+106932x2511238).
+<-><->
+      
+l.33 ... for every line $L \subseteq \mathbb{R}^n$
+                                                  , $L \cap C$
+Not a real error.
+
+[6]
+! Preview: Snippet 7 started.
+<-><->
+      
+l.33 ...r every line $L \subseteq \mathbb{R}^n$, $
+                                                  L \cap C$
+Not a real error.
+
+! Preview: Snippet 7 ended.(537395+0x2005131).
+<-><->
+      
+l.33 ...ine $L \subseteq \mathbb{R}^n$, $L \cap C$
+                                                  
+Not a real error.
+
+[7]
+! Preview: Snippet 8 started.
+<-><->
+      
+l.34   is convex. Let $
+                       x_1, x_2 \in C$ and $0 \leq \theta \leq 1$. Let
+Not a real error.
+
+! Preview: Snippet 8 ended.(537395+152916x3411334).
+<-><->
+      
+l.34   is convex. Let $x_1, x_2 \in C$
+                                       and $0 \leq \theta \leq 1$. Let
+Not a real error.
+
+[8]
+! Preview: Snippet 9 started.
+<-><->
+      
+l.34   is convex. Let $x_1, x_2 \in C$ and $
+                                            0 \leq \theta \leq 1$. Let
+Not a real error.
+
+! Preview: Snippet 9 ended.(546132+106932x3247423).
+<-><->
+      
+l.34 ...x_1, x_2 \in C$ and $0 \leq \theta \leq 1$
+                                                  . Let
+Not a real error.
+
+[9]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.35   \begin{equation*}
+                        
+Not a real error.
+
+! Preview: Snippet 10 ended.(786432+0x20700813).
+<-><->
+      
+l.37   \end{equation*}
+                      
+Not a real error.
+
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.38   Then $
+             L \cap C$ is convex by assumption. Thus, since
+Not a real error.
+
+! Preview: Snippet 11 ended.(537395+0x2005131).
+<-><->
+      
+l.38   Then $L \cap C$
+                       is convex by assumption. Thus, since
+Not a real error.
+
+[11]
+! Preview: Snippet 12 started.
+<-><->
+      
+l.39   $
+        x_1, x_2 \in L \cap C$,
+Not a real error.
+
+! Preview: Snippet 12 ended.(537395+152916x4809062).
+<-><->
+      
+l.39   $x_1, x_2 \in L \cap C$
+                              ,
+Not a real error.
+
+[12]
+! Preview: Snippet 13 started.
+<-><->
+      
+l.40   $
+        \theta x_1 + (1 - \theta) x_2 \in L \cap C$, and so
+Not a real error.
+
+! Preview: Snippet 13 ended.(589824+196608x8118145).
+<-><->
+      
+l.40 ...theta x_1 + (1 - \theta) x_2 \in L \cap C$
+                                                  , and so
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.41   $
+        \theta x_1 + (1 - \theta) x_2 \in C$ in particular. Thus $C$ is
+Not a real error.
+
+! Preview: Snippet 14 ended.(589824+196608x6720417).
+<-><->
+      
+l.41   $\theta x_1 + (1 - \theta) x_2 \in C$
+                                             in particular. Thus $C$ is
+Not a real error.
+
+[14]
+! Preview: Snippet 15 started.
+<-><->
+      
+l.41 ...- \theta) x_2 \in C$ in particular. Thus $
+                                                  C$ is
+Not a real error.
+
+! Preview: Snippet 15 ended.(537395+0x607403).
+<-><->
+      
+l.41 ...\theta) x_2 \in C$ in particular. Thus $C$
+                                                   is
+Not a real error.
+
+[15]
+! Preview: Snippet 16 started.
+<-><->
+      
+l.47   $
+        S_1, S_2 \subseteq \mathbb{R}^n$ are affine sets, then
+Not a real error.
+
+! Preview: Snippet 16 ended.(541764+152916x3902059).
+<-><->
+      
+l.47   $S_1, S_2 \subseteq \mathbb{R}^n$
+                                         are affine sets, then
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.48   $
+        S_1 \cap S_2$ is affine. To prove this, let
+Not a real error.
+
+! Preview: Snippet 17 ended.(537395+117964x2443579).
+<-><->
+      
+l.48   $S_1 \cap S_2$
+                      is affine. To prove this, let
+Not a real error.
+
+[17]
+! Preview: Snippet 18 started.
+<-><->
+      
+l.49   $
+        x_1, x_2 \in S_1 \cap S_2$, and let $\theta \in \mathbb{R}$. Then
+Not a real error.
+
+! Preview: Snippet 18 ended.(537395+152916x5247510).
+<-><->
+      
+l.49   $x_1, x_2 \in S_1 \cap S_2$
+                                  , and let $\theta \in \mathbb{R}$. Then
+Not a real error.
+
+[18]
+! Preview: Snippet 19 started.
+<-><->
+      
+l.49   $x_1, x_2 \in S_1 \cap S_2$, and let $
+                                             \theta \in \mathbb{R}$. Then
+Not a real error.
+
+! Preview: Snippet 19 ended.(546132+30747x1909410).
+<-><->
+      
+l.49 ...\cap S_2$, and let $\theta \in \mathbb{R}$
+                                                  . Then
+Not a real error.
+
+[19]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.50   $
+        x_1, x_2 \in S_i$ ($i = 1, 2$) in particular. Thus, since each of
+Not a real error.
+
+! Preview: Snippet 20 ended.(537395+152916x3499942).
+<-><->
+      
+l.50   $x_1, x_2 \in S_i$
+                          ($i = 1, 2$) in particular. Thus, since each of
+Not a real error.
+
+[20]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.50   $x_1, x_2 \in S_i$ ($
+                            i = 1, 2$) in particular. Thus, since each of
+Not a real error.
+
+! Preview: Snippet 21 ended.(515577+152916x2413525).
+<-><->
+      
+l.50   $x_1, x_2 \in S_i$ ($i = 1, 2$
+                                     ) in particular. Thus, since each of
+Not a real error.
+
+[21]
+! Preview: Snippet 22 started.
+<-><->
+      
+l.51   the sets $
+                 S_1$ and $S_2$ are affine,
+Not a real error.
+
+! Preview: Snippet 22 ended.(537395+117964x784885).
+<-><->
+      
+l.51   the sets $S_1$
+                      and $S_2$ are affine,
+Not a real error.
+
+[22]
+! Preview: Snippet 23 started.
+<-><->
+      
+l.51   the sets $S_1$ and $
+                           S_2$ are affine,
+Not a real error.
+
+! Preview: Snippet 23 ended.(537395+117964x784885).
+<-><->
+      
+l.51   the sets $S_1$ and $S_2$
+                                are affine,
+Not a real error.
+
+[23]
+! Preview: Snippet 24 started.
+<-><->
+      
+l.52   $
+        \theta x_1 + (1 - \theta) x_2 \in S_i$ ($i = 1, 2$). Thus
+Not a real error.
+
+! Preview: Snippet 24 ended.(589824+196608x6809025).
+<-><->
+      
+l.52   $\theta x_1 + (1 - \theta) x_2 \in S_i$
+                                               ($i = 1, 2$). Thus
+Not a real error.
+
+[24]
+! Preview: Snippet 25 started.
+<-><->
+      
+l.52   $\theta x_1 + (1 - \theta) x_2 \in S_i$ ($
+                                                 i = 1, 2$). Thus
+Not a real error.
+
+! Preview: Snippet 25 ended.(515577+152916x2413525).
+<-><->
+      
+l.52 ..._1 + (1 - \theta) x_2 \in S_i$ ($i = 1, 2$
+                                                  ). Thus
+Not a real error.
+
+[25]
+! Preview: Snippet 26 started.
+<-><->
+      
+l.53   $
+        \theta x_1 + (1 - \theta) x_2 \in S_1 \cap S_2$, so that
+Not a real error.
+
+! Preview: Snippet 26 ended.(589824+196608x8556593).
+<-><->
+      
+l.53 ...a x_1 + (1 - \theta) x_2 \in S_1 \cap S_2$
+                                                  , so that
+Not a real error.
+
+[26]
+! Preview: Snippet 27 started.
+<-><->
+      
+l.54   $
+        S_1 \cap S_2$ is affine.
+Not a real error.
+
+! Preview: Snippet 27 ended.(537395+117964x2443579).
+<-><->
+      
+l.54   $S_1 \cap S_2$
+                      is affine.
+Not a real error.
+
+[27]
+! Preview: Snippet 28 started.
+<-><->
+      
+l.56   Now for the main result. Let $
+                                     C \subseteq \mathbb{R}^n$ be an affine
+Not a real error.
+
+! Preview: Snippet 28 ended.(541764+106932x2594722).
+<-><->
+      
+l.56 ...ain result. Let $C \subseteq \mathbb{R}^n$
+                                                   be an affine
+Not a real error.
+
+[28]
+! Preview: Snippet 29 started.
+<-><->
+      
+l.57   set, and let $
+                     L \subseteq \mathbb{R}^n$ be a line. Then $L$ is also
+Not a real error.
+
+! Preview: Snippet 29 ended.(541764+106932x2511238).
+<-><->
+      
+l.57   set, and let $L \subseteq \mathbb{R}^n$
+                                               be a line. Then $L$ is also
+Not a real error.
+
+[29]
+! Preview: Snippet 30 started.
+<-><->
+      
+l.57 ... \subseteq \mathbb{R}^n$ be a line. Then $
+                                                  L$ is also
+Not a real error.
+
+! Preview: Snippet 30 ended.(537395+0x523919).
+<-><->
+      
+l.57 ...subseteq \mathbb{R}^n$ be a line. Then $L$
+                                                   is also
+Not a real error.
+
+[30]
+! Preview: Snippet 31 started.
+<-><->
+      
+l.58   an affine set. Thus $
+                            L \cap C$ is affine by the lemma above.
+Not a real error.
+
+! Preview: Snippet 31 ended.(537395+0x2005131).
+<-><->
+      
+l.58   an affine set. Thus $L \cap C$
+                                      is affine by the lemma above.
+Not a real error.
+
+[31]
+! Preview: Snippet 32 started.
+<-><->
+      
+l.60   Conversely, let $
+                        C \subseteq \mathbb{R}^n$ be an arbitrary set, and
+Not a real error.
+
+! Preview: Snippet 32 ended.(541764+106932x2594722).
+<-><->
+      
+l.60   Conversely, let $C \subseteq \mathbb{R}^n$
+                                                  be an arbitrary set, and
+Not a real error.
+
+[32]
+! Preview: Snippet 33 started.
+<-><->
+      
+l.61   suppose that for every line $
+                                    L \subseteq \mathbb{R}^n$, $L \cap C$
+Not a real error.
+
+! Preview: Snippet 33 ended.(541764+106932x2511238).
+<-><->
+      
+l.61 ... for every line $L \subseteq \mathbb{R}^n$
+                                                  , $L \cap C$
+Not a real error.
+
+[33]
+! Preview: Snippet 34 started.
+<-><->
+      
+l.61 ...r every line $L \subseteq \mathbb{R}^n$, $
+                                                  L \cap C$
+Not a real error.
+
+! Preview: Snippet 34 ended.(537395+0x2005131).
+<-><->
+      
+l.61 ...ine $L \subseteq \mathbb{R}^n$, $L \cap C$
+                                                  
+Not a real error.
+
+[34]
+! Preview: Snippet 35 started.
+<-><->
+      
+l.62   is affine. Let $
+                       x_1, x_2 \in C$ and $\theta \in \mathbb{R}$. Let
+Not a real error.
+
+! Preview: Snippet 35 ended.(537395+152916x3411334).
+<-><->
+      
+l.62   is affine. Let $x_1, x_2 \in C$
+                                       and $\theta \in \mathbb{R}$. Let
+Not a real error.
+
+[35]
+! Preview: Snippet 36 started.
+<-><->
+      
+l.62   is affine. Let $x_1, x_2 \in C$ and $
+                                            \theta \in \mathbb{R}$. Let
+Not a real error.
+
+! Preview: Snippet 36 ended.(546132+30747x1909410).
+<-><->
+      
+l.62 ..._1, x_2 \in C$ and $\theta \in \mathbb{R}$
+                                                  . Let
+Not a real error.
+
+[36]
+! Preview: Snippet 37 started.
+<-><->
+      
+l.63   \begin{equation*}
+                        
+Not a real error.
+
+! Preview: Snippet 37 ended.(786432+0x20593863).
+<-><->
+      
+l.65   \end{equation*}
+                      
+Not a real error.
+
+[37]
+! Preview: Snippet 38 started.
+<-><->
+      
+l.66   Then $
+             L \cap C$ is affine by assumption. Thus since
+Not a real error.
+
+! Preview: Snippet 38 ended.(537395+0x2005131).
+<-><->
+      
+l.66   Then $L \cap C$
+                       is affine by assumption. Thus since
+Not a real error.
+
+[38]
+! Preview: Snippet 39 started.
+<-><->
+      
+l.67   $
+        x_1, x_2 \in L \cap C$,
+Not a real error.
+
+! Preview: Snippet 39 ended.(537395+152916x4809062).
+<-><->
+      
+l.67   $x_1, x_2 \in L \cap C$
+                              ,
+Not a real error.
+
+[39]
+! Preview: Snippet 40 started.
+<-><->
+      
+l.68   $
+        \theta x_1 + (1 - \theta) x_2 \in L \cap C$. In particular,
+Not a real error.
+
+! Preview: Snippet 40 ended.(589824+196608x8118145).
+<-><->
+      
+l.68 ...theta x_1 + (1 - \theta) x_2 \in L \cap C$
+                                                  . In particular,
+Not a real error.
+
+[40]
+! Preview: Snippet 41 started.
+<-><->
+      
+l.69   $
+        \theta x_1 + (1 - \theta) x_2 \in C$, so that $C$ is affine.
+Not a real error.
+
+! Preview: Snippet 41 ended.(589824+196608x6720417).
+<-><->
+      
+l.69   $\theta x_1 + (1 - \theta) x_2 \in C$
+                                            , so that $C$ is affine.
+Not a real error.
+
+[41]
+! Preview: Snippet 42 started.
+<-><->
+      
+l.69 ...a x_1 + (1 - \theta) x_2 \in C$, so that $
+                                                  C$ is affine.
+Not a real error.
+
+! Preview: Snippet 42 ended.(537395+0x607403).
+<-><->
+      
+l.69 ...x_1 + (1 - \theta) x_2 \in C$, so that $C$
+                                                   is affine.
+Not a real error.
+
+[42]
+! Preview: Snippet 43 started.
+<-><->
+      
+l.71 \item Let $
+                C \subseteq \mathbb{R}^n$ be closed and midpoint
+Not a real error.
+
+! Preview: Snippet 43 ended.(541764+106932x2594722).
+<-><->
+      
+l.71 \item Let $C \subseteq \mathbb{R}^n$
+                                          be closed and midpoint
+Not a real error.
+
+[43]
+! Preview: Snippet 44 started.
+<-><->
+      
+l.72   convex. Let $
+                    x_1, x_2 \in C$ and $0 \leq \theta \leq 1$. I claim
+Not a real error.
+
+! Preview: Snippet 44 ended.(537395+152916x3411334).
+<-><->
+      
+l.72   convex. Let $x_1, x_2 \in C$
+                                    and $0 \leq \theta \leq 1$. I claim
+Not a real error.
+
+[44]
+! Preview: Snippet 45 started.
+<-><->
+      
+l.72   convex. Let $x_1, x_2 \in C$ and $
+                                         0 \leq \theta \leq 1$. I claim
+Not a real error.
+
+! Preview: Snippet 45 ended.(546132+106932x3247423).
+<-><->
+      
+l.72 ...x_1, x_2 \in C$ and $0 \leq \theta \leq 1$
+                                                  . I claim
+Not a real error.
+
+[45]
+! Preview: Snippet 46 started.
+<-><->
+      
+l.73   that for every $
+                       n \in \mathbb{N}$, the set
+Not a real error.
+
+! Preview: Snippet 46 ended.(541764+30747x1988826).
+<-><->
+      
+l.73   that for every $n \in \mathbb{N}$
+                                        , the set
+Not a real error.
+
+[46]
+! Preview: Snippet 47 started.
+<-><->
+      
+l.74   \begin{equation*}
+                        
+Not a real error.
+
+! Preview: Snippet 47 ended.(1443857+0x23306361).
+<-><->
+      
+l.77   \end{equation*}
+                      
+Not a real error.
+
+[47]
+! Preview: Snippet 48 started.
+<-><->
+      
+l.78   is contained in $
+                        C$. I will proceed by induction on $n$. When
+Not a real error.
+
+! Preview: Snippet 48 ended.(537395+0x607403).
+<-><->
+      
+l.78   is contained in $C$
+                          . I will proceed by induction on $n$. When
+Not a real error.
+
+[48]
+! Preview: Snippet 49 started.
+<-><->
+      
+l.78 ...d in $C$. I will proceed by induction on $
+                                                  n$. When
+Not a real error.
+
+! Preview: Snippet 49 ended.(338603+0x459657).
+<-><->
+      
+l.78 ...in $C$. I will proceed by induction on $n$
+                                                  . When
+Not a real error.
+
+[49]
+! Preview: Snippet 50 started.
+<-><->
+      
+l.79   $
+        n = 1$, we have
+Not a real error.
+
+! Preview: Snippet 50 ended.(506811+0x1880497).
+<-><->
+      
+l.79   $n = 1$
+              , we have
+Not a real error.
+
+[50]
+! Preview: Snippet 51 started.
+<-><->
+      
+l.80   \begin{equation*}
+                        
+Not a real error.
+
+! Preview: Snippet 51 ended.(1887455+0x20705610).
+<-><->
+      
+l.82   \end{equation*}
+                      
+Not a real error.
+
+[51]
+! Preview: Snippet 52 started.
+<-><->
+      
+l.83   since $
+              (x_1 + x_2) / 2 \in C$ since $C$ is midpoint convex. This
+Not a real error.
+
+! Preview: Snippet 52 ended.(589824+196608x5383764).
+<-><->
+      
+l.83   since $(x_1 + x_2) / 2 \in C$
+                                     since $C$ is midpoint convex. This
+Not a real error.
+
+[52]
+! Preview: Snippet 53 started.
+<-><->
+      
+l.83   since $(x_1 + x_2) / 2 \in C$ since $
+                                            C$ is midpoint convex. This
+Not a real error.
+
+! Preview: Snippet 53 ended.(537395+0x607403).
+<-><->
+      
+l.83   since $(x_1 + x_2) / 2 \in C$ since $C$
+                                               is midpoint convex. This
+Not a real error.
+
+[53]
+! Preview: Snippet 54 started.
+<-><->
+      
+l.84   establishes the base case. Now let $
+                                           n > 1$ and suppose that
+Not a real error.
+
+! Preview: Snippet 54 ended.(506811+20972x1880497).
+<-><->
+      
+l.84   establishes the base case. Now let $n > 1$
+                                                  and suppose that
+Not a real error.
+
+[54]
+! Preview: Snippet 55 started.
+<-><->
+      
+l.85   $
+        P_n \subseteq C$. Let $k \in \mathbb{Z}$, with
+Not a real error.
+
+! Preview: Snippet 55 ended.(537395+117964x2523083).
+<-><->
+      
+l.85   $P_n \subseteq C$
+                        . Let $k \in \mathbb{Z}$, with
+Not a real error.
+
+[55]
+! Preview: Snippet 56 started.
+<-><->
+      
+l.85   $P_n \subseteq C$. Let $
+                               k \in \mathbb{Z}$, with
+Not a real error.
+
+! Preview: Snippet 56 ended.(546132+30747x1912369).
+<-><->
+      
+l.85   $P_n \subseteq C$. Let $k \in \mathbb{Z}$
+                                                , with
+Not a real error.
+
+[56]
+! Preview: Snippet 57 started.
+<-><->
+      
+l.86   $
+        0 \leq k \leq 2^{n+1}$. If $k$ is of the form $k = 2m$ for some
+Not a real error.
+
+! Preview: Snippet 57 ended.(623265+106932x4376645).
+<-><->
+      
+l.86   $0 \leq k \leq 2^{n+1}$
+                              . If $k$ is of the form $k = 2m$ for some
+Not a real error.
+
+[57]
+! Preview: Snippet 58 started.
+<-><->
+      
+l.86   $0 \leq k \leq 2^{n+1}$. If $
+                                    k$ is of the form $k = 2m$ for some
+Not a real error.
+
+! Preview: Snippet 58 ended.(546132+0x426891).
+<-><->
+      
+l.86   $0 \leq k \leq 2^{n+1}$. If $k$
+                                       is of the form $k = 2m$ for some
+Not a real error.
+
+[58]
+! Preview: Snippet 59 started.
+<-><->
+      
+l.86 ...q k \leq 2^{n+1}$. If $k$ is of the form $
+                                                  k = 2m$ for some
+Not a real error.
+
+! Preview: Snippet 59 ended.(546132+0x2521288).
+<-><->
+      
+l.86 ...q 2^{n+1}$. If $k$ is of the form $k = 2m$
+                                                   for some
+Not a real error.
+
+[59]
+! Preview: Snippet 60 started.
+<-><->
+      
+l.87   $
+        m \in \mathbb{Z}$, $0 \leq m \leq 2^n$, then
+Not a real error.
+
+! Preview: Snippet 60 ended.(541764+30747x2159035).
+<-><->
+      
+l.87   $m \in \mathbb{Z}$
+                         , $0 \leq m \leq 2^n$, then
+Not a real error.
+
+[60]
+! Preview: Snippet 61 started.
+<-><->
+      
+l.87   $m \in \mathbb{Z}$, $
+                            0 \leq m \leq 2^n$, then
+Not a real error.
+
+! Preview: Snippet 61 ended.(511125+106932x3911507).
+<-><->
+      
+l.87   $m \in \mathbb{Z}$, $0 \leq m \leq 2^n$
+                                              , then
+Not a real error.
+
+[61]
+! Preview: Snippet 62 started.
+<-><->
+      
+l.88   \begin{equation*}
+                        
+Not a real error.
+
+! Preview: Snippet 62 ended.(1887455+0x24441967).
+<-><->
+      
+l.91   \end{equation*}
+                      
+Not a real error.
+
+[62]
+! Preview: Snippet 63 started.
+<-><->
+      
+l.92   So suppose $
+                   k$ is of the form $k = 2m + 1$ for some
+Not a real error.
+
+! Preview: Snippet 63 ended.(546132+0x426891).
+<-><->
+      
+l.92   So suppose $k$
+                      is of the form $k = 2m + 1$ for some
+Not a real error.
+
+[63]
+! Preview: Snippet 64 started.
+<-><->
+      
+l.92   So suppose $k$ is of the form $
+                                      k = 2m + 1$ for some
+Not a real error.
+
+! Preview: Snippet 64 ended.(546132+60072x3854748).
+<-><->
+      
+l.92   So suppose $k$ is of the form $k = 2m + 1$
+                                                  for some
+Not a real error.
+
+[64]
+! Preview: Snippet 65 started.
+<-><->
+      
+l.93   $
+        m \in \mathbb{Z}$, $0 \leq m < 2^n$. Then by midpoint convexity of
+Not a real error.
+
+! Preview: Snippet 65 ended.(541764+30747x2159035).
+<-><->
+      
+l.93   $m \in \mathbb{Z}$
+                         , $0 \leq m < 2^n$. Then by midpoint convexity of
+Not a real error.
+
+[65]
+! Preview: Snippet 66 started.
+<-><->
+      
+l.93   $m \in \mathbb{Z}$, $
+                            0 \leq m < 2^n$. Then by midpoint convexity of
+Not a real error.
+
+! Preview: Snippet 66 ended.(511125+106932x3898756).
+<-><->
+      
+l.93   $m \in \mathbb{Z}$, $0 \leq m < 2^n$
+                                           . Then by midpoint convexity of
+Not a real error.
+
+[66]
+! Preview: Snippet 67 started.
+<-><->
+      
+l.94   $
+        C$,
+Not a real error.
+
+! Preview: Snippet 67 ended.(537395+0x607403).
+<-><->
+      
+l.94   $C$
+          ,
+Not a real error.
+
+[67]
+! Preview: Snippet 68 started.
+<-><->
+      
+l.95   \begin{align*}
+                     
+Not a real error.
+
+! Preview: Snippet 68 ended.(6186653+0x26160709).
+<-><->
+      
+l.104   \end{align*}
+                    
+Not a real error.
+
+[68]
+! Preview: Snippet 69 started.
+<-><->
+      
+l.105   Thus $
+              P_{n+1} \subseteq C$. Hence $P_n \subseteq C$ for every
+Not a real error.
+
+! Preview: Snippet 69 ended.(537395+172580x3234887).
+<-><->
+      
+l.105   Thus $P_{n+1} \subseteq C$
+                                  . Hence $P_n \subseteq C$ for every
+Not a real error.
+
+[69]
+! Preview: Snippet 70 started.
+<-><->
+      
+l.105   Thus $P_{n+1} \subseteq C$. Hence $
+                                           P_n \subseteq C$ for every
+Not a real error.
+
+! Preview: Snippet 70 ended.(537395+117964x2523083).
+<-><->
+      
+l.105 ...+1} \subseteq C$. Hence $P_n \subseteq C$
+                                                   for every
+Not a real error.
+
+[70]
+! Preview: Snippet 71 started.
+<-><->
+      
+l.106   $
+         n \in \mathbb{N}$ by induction.
+Not a real error.
+
+! Preview: Snippet 71 ended.(541764+30747x1988826).
+<-><->
+      
+l.106   $n \in \mathbb{N}$
+                           by induction.
+Not a real error.
+
+[71]
+! Preview: Snippet 72 started.
+<-><->
+      
+l.108   Next, define a sequence $
+                                 \{y_n\}$ in $C$ as follows:
+Not a real error.
+
+! Preview: Snippet 72 ended.(589824+196608x1532664).
+<-><->
+      
+l.108   Next, define a sequence $\{y_n\}$
+                                          in $C$ as follows:
+Not a real error.
+
+[72]
+! Preview: Snippet 73 started.
+<-><->
+      
+l.108   Next, define a sequence $\{y_n\}$ in $
+                                              C$ as follows:
+Not a real error.
+
+! Preview: Snippet 73 ended.(537395+0x607403).
+<-><->
+      
+l.108   Next, define a sequence $\{y_n\}$ in $C$
+                                                 as follows:
+Not a real error.
+
+[73]
+! Preview: Snippet 74 started.
+<-><->
+      
+l.109   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 74 ended.(1443857+0x22612137).
+<-><->
+      
+l.112   \end{equation*}
+                       
+Not a real error.
+
+[74]
+! Preview: Snippet 75 started.
+<-><->
+      
+l.114   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 75 ended.(1887455+0x22243089).
+<-><->
+      
+l.117   \end{equation*}
+                       
+Not a real error.
+
+[75]
+! Preview: Snippet 76 started.
+<-><->
+      
+l.118   Thus, for every $
+                         n \in \mathbb{N}$,
+Not a real error.
+
+! Preview: Snippet 76 ended.(541764+30747x1988826).
+<-><->
+      
+l.118   Thus, for every $n \in \mathbb{N}$
+                                          ,
+Not a real error.
+
+[76]
+! Preview: Snippet 77 started.
+<-><->
+      
+l.119   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 77 ended.(1578292+0x18277263).
+<-><->
+      
+l.121   \end{equation*}
+                       
+Not a real error.
+
+[77]
+! Preview: Snippet 78 started.
+<-><->
+      
+l.123   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 78 ended.(1578292+0x17870102).
+<-><->
+      
+l.125   \end{equation*}
+                       
+Not a real error.
+
+[78]
+! Preview: Snippet 79 started.
+<-><->
+      
+l.126   Now let $
+                 y = \theta x_1 + (1 - \theta) x_2$. I claim that
+Not a real error.
+
+! Preview: Snippet 79 ended.(589824+196608x6591324).
+<-><->
+      
+l.126 ...w let $y = \theta x_1 + (1 - \theta) x_2$
+                                                  . I claim that
+Not a real error.
+
+[79]
+! Preview: Snippet 80 started.
+<-><->
+      
+l.127   $
+         y_n \to y$ as $n \to \infty$. We have
+Not a real error.
+
+! Preview: Snippet 80 ended.(338603+152916x2373243).
+<-><->
+      
+l.127   $y_n \to y$
+                    as $n \to \infty$. We have
+Not a real error.
+
+[80]
+! Preview: Snippet 81 started.
+<-><->
+      
+l.127   $y_n \to y$ as $
+                        n \to \infty$. We have
+Not a real error.
+
+! Preview: Snippet 81 ended.(338603+0x2469425).
+<-><->
+      
+l.127   $y_n \to y$ as $n \to \infty$
+                                     . We have
+Not a real error.
+
+[81]
+! Preview: Snippet 82 started.
+<-><->
+      
+l.128   \begin{align*}
+                      
+Not a real error.
+
+! Preview: Snippet 82 ended.(6761834+0x25094094).
+<-><->
+      
+l.138   \end{align*}
+                    
+Not a real error.
+
+[82]
+! Preview: Snippet 83 started.
+<-><->
+      
+l.139   Thus $
+              \lVert y_n - y \rVert_2 \to 0$ as $n \to \infty$, so that
+Not a real error.
+
+! Preview: Snippet 83 ended.(589824+196608x4817188).
+<-><->
+      
+l.139   Thus $\lVert y_n - y \rVert_2 \to 0$
+                                             as $n \to \infty$, so that
+Not a real error.
+
+[83]
+! Preview: Snippet 84 started.
+<-><->
+      
+l.139   Thus $\lVert y_n - y \rVert_2 \to 0$ as $
+                                                 n \to \infty$, so that
+Not a real error.
+
+! Preview: Snippet 84 ended.(338603+0x2469425).
+<-><->
+      
+l.139 ...y_n - y \rVert_2 \to 0$ as $n \to \infty$
+                                                  , so that
+Not a real error.
+
+[84]
+! Preview: Snippet 85 started.
+<-><->
+      
+l.140   $
+         y_n \to y$ as $n \to \infty$, as claimed. Thus, since $C$ is
+Not a real error.
+
+! Preview: Snippet 85 ended.(338603+152916x2373243).
+<-><->
+      
+l.140   $y_n \to y$
+                    as $n \to \infty$, as claimed. Thus, since $C$ is
+Not a real error.
+
+[85]
+! Preview: Snippet 86 started.
+<-><->
+      
+l.140   $y_n \to y$ as $
+                        n \to \infty$, as claimed. Thus, since $C$ is
+Not a real error.
+
+! Preview: Snippet 86 ended.(338603+0x2469425).
+<-><->
+      
+l.140   $y_n \to y$ as $n \to \infty$
+                                     , as claimed. Thus, since $C$ is
+Not a real error.
+
+[86]
+! Preview: Snippet 87 started.
+<-><->
+      
+l.140 ...$n \to \infty$, as claimed. Thus, since $
+                                                  C$ is
+Not a real error.
+
+! Preview: Snippet 87 ended.(537395+0x607403).
+<-><->
+      
+l.140 ... \to \infty$, as claimed. Thus, since $C$
+                                                   is
+Not a real error.
+
+[87]
+! Preview: Snippet 88 started.
+<-><->
+      
+l.141   closed, $
+                 y \in C$. This shows that $C$ is convex.
+Not a real error.
+
+! Preview: Snippet 88 ended.(537395+152916x1972271).
+<-><->
+      
+l.141   closed, $y \in C$
+                         . This shows that $C$ is convex.
+Not a real error.
+
+[88]
+! Preview: Snippet 89 started.
+<-><->
+      
+l.141   closed, $y \in C$. This shows that $
+                                            C$ is convex.
+Not a real error.
+
+! Preview: Snippet 89 ended.(537395+0x607403).
+<-><->
+      
+l.141   closed, $y \in C$. This shows that $C$
+                                               is convex.
+Not a real error.
+
+[89]
+! Preview: Snippet 90 started.
+<-><->
+      
+l.145 \item Let $
+                 x, v \in \mathbb{R}^n$ and define the line
+Not a real error.
+
+! Preview: Snippet 90 ended.(541764+152916x3082986).
+<-><->
+      
+l.145 \item Let $x, v \in \mathbb{R}^n$
+                                        and define the line
+Not a real error.
+
+[90]
+! Preview: Snippet 91 started.
+<-><->
+      
+l.146   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 91 ended.(786432+0x19036454).
+<-><->
+      
+l.148   \end{equation*}
+                       
+Not a real error.
+
+[91]
+! Preview: Snippet 92 started.
+<-><->
+      
+l.149   It suffices to show that $
+                                  L \cap C$ is convex. Let
+Not a real error.
+
+! Preview: Snippet 92 ended.(537395+0x2005131).
+<-><->
+      
+l.149   It suffices to show that $L \cap C$
+                                            is convex. Let
+Not a real error.
+
+[92]
+! Preview: Snippet 93 started.
+<-><->
+      
+l.150   $
+         \theta \in \mathbb{R}$. Then
+Not a real error.
+
+! Preview: Snippet 93 ended.(546132+30747x1909410).
+<-><->
+      
+l.150   $\theta \in \mathbb{R}$
+                               . Then
+Not a real error.
+
+[93]
+! Preview: Snippet 94 started.
+<-><->
+      
+l.151   \begin{align*}
+                      
+Not a real error.
+
+! Preview: Snippet 94 ended.(3345140+0x23989733).
+<-><->
+      
+l.156   \end{align*}
+                    
+Not a real error.
+
+[94]
+! Preview: Snippet 95 started.
+<-><->
+      
+l.158   \begin{align*}
+                      
+Not a real error.
+
+! Preview: Snippet 95 ended.(3428462+0x18922495).
+<-><->
+      
+l.162   \end{align*}
+                    
+Not a real error.
+
+[95]
+! Preview: Snippet 96 started.
+<-><->
+      
+l.164   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 96 ended.(859194+0x22858326).
+<-><->
+      
+l.167   \end{equation*}
+                       
+Not a real error.
+
+[96]
+! Preview: Snippet 97 started.
+<-><->
+      
+l.170   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 97 ended.(859194+0x20859580).
+<-><->
+      
+l.173   \end{equation*}
+                       
+Not a real error.
+
+[97]
+! Preview: Snippet 98 started.
+<-><->
+      
+l.174   Since $
+               A \succeq 0$, $\alpha = v^T Av \geq 0$, and so
+Not a real error.
+
+! Preview: Snippet 98 ended.(537395+106932x2010848).
+<-><->
+      
+l.174   Since $A \succeq 0$
+                           , $\alpha = v^T Av \geq 0$, and so
+Not a real error.
+
+[98]
+! Preview: Snippet 99 started.
+<-><->
+      
+l.174   Since $A \succeq 0$, $
+                              \alpha = v^T Av \geq 0$, and so
+Not a real error.
+
+! Preview: Snippet 99 ended.(643653+106932x4776901).
+<-><->
+      
+l.174 ...e $A \succeq 0$, $\alpha = v^T Av \geq 0$
+                                                  , and so
+Not a real error.
+
+[99]
+! Preview: Snippet 100 started.
+<-><->
+      
+l.175   $
+         \alpha \theta^2 + \beta \theta + \gamma$ is a (possibly degenerate)
+Not a real error.
+
+! Preview: Snippet 100 ended.(623265+152916x4383971).
+<-><->
+      
+l.175   $\alpha \theta^2 + \beta \theta + \gamma$
+                                                  is a (possibly degenerate)
+Not a real error.
+
+[100]
+! Preview: Snippet 101 started.
+<-><->
+      
+l.177   $
+         S = \emptyset$, which is trivially convex. If $\alpha \neq 0$, then
+Not a real error.
+
+! Preview: Snippet 101 ended.(589824+43690x1948405).
+<-><->
+      
+l.177   $S = \emptyset$
+                       , which is trivially convex. If $\alpha \neq 0$, then
+Not a real error.
+
+[101]
+! Preview: Snippet 102 started.
+<-><->
+      
+l.177 ...mptyset$, which is trivially convex. If $
+                                                  \alpha \neq 0$, then
+Not a real error.
+
+! Preview: Snippet 102 ended.(546133+152916x1915632).
+<-><->
+      
+l.177 ...h is trivially convex. If $\alpha \neq 0$
+                                                  , then
+Not a real error.
+
+[102]
+! Preview: Snippet 103 started.
+<-><->
+      
+l.178   it has roots $
+                      \theta_1 \leq \theta_2$ (not necessarily distinct),
+Not a real error.
+
+! Preview: Snippet 103 ended.(546132+117964x2388873).
+<-><->
+      
+l.178   it has roots $\theta_1 \leq \theta_2$
+                                              (not necessarily distinct),
+Not a real error.
+
+[103]
+! Preview: Snippet 104 started.
+<-><->
+      
+l.179   and $
+             S = [\theta_1, \theta_2]$, which is a convex set. If
+Not a real error.
+
+! Preview: Snippet 104 ended.(589824+196608x3668260).
+<-><->
+      
+l.179   and $S = [\theta_1, \theta_2]$
+                                      , which is a convex set. If
+Not a real error.
+
+[104]
+! Preview: Snippet 105 started.
+<-><->
+      
+l.180   $
+         \alpha = 0$ (i.e., the degenerate case), then $S$ reduces to
+Not a real error.
+
+! Preview: Snippet 105 ended.(506811+0x1915632).
+<-><->
+      
+l.180   $\alpha = 0$
+                     (i.e., the degenerate case), then $S$ reduces to
+Not a real error.
+
+[105]
+! Preview: Snippet 106 started.
+<-><->
+      
+l.180 ... = 0$ (i.e., the degenerate case), then $
+                                                  S$ reduces to
+Not a real error.
+
+! Preview: Snippet 106 ended.(537395+0x519368).
+<-><->
+      
+l.180 ... 0$ (i.e., the degenerate case), then $S$
+                                                   reduces to
+Not a real error.
+
+[106]
+! Preview: Snippet 107 started.
+<-><->
+      
+l.181   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 107 ended.(786432+0x20876720).
+<-><->
+      
+l.183   \end{equation*}
+                       
+Not a real error.
+
+[107]
+! Preview: Snippet 108 started.
+<-><->
+      
+l.184   i.e., the preimage of the convex set $
+                                              (-\infty, 0]$ under the affine
+Not a real error.
+
+! Preview: Snippet 108 ended.(589824+196608x2641455).
+<-><->
+      
+l.184 ...preimage of the convex set $(-\infty, 0]$
+                                                   under the affine
+Not a real error.
+
+[108]
+! Preview: Snippet 109 started.
+<-><->
+      
+l.185   function $
+                  \theta \mapsto \beta \theta + \gamma$, and thus is convex.
+Not a real error.
+
+! Preview: Snippet 109 ended.(546132+152916x3852773).
+<-><->
+      
+l.185 ...on $\theta \mapsto \beta \theta + \gamma$
+                                                  , and thus is convex.
+Not a real error.
+
+[109]
+! Preview: Snippet 110 started.
+<-><->
+      
+l.187   Finally, define an affine function $
+                                            f : \mathbb{R} \to \mathbb{R}^n$ by
+Not a real error.
+
+! Preview: Snippet 110 ended.(546132+152916x3844389).
+<-><->
+      
+l.187 ...unction $f : \mathbb{R} \to \mathbb{R}^n$
+                                                   by
+Not a real error.
+
+[110]
+! Preview: Snippet 111 started.
+<-><->
+      
+l.188   $
+         f(\theta) = x + \theta v$. Then we can write $L \cap C =
+Not a real error.
+
+! Preview: Snippet 111 ended.(589824+196608x4645268).
+<-><->
+      
+l.188   $f(\theta) = x + \theta v$
+                                  . Then we can write $L \cap C =
+Not a real error.
+
+[111]
+! Preview: Snippet 112 started.
+<-><->
+      
+l.188 ...eta) = x + \theta v$. Then we can write $
+                                                  L \cap C =
+Not a real error.
+
+! Preview: Snippet 112 ended.(589824+196608x4622766).
+<-><->
+      
+l.189   f(S)$
+             . This shows that $L \cap C$ is convex, and therefore $C$ is
+Not a real error.
+
+[112]
+! Preview: Snippet 113 started.
+<-><->
+      
+l.189   f(S)$. This shows that $
+                                L \cap C$ is convex, and therefore $C$ is
+Not a real error.
+
+! Preview: Snippet 113 ended.(537395+0x2005131).
+<-><->
+      
+l.189   f(S)$. This shows that $L \cap C$
+                                          is convex, and therefore $C$ is
+Not a real error.
+
+[113]
+! Preview: Snippet 114 started.
+<-><->
+      
+l.189 ...hat $L \cap C$ is convex, and therefore $
+                                                  C$ is
+Not a real error.
+
+! Preview: Snippet 114 ended.(537395+0x607403).
+<-><->
+      
+l.189 ...t $L \cap C$ is convex, and therefore $C$
+                                                   is
+Not a real error.
+
+[114]
+! Preview: Snippet 115 started.
+<-><->
+      
+l.195   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 115 ended.(859194+0x24873441).
+<-><->
+      
+l.199   \end{equation*}
+                       
+Not a real error.
+
+[115]
+! Preview: Snippet 116 started.
+<-><->
+      
+l.200   which is convex, but $
+                              A = -1 < 0$.
+Not a real error.
+
+! Preview: Snippet 116 ended.(537395+65536x4030608).
+<-><->
+      
+l.200   which is convex, but $A = -1 < 0$
+                                         .
+Not a real error.
+
+[116]
+! Preview: Snippet 117 started.
+<-><->
+      
+l.206   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 117 ended.(879582+0x27101483).
+<-><->
+      
+l.210   \end{equation*}
+                       
+Not a real error.
+
+[117]
+! Preview: Snippet 118 started.
+<-><->
+      
+l.215   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 118 ended.(786432+0x21932516).
+<-><->
+      
+l.218   \end{equation*}
+                       
+Not a real error.
+
+[118]
+! Preview: Snippet 119 started.
+<-><->
+      
+l.219   denote a rectangle. Let $
+                                 x, y \in R$ and $0 \leq \theta \leq
+Not a real error.
+
+! Preview: Snippet 119 ended.(537395+152916x2740020).
+<-><->
+      
+l.219   denote a rectangle. Let $x, y \in R$
+                                             and $0 \leq \theta \leq
+Not a real error.
+
+[119]
+! Preview: Snippet 120 started.
+<-><->
+      
+l.219   denote a rectangle. Let $x, y \in R$ and $
+                                                  0 \leq \theta \leq
+Not a real error.
+
+! Preview: Snippet 120 ended.(546132+106932x3247423).
+<-><->
+      
+l.220   1$
+          . Then for every $1 \leq i \leq n$,
+Not a real error.
+
+[120]
+! Preview: Snippet 121 started.
+<-><->
+      
+l.220   1$. Then for every $
+                            1 \leq i \leq n$,
+Not a real error.
+
+! Preview: Snippet 121 ended.(515577+106932x3204514).
+<-><->
+      
+l.220   1$. Then for every $1 \leq i \leq n$
+                                            ,
+Not a real error.
+
+[121]
+! Preview: Snippet 122 started.
+<-><->
+      
+l.221   \begin{align*}
+                      
+Not a real error.
+
+! Preview: Snippet 122 ended.(2097151+0x21810797).
+<-><->
+      
+l.228   \end{align*}
+                    
+Not a real error.
+
+[122]
+! Preview: Snippet 123 started.
+<-><->
+      
+l.229   Thus $
+              \theta x + (1 - \theta) y \in R$, so that $R$ is convex.
+Not a real error.
+
+! Preview: Snippet 123 ended.(589824+196608x6049103).
+<-><->
+      
+l.229   Thus $\theta x + (1 - \theta) y \in R$
+                                              , so that $R$ is convex.
+Not a real error.
+
+[123]
+! Preview: Snippet 124 started.
+<-><->
+      
+l.229 ...heta x + (1 - \theta) y \in R$, so that $
+                                                  R$ is convex.
+Not a real error.
+
+! Preview: Snippet 124 ended.(537395+0x592596).
+<-><->
+      
+l.229 ...ta x + (1 - \theta) y \in R$, so that $R$
+                                                   is convex.
+Not a real error.
+
+[124]
+! Preview: Snippet 125 started.
+<-><->
+      
+l.232   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 125 ended.(879582+0x28109446).
+<-><->
+      
+l.236   \end{equation*}
+                       
+Not a real error.
+
+[125]
+! Preview: Snippet 126 started.
+<-><->
+      
+l.241   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 126 ended.(1928224+0x25211400).
+<-><->
+      
+l.245   \end{equation*}
+                       
+Not a real error.
+
+[126]
+! Preview: Snippet 127 started.
+<-><->
+      
+l.246   where for every $
+                         y \in S$, the set $A_y$ is defined as
+Not a real error.
+
+! Preview: Snippet 127 ended.(537395+152916x1884236).
+<-><->
+      
+l.246   where for every $y \in S$
+                                 , the set $A_y$ is defined as
+Not a real error.
+
+[127]
+! Preview: Snippet 128 started.
+<-><->
+      
+l.246   where for every $y \in S$, the set $
+                                            A_y$ is defined as
+Not a real error.
+
+! Preview: Snippet 128 ended.(537395+219909x904182).
+<-><->
+      
+l.246   where for every $y \in S$, the set $A_y$
+                                                 is defined as
+Not a real error.
+
+[128]
+! Preview: Snippet 129 started.
+<-><->
+      
+l.247   \begin{equation*}
+                         
+Not a real error.
+
+! Preview: Snippet 129 ended.(0+0x15392933).
+<-><->
+      
+l.248   \end{equation*}
+                       
+Not a real error.
+
+[129] ) 
+Here is how much of TeX's memory you used:
+ 195 strings out of 492831
+ 2768 string characters out of 6154048
+ 96396 words of memory out of 5000000
+ 5569 multiletter control sequences out of 15000+600000
+ 13317 words of font info for 52 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 22i,13n,24p,160b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on _region_.pdf (129 pages, 104138 bytes).
+PDF statistics:
+ 453 PDF objects out of 1000 (max. 8388607)
+ 310 compressed objects within 4 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
