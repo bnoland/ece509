@@ -12,7 +12,7 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\dist}{dist}
 
-\title{Homework 1}
+\title{Homework 2}
 \author{Benjamin Noland}
 \date{}
 
@@ -37,14 +37,15 @@
   \begin{equation*}
     C_s = \{x \in \mathbb{R}^n : x + s \in S_1\}.
   \end{equation*}
-  To see that these sets are convex, let $s \in S_2$, and let
-  $x_1, x_2 \in C_s$, and $0 \leq \theta \leq 1$. Then since
+  To see that these sets are convex, let $s \in S_2$, let
+  $x_1, x_2 \in C_s$, and let $0 \leq \theta \leq 1$. Then since
   $x_1 + s, x_2 + s \in S_1$, convexity of $S_1$ implies that
   \begin{equation*}
-    \theta x_1 + (1 - \theta) x_2 + s
-      = \theta (x_1 + s) + (1 - \theta)(x_2 + s) \in S_2.
+    \theta x_1 + (1 - \theta)x_2 + s
+      = \theta (x_1 + s) + (1 - \theta)(x_2 + s) \in S_1.
   \end{equation*}
-  Thus $C_s$ is convex, as claimed. Therefore
+  Thus $\theta x_1 + (1 - \theta)x_2 \in C_s$, so that $C_s$ is
+  convex. Therefore
   \begin{equation*}
     \{x \in \mathbb{R}^n : x + S_2 \subseteq S_1\} = \bigcap_{s \in S_2} C_s
   \end{equation*}
@@ -69,7 +70,7 @@
   \begin{equation*}
     C = \{x \in \mathbb{R}^n : x^T Ax + \beta^T x + \gamma \leq 0\}.
   \end{equation*}
-  Thus, since $A \succeq 0$, Exercise~2.10~(a) implies that $C$ is
+  Thus, since $A \in S^n_{+}$, Exercise~2.10~(a) implies that $C$ is
   convex.
 \end{enumerate}
 
@@ -81,7 +82,7 @@
   $h(x) = A_0 + x_1 A_1 + \cdots + x_n A_n$ on $\mathbb{R}^n$ is
   affine. The map $f$ in question is the composition $f = g \circ h$,
   with domain $\dom f = \{x \in \mathbb{R}^n : h(x) \in \dom g\}$. A
-  composition of this form is convex, and so $f$ is convex.
+  composition of this form is convex, and therefore $f$ is convex.
 \end{enumerate}
 
 \item (Boyd \& Vandenberghe, Exercise 3.21)
