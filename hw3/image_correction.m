@@ -31,6 +31,11 @@ cvx_begin
     abs(R) <= 1;
 cvx_end
 
+disp('Optimal values:');
+disp(['a = ', num2str(a)]);
+disp(['b = ', num2str(b)]);
+disp(['c = ', num2str(c)]);
+
 %%
 % Compute the corrected image and display it.
 
