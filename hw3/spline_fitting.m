@@ -3,7 +3,8 @@
 % Select the input points on the image.
 
 M = 1;  % Number of segments
-N = 4 * M;  % Number of input points (multiple of M for simplicity)
+K = 10;  % Number of input points per segment (constant for simplicity)
+N = K * M;  % Number of input points
 
 image_data = imread('curvedriver.jpg');
 image(image_data)
@@ -11,16 +12,45 @@ hold on
 
 [x, y] = ginput(N);
 plot(x, y, '-wx')
-hold off
+%hold off
 
 %%
-C = mat2cell([x, y], repmat(N / M, 1, M));
+% Split the input points into collections corresponding to segments.
+
+C = mat2cell([x, y], repmat(K, 1, M));
 celldisp(C);
 
-t = 0:0.01:1;
+%%
+% Solve the optimization problem.
+
+% XXX: Solve for a single segment for now.
+
+x = C{1}(:,1);
+x_start = x(1);
+x_end = x(K);
+t = linspace(0, 1, K)';
+X = [ones(K, 1), t, t .^ 2, t .^ 3];
 
 cvx_begin
-  variables a(4) b(4);
-  x_fit = a(4) * t.^3 + a(3) * t.^2 + a(2) * t + a(1);
-  y_fit = b(4) * t.^3 + b(3) * t.^2 + b(2) * t + b(1);
+  variables a(4);
+  minimize norm(x - X * a);
 cvx_end
+
+y = C{1}(:,2);
+y_start = y(1);
+y_end = y(K);
+t = linspace(0, 1, K)';
+X = [ones(K, 1), t, t .^ 2, t .^ 3];
+
+cvx_begin
+  variables b(4);
+  minimize norm(y - X * b);
+cvx_end
+
+%%
+t = linspace(0, 1, 100)';
+X = [ones(100, 1), t, t .^ 2, t .^ 3];
+x = X * a;
+y = X * b;
+
+plot(x, y)
