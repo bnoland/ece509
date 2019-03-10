@@ -5,6 +5,9 @@
 image_data = double(imread('cguitar.tif'));
 image(image_data)
 colormap('gray')
+title('Uncorrected image')
+xlabel('x')
+ylabel('y')
 
 %%
 % The optimization problem will be solved using the upper left corner of
@@ -14,7 +17,6 @@ x_bound = 49;
 y_bound = 249;
 
 upper_left_corner = image_data(1:y_bound, 1:x_bound);
-%image(upper_left_corner)
 
 %%
 % Solve the optimization problem.
@@ -49,3 +51,6 @@ corrected_image = image_data ./ R;
 
 image(corrected_image)
 colormap('gray')
+title('Corrected image')
+xlabel('x')
+ylabel('y')

@@ -1,6 +1,6 @@
 
 %%
-% Select the input points on the image.
+% Read in the image data and select the input points on the image.
 
 M = 10;  % Number of segments
 K = 5;  % Number of input points per segment (constant for simplicity)
@@ -12,7 +12,9 @@ hold on
 
 [x, y] = ginput(N);
 plot(x, y, '-wx')
-%hold off
+title('Cubic spline fit')
+xlabel('x')
+ylabel('y')
 
 %%
 % Split the input points into collections corresponding to segments.
