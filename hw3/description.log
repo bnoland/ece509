@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.26)  13 MAR 2019 15:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.26)  13 MAR 2019 15:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -269,15 +269,15 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 22.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<corrupted_image.png, id=1, 421.575pt x 316.18124pt>
-File: corrupted_image.png Graphic file (type png)
-<use corrupted_image.png>
-Package pdftex.def Info: corrupted_image.png  used on input line 27.
+<uncorrected_image.png, id=1, 421.575pt x 316.18124pt>
+File: uncorrected_image.png Graphic file (type png)
+<use uncorrected_image.png>
+Package pdftex.def Info: uncorrected_image.png  used on input line 27.
 (pdftex.def)             Requested size: 284.52756pt x 213.39865pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./corrupted_image.png (PNG
- copy)>]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./uncorrected_image.png (P
+NG copy)>]
 <corrected_image.png, id=14, 421.575pt x 316.18124pt>
 File: corrected_image.png Graphic file (type png)
 <use corrected_image.png>
@@ -301,7 +301,7 @@ Package pdftex.def Info: spline.png  used on input line 160.
 (./description.aux) ) 
 Here is how much of TeX's memory you used:
  2936 strings out of 494586
- 41243 string characters out of 6177801
+ 41253 string characters out of 6177801
  116406 words of memory out of 5000000
  6528 multiletter control sequences out of 15000+600000
  11997 words of font info for 48 fonts, out of 8000000 for 9000
