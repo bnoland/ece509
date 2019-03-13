@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{enumitem}
+\usepackage{graphicx}
 
 \setenumerate{parsep=0em, listparindent=\parindent}
 
@@ -21,7 +22,12 @@
 \maketitle
 
 \begin{enumerate}
-\item Here the model is of the form
+\item Below is the uncorrected (i.e., corrupted) image:
+  \begin{center}
+    \includegraphics[width=10cm]{corrupted_image.png}
+  \end{center}
+  In order to remove the corruption from this image, we want to fit a
+  model of the form
   \begin{equation*}
     e_c(i, j) = r(i, j) e(i, j),
   \end{equation*}
@@ -45,6 +51,24 @@
   (uncorrupted) image by computing
   $\hat{e}(i, j) = e_c(i, j) / r(i, j)$ for all pixel coordinates
   $(i, j)$.
+
+  Running the code, we get the following output from the convex
+  optimization procedure:
+  \begin{verbatim}
+Status: Solved
+Optimal value (cvx_optval): +32.0336
+  \end{verbatim}
+  and the following coefficient estimates:
+  \begin{verbatim}
+Optimal values:
+a = -0.00099997
+b = -0.0020002
+c = 0.99824
+  \end{verbatim}
+  Below is the resulting corrected image:
+  \begin{center}
+    \includegraphics[width=10cm]{corrected_image.png}
+  \end{center}
 
 \item We have raw data points $X$ and $Y$, which consist of ordered
   collections $X = (x_1, \ldots, x_N)$ and $Y = (y_1, \ldots, y_N)$ of
@@ -117,6 +141,24 @@
   Thus we obtain a collection of curves $(x_i(t), y_i(t))$,
   $1 \leq i \leq M$, in the plane that together form a cubic spline
   approximating the raw data points $X$ and $Y$.
+
+  Running the code, we get the following output from the convex
+  optimization procedure for fitting the $a_{ij}$ values:
+  \begin{verbatim}
+Status: Solved
+Optimal value (cvx_optval): +220.954
+  \end{verbatim}
+  The following is the output from fitting the $b_{ij}$ values:
+  \begin{verbatim}
+Status: Solved
+Optimal value (cvx_optval): +178.677
+  \end{verbatim}
+  Below is a plot of the $X$ and $Y$ data points (displayed in white),
+  along with the fitted spline (with different segments having
+  different colors):
+  \begin{center}
+    \includegraphics[width=15cm]{spline.png}
+  \end{center}
 
 \end{enumerate}
 
