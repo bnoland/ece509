@@ -1,0 +1,100 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+\setenumerate{parsep=0em, listparindent=\parindent}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\dist}{dist}
+
+\title{Homework 2}
+\author{Benjamin Noland}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+\item (Boyd \& Vandenberghe, Exercise 2.12)
+\begin{enumerate}
+\setcounter{enumii}{4}
+\item This set is not necessarily convex. As a counterexample, define
+  the sets $S$ and $T$ by $S = (-\infty, -2] \cup [2, \infty)$ and
+  $T = [-1, 1]$. Then the set
+  \begin{equation*}
+    \{x \in \mathbb{R} : \dist(x, S) \leq \dist(x, T)\}
+      = (-\infty, -3/2] \cup [3/2, \infty)
+  \end{equation*}
+  is not convex.
+
+\item For every $s \in S_2$, define the set
+  \begin{equation*}
+    C_s = \{x \in \mathbb{R}^n : x + s \in S_1\}.
+  \end{equation*}
+  To see that these sets are convex, let $s \in S_2$, let
+  $x_1, x_2 \in C_s$, and let $0 \leq \theta \leq 1$. Then since
+  $x_1 + s, x_2 + s \in S_1$, convexity of $S_1$ implies that
+  \begin{equation*}
+    \theta x_1 + (1 - \theta)x_2 + s
+      = \theta (x_1 + s) + (1 - \theta)(x_2 + s) \in S_1.
+  \end{equation*}
+  Thus $\theta x_1 + (1 - \theta)x_2 \in C_s$, so that $C_s$ is
+  convex. Therefore
+  \begin{equation*}
+    \{x \in \mathbb{R}^n : x + S_2 \subseteq S_1\} = \bigcap_{s \in S_2} C_s
+  \end{equation*}
+  is convex, since set intersection preserves convexity.
+
+\item Let
+  \begin{equation*}
+    C = \{x \in \mathbb{R}^n :
+      \lVert x - a \rVert_2 \leq \theta \lVert x - b \rVert_2\}.
+  \end{equation*}
+  Then $x \in C$ if and only if
+  \begin{equation*}
+    (x - a)^T (x - a) \leq \theta^2 (x - b)^T (x - b),
+  \end{equation*}
+  or equivalently (after rearrangement),
+  \begin{equation*}
+    (1 - \theta^2) x^T x + 2(\theta^2 b - a)^T x
+      + a^T a - \theta^2 b^T b \leq 0.
+  \end{equation*}
+  Thus, letting $A = (1 - \theta^2)I$, $\beta = 2(\theta^2 b - a)$,
+  and $\gamma = a^T a - \theta^2 b^T b$, the set in question becomes
+  \begin{equation*}
+    C = \{x \in \mathbb{R}^n : x^T Ax + \beta^T x + \gamma \leq 0\}.
+  \end{equation*}
+  Thus, since $A \in S^n_{+}$, Exercise~2.10~(a) implies that $C$ is
+  convex.
+\end{enumerate}
+
+\item (Boyd \& Vandenberghe, Exercise 3.20)
+\begin{enumerate}
+\setcounter{enumii}{2}
+\item Recall from Exercise~3.18~(a) that the map $g(X) = \Tr(X^{-1})$
+  on $S^m_{++}$ is convex. In addition, the map
+  $h(x) = A_0 + x_1 A_1 + \cdots + x_n A_n$ on $\mathbb{R}^n$ is
+  affine. The map $f$ in question is the composition $f = g \circ h$,
+  with domain $\dom f = \{x \in \mathbb{R}^n : h(x) \in \dom g\}$. A
+  composition of this form is convex, and therefore $f$ is convex.
+\end{enumerate}
+
+\item (Boyd \& Vandenberghe, Exercise 3.21)
+\begin{enumerate}
+\item For every $1 \leq i \leq k$, define the map
+  $f_i(x) = \lVert A^{(i)}x - b^{(i)} \rVert$ on $\mathbb{R}^m$. Since
+  norms are convex, and each of the maps $f_i$ is the composition of a
+  norm with an affine map, we see that each $f_i$ is convex. Since the
+  map $f$ in question is the pointwise maximum of $f_1, \ldots, f_k$,
+  we conclude that $f$ itself is convex.
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

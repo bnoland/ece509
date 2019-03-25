@@ -1,0 +1,235 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+\setenumerate{parsep=0em, listparindent=\parindent}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\spn}{span}
+
+\title{Homework 2}
+\author{Benjamin Noland}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+\item (Boyd \& Vandenberghe, Exercise 4.3) The feasibility set for
+  this problem is $\mathcal{F} = [-1, 1]^3$. Since the objective
+  function
+  \begin{equation*}
+    f_0(x) = \frac{1}{2} x^T P x + q^T x + r
+  \end{equation*}
+  is differentiable and $x^\star = (1, 1/2, -1) \in \mathcal{F}$,
+  $x^\star$ is optimal if and only if
+  \begin{equation*}
+    \nabla f_0(x^\star)^T (x - x^\star) \geq 0
+      \quad \text{for every $x \in \mathcal{F}$}.
+  \end{equation*}
+  Since $P$ is symmetric, we have
+  \begin{equation*}
+    \nabla f_0(x^\star) = \frac{1}{2} (P + P^T) x^\star + q = Px^\star + q,
+  \end{equation*}
+  and so the optimality condition becomes
+  \begin{equation*}
+    \left( Px^\star + q \right)^T (x - x^\star) \geq 0
+      \quad \text{for every $x \in \mathcal{F}$},
+  \end{equation*}
+  or
+  \begin{equation*}
+    \left( Px^\star + q \right)^T x
+      - \left( Px^\star + q \right)^T x^\star \geq 0
+      \quad \text{for every $x \in \mathcal{F}$}.
+  \end{equation*}
+  Using the given values for $P$ and $q$, we get
+  \begin{align*}
+    \left( Px^\star + q \right)^T
+      &= \begin{pmatrix}
+           -1 & 0 & 2
+         \end{pmatrix} \\
+    \left( Px^\star + q \right)^T x^\star &= -3,
+  \end{align*}
+  Substituting these values into the optimality condition, we see that
+  $x^\star$ is optimal if and only if
+  \begin{equation*}
+    -x_1 + 2x_3 + 3 \geq 0
+      \quad \text{for every $x = (x_1, x_2, x_3) \in \mathcal{F}$}.
+  \end{equation*}
+  But since $\mathcal{F} = [-1, 1]^3$, $y_i \in [-1, 1]$
+  ($i = 1, 2, 3$), and it follows easily that this condition is
+  satisfied. Thus $x^\star$ is optimal.
+
+\item (Boyd \& Vandenberghe, Exercise 4.8)
+\begin{enumerate}
+\setcounter{enumii}{1}
+\item The feasible set for this problem is
+  \begin{equation*}
+    \mathcal{F} = \{x \in \mathbb{R}^n : a^T x \leq b\},
+  \end{equation*}
+  and the objective function is $f_0(x) = c^T x$, which is
+  differentiable. If $c = 0$, then any feasible value is optimal, so
+  we will assume that $c \neq 0$. We have $\nabla f_0(x) = c$. Note
+  that since $a \neq 0$, we can write
+  $\mathbb{R}^n = V \oplus V^\perp$, where $V = \spn\{a\}$. Thus we
+  can write $c = \alpha_1 c_1 + \alpha_2 c_2$, where
+  $\alpha_1, \alpha_2 \in \mathbb{R}$ and $c_1 \in V$ and
+  $c_2 \in V^\perp$ satisfy $\lVert c_1 \rVert_2 = 1$ and
+  $\lVert c_2 \rVert_2 = 1$. In particular, we can take
+  $c_1 = a / \lVert a \rVert_2$.
+
+  To determine an explicit solution, there are several cases to
+  consider:
+  \begin{enumerate}
+  \item \textit{If $\alpha_1 \geq 0$, then the problem is unbounded
+      below.} To see this, let $x \in \mathcal{F}$ and $t \geq
+    0$. Then
+    \begin{align*}
+      a^T (x - t\nabla f_0(x)) &= a^T (x - tc) \\
+        &= a^T x - ta^T c \\
+        &= a^T x - ta^T (\alpha_1 c_1 + \alpha_2 c_2) \\
+        &= a^T x - t\alpha_1 a^T c_1 \\
+        &= a^T x - t\alpha_1 \lVert a \rVert_2 \\
+        &\leq b
+    \end{align*}
+    since $\alpha_1 \geq 0$, and so
+    $x - t\nabla f_0(x) \in \mathcal{F}$. Moreover,
+    \begin{equation*}
+      c^T (x - t\nabla f_0(x)) = c^T (x - tc) = c^T x - tc^T c \to -\infty
+        \quad \text{as} \quad t \to \infty
+    \end{equation*}
+    Thus the problem is unbounded below in this case.
+
+  \item \textit{If $\alpha_2 \neq 0$, then the problem is unbounded
+      below.} To see this, let $x \in \mathcal{F}$ and $t \geq
+    0$. Then
+    \begin{equation*}
+      a^T (x - t\alpha_2 c_2) = a^T x \leq b,
+    \end{equation*}
+    so that $x - t\alpha_2 c_2 \in \mathcal{F}$. Moreover,
+    \begin{align*}
+      c^T (x - t\alpha_2 c_2)
+        &= \alpha_1 c_1^T (x - t\alpha_2 c_2)
+          + \alpha_2 c_2^T (x - t\alpha_2 c_2) \\
+        &= \alpha_1 c_1^T x + \alpha_2 c_2^T x - t\alpha_2^2 c_2^T c_2 \\
+        &= c^T x - t\alpha_2^2 c_2^T c_2,
+    \end{align*}
+    so that $c^T (x - t\alpha_2 c_2) \to -\infty$ as $t \to \infty$
+    since $\alpha_2 \neq 0$.
+
+  \item \textit{If $\alpha_1 < 0$ and $\alpha_2 = 0$, then the problem
+      has a unique (finite) solution.} In this case
+    $c = \alpha_1 c_1 = \alpha_1 a / \lVert a \rVert_2$. Note that for
+    any $x \in \mathcal{F}$,
+    \begin{equation*}
+      c^T x = \frac{a^T x}{\lVert a \rVert_2} \leq \frac{b}{\lVert a \rVert_2}.
+    \end{equation*}
+    Let $x^\star = ba / \lVert a \rVert_2$. Then $a^T x^\star = b$, so
+    that $x^\star \in \mathcal{F}$, and
+    \begin{equation*}
+      c^T x^\star = \frac{a^T x^\star}{\lVert a \rVert_2}
+        = \frac{b}{\lVert a \rVert_2}.
+    \end{equation*}
+    Thus $c^T x^\star \leq c^T x$ for every $x \in \mathcal{F}$, so
+    that $x^\star$ is optimal.
+  \end{enumerate}
+  To summarize, the optimal value is given by
+  \begin{equation*}
+    p^\star = \begin{cases}
+      b / \lVert a \rVert_2 &\quad \text{if $\alpha_1 < 0$, $\alpha_2 = 0$} \\
+      -\infty &\quad \text{otherwise}
+    \end{cases}.
+  \end{equation*}
+
+\item The feasible set for this problem is
+  \begin{equation*}
+    \mathcal{F} = \{x \in \mathbb{R}^n : l \preceq x \preceq u\}
+      = \{x \in \mathbb{R}^n :
+          \text{$l_i \leq x_i \leq u_i$ for every $1 \leq i \leq n$}\}.
+  \end{equation*}
+  The objective function is $f_0(x) = c^T x$. We can optimize $f_0$ in
+  each component $x_i$ of the optimization variable $x$. Specifically,
+  for every $1 \leq i \leq n$, we want to minimize $c_i x_i$ in $x_i$
+  subject to the constraint $l_i \leq x_i \leq u_i$. We can therefore
+  construct an optimal value $x^\star \in \mathcal{F}$ as follows: for
+  every $1 \leq i \leq n$,
+  \begin{itemize}
+  \item if $c_i = 0$, any value $x^\star_i \in [l_i, u_i]$ is optimal;
+  \item if $c_i < 0$, let $x^\star_i = u_i$;
+  \item if $c_i > 0$, let $x^\star_i = l_i$.
+  \end{itemize}
+  The optimal value is therefore given by
+  \begin{equation*}
+    p^\star = c^T x^\star = l^T c^+ + u^T c^-,
+  \end{equation*}
+  where $c^+ \in \mathbb{R}^n$ and $c^- \in \mathbb{R}^n$ are defined
+  by $c^+_i = \max\{c_i, 0\}$ and $c^-_i = \max\{-c_i, 0\}$,
+  respectively, for every $1 \leq i \leq n$.
+\end{enumerate}
+
+\item (Boyd \& Vandenberghe, Exercise 4.9) The feasibility set for
+  this problem is
+  \begin{equation*}
+    \mathcal{F} = \{x \in \mathbb{R}^n : Ax \preceq b\}.
+  \end{equation*}
+  Let $y = Ax$, so that $x = A^{-1}y$. Then the constraint
+  $Ax \preceq b$ becomes $y \preceq b$, and the objective function
+  becomes
+  \begin{equation*}
+    f_0(x) = c^T x = c^T A^{-1} y = (A^{-T} c)^T y = d^T y,
+  \end{equation*}
+  where $d = A^{-T} c$.
+
+  We can optimize $f_0$ in each component $y_i$ of $y$
+  individually. Specifically, for every $1 \leq i \leq n$, we want to
+  minimize $d_i y_i$ subject to the constraint $y_i \leq b_i$.
+
+  First, note that if $d_i > 0$ for some $1 \leq i \leq n$, then the
+  problem is unbounded below. To see this, let
+  $y = (b_1, \ldots, b_i - t, \ldots, b_n)$, where $t \geq 0$. Then
+  $y \in \mathcal{F}$, but
+  \begin{equation*}
+    f_0(y) = d^T y = d^T b - d_i t \to -\infty
+      \quad \text{as} \quad t \to \infty
+  \end{equation*}
+
+  On the other hand, if $d_i \geq 0$ for every $1 \leq i \leq n$,
+  i.e., $d = A^{-T} c \preceq 0$, we can construct an optimal value
+  $y^\star \in \mathcal{F}$ as follows: for every $1 \leq i \leq n$,
+  \begin{itemize}
+  \item if $d_i = 0$, any value $y^\star_i \leq b_i$ is optimal;
+  \item if $d_i < 0$, let $y^\star_i = b_i$.
+  \end{itemize}
+  In this case, the optimal value is therefore
+  \begin{equation*}
+    p^\star = d^T b = (A^{-T} c)^T b = c^T A^{-1} b
+  \end{equation*}
+
+  Thus, in general, the optimal value is given by
+  \begin{equation*}
+    p^\star = \begin{cases}
+      c^T A^{-1} b &\quad \text{if $A^{-T} c \preceq 0$} \\
+      -\infty &\quad \text{otherwise}
+    \end{cases}.
+  \end{equation*}
+
+\item (Boyd \& Vandenberghe, Exercise 4.11)
+\begin{enumerate}
+\item
+\item
+\item
+\item
+\item
+\end{enumerate}
+
+\item (Boyd \& Vandenberghe, Exercise 4.25)
+\end{enumerate}
+
+\end{document}
