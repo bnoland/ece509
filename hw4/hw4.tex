@@ -1,3 +1,5 @@
+% TODO: How to properly use the array environment?
+
 \documentclass[letterpaper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
@@ -13,7 +15,7 @@
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\spn}{span}
 
-\title{Homework 2}
+\title{Homework 4}
 \author{Benjamin Noland}
 \date{}
 
@@ -172,6 +174,7 @@
   where $c^+ \in \mathbb{R}^n$ and $c^- \in \mathbb{R}^n$ are defined
   by $c^+_i = \max\{c_i, 0\}$ and $c^-_i = \max\{-c_i, 0\}$,
   respectively, for every $1 \leq i \leq n$.
+
 \end{enumerate}
 
 \item (Boyd \& Vandenberghe, Exercise 4.9) The feasibility set for
@@ -222,14 +225,189 @@
 
 \item (Boyd \& Vandenberghe, Exercise 4.11)
 \begin{enumerate}
-\item
-\item
-\item
-\item
-\item
+% TODO: Sanity check some of these equivalence arguments.
+\item An equivalent LP is
+  \begin{equation*}
+    \begin{array}{ll@{}ll}
+      \text{minimize} & t \\
+      \text{subject to}
+        & Ax - b &\preceq t1 \\
+        &-(Ax - b) &\preceq t1
+    \end{array},
+  \end{equation*}
+  where $t \in \mathbb{R}$.
+
+  Let $x \in \mathbb{R}^n$ be optimal for the original problem. Then
+  $(x, t) \in \mathbb{R}^{n+1}$ is optimal for the LP above if
+  $t = \lVert Ax - b \rVert_\infty$. Conversely, if we fix
+  $x \in \mathbb{R}^n$ and optimize with respect to $t$ in the LP,
+  then we get $t = \lVert Ax - b \rVert_\infty$. If we then optimize
+  in $x$, the resulting value of $x$ is optimal for the original
+  problem. The two problems are therefore equivalent.
+
+\item An equivalent LP is
+  \begin{equation*}
+    \begin{array}{ll@{}ll}
+      \text{minimize} & 1^T t \\
+      \text{subject to}
+        & Ax - b &\preceq t \\
+        &-(Ax - b) &\preceq t
+    \end{array},
+  \end{equation*}
+  where $t \in \mathbb{R}^m$.
+
+  Let $x \in \mathbb{R}^n$ be optimal for the original problem. Then
+  $(x, t) \in \mathbb{R}^{n+m}$ is optimal for the LP above if $t$
+  satisfies $t_i = |(Ax - b)_i|$ for every $1 \leq i \leq
+  m$. Conversely, if we fix $x \in \mathbb{R}^n$ and optimize with
+  respect to $t$ in the LP, then $t$ will satisfy $t_i = |(Ax - b)_i|$
+  for every $1 \leq i \leq m$. If we then optimize in $x$, the
+  resulting value of $x$ is optimal for the original problem. The two
+  problems are therefore equivalent.
+
+\item An equivalent LP is
+  \begin{equation*}
+    \begin{array}{ll@{}ll}
+      \text{minimize} & 1^T t \\
+      \text{subject to}
+        & Ax - b &\preceq t \\
+        &-(Ax - b) &\preceq t \\
+        &x &\preceq 1 \\
+        &-x &\preceq 1
+    \end{array},
+  \end{equation*}
+  where $t \in \mathbb{R}^m$.
+
+  Let $x \in \mathbb{R}^n$ be optimal for the original problem. Then
+  $(x, t) \in \mathbb{R}^{n+m}$ is optimal for the LP above if $t$
+  satisfies $t_i = |(Ax - b)_i|$ for every $1 \leq i \leq
+  m$. Conversely, if we fix $x \in \mathbb{R}^n$ and optimize with
+  respect to $t$ in the LP, then $t$ will satisfy $t_i = |(Ax - b)_i|$
+  for every $1 \leq i \leq m$. If we then optimize in $x$, the
+  resulting value of $x$ is optimal for the original problem. The two
+  problems are therefore equivalent.
+
+\item An equivalent LP is
+  \begin{equation*}
+    \begin{array}{ll@{}ll}
+      \text{minimize} & 1^T t \\
+      \text{subject to}
+        & Ax - b &\preceq 1 \\
+        &-(Ax - b) &\preceq 1 \\
+        &x &\preceq t \\
+        &-x &\preceq t
+    \end{array},
+  \end{equation*}
+  where $t \in \mathbb{R}^n$.
+
+  Let $x \in \mathbb{R}^n$ be optimal for the original problem. Then
+  $(x, t) \in \mathbb{R}^{2n}$ is optimal for the LP above if $t$
+  satisfies $t_i = |x_i|$ for every $1 \leq i \leq n$. Conversely, if
+  we fix $x \in \mathbb{R}^n$ and optimize with respect to $t$ in the
+  LP, then $t$ will satisfy $t_i = |x_i|$ for every $1 \leq i \leq
+  n$. If we then optimize in $x$, the resulting value of $x$ is
+  optimal for the original problem. The two problems are therefore
+  equivalent.
+
+\item An equivalent LP is
+  \begin{equation*}
+    \begin{array}{ll@{}ll}
+      \text{minimize} & 1^T t + s \\
+      \text{subject to}
+        & Ax - b &\preceq t \\
+        &-(Ax - b) &\preceq t \\
+        &x &\preceq s1 \\
+        &-x &\preceq s1
+    \end{array},
+  \end{equation*}
+  where $t \in \mathbb{R}^m$ and $s \in \mathbb{R}$.
+
+  Let $x \in \mathbb{R}^n$ be optimal for the original problem. Then
+  $(x, t, s) \in \mathbb{R}^{n+m+1}$ is optimal for the LP above if
+  $s = \lVert x \rVert_\infty$ and $t$ satisfies $t = |(Ax - b)_i|$
+  for every $1 \leq i \leq m$. Conversely, if we fix $x$ and optimize
+  with respect to $t$ and $s$ in the LP, then $t$ will satisfy
+  $t = |(Ax - b)_i|$ for every $1 \leq i \leq m$ and
+  $s = \lVert x \rVert_\infty$. If we then optimize in $x$, the
+  resulting value of $x$ is optimal for the original problem. The two
+  problems are therefore equivalent.
+
 \end{enumerate}
 
-\item (Boyd \& Vandenberghe, Exercise 4.25)
+\item (Boyd \& Vandenberghe, Exercise 4.25) First, note that
+  \begin{align*}
+    a^T x + b &> 0
+      \quad \text{for every $x \in \mathcal{E}_i$ ($1 \leq i \leq K$)} \\
+      %\quad \text{for every $x \in \mathcal{E}_1 \cup \cdots \cup \mathcal{E}_K$} \\
+    a^T x + b &< 0
+      \quad \text{for every $x \in \mathcal{E}_j$ ($K+1 \leq j \leq K+L$)}
+      %\quad \text{for every $x \in \mathcal{E}_{K+1} \cup \cdots \cup \mathcal{E}_{K+L}$}
+  \end{align*}
+  if and only if there exists $\epsilon > 0$ such that
+  \begin{align*}
+    a^T x + b &\geq \epsilon
+      \quad \text{for every $x \in \mathcal{E}_i$ ($1 \leq i \leq K$)} \\
+      %\quad \text{for every $x \in \mathcal{E}_1 \cup \cdots \cup \mathcal{E}_K$} \\
+    a^T x + b &\leq -\epsilon
+      \quad \text{for every $x \in \mathcal{E}_j$ ($K+1 \leq j \leq K+L$)}
+      %\quad \text{for every $x \in \mathcal{E}_{K+1} \cup \cdots \cup \mathcal{E}_{K+L}$}.
+  \end{align*}
+  If we write $\tilde{a} = a / \epsilon$ and
+  $\tilde{b} = b / \epsilon$, then we obtain the equivalent conditions
+  \begin{align*}
+    \tilde{a}^T x + \tilde{b} &\geq 1
+      \quad \text{for every $x \in \mathcal{E}_i$ ($1 \leq i \leq K$)} \\
+      %\quad \text{for every $x \in \mathcal{E}_1 \cup \cdots \cup \mathcal{E}_K$} \\
+    \tilde{a}^T x + \tilde{b} &\leq -1
+      \quad \text{for every $x \in \mathcal{E}_j$ ($K+1 \leq j \leq K+L$)}
+      %\quad \text{for every $x \in \mathcal{E}_{K+1} \cup \cdots \cup \mathcal{E}_{K+L}$}.
+  \end{align*}
+
+  The optimization problem in question can therefore be written as
+  \begin{equation*}
+    \begin{array}{ll@{}ll}
+      \text{find} & (a, b) \in \mathbb{R}^{n+1} \\
+      \text{subject to}
+        &a^T x + b &\geq 1
+          &\quad \text{for every $x \in \mathcal{E}_i$ ($1 \leq i \leq K$)} \\
+        &a^T x + b &\leq -1
+          &\quad \text{for every $x \in \mathcal{E}_j$ ($K+1 \leq j \leq K+L$)}
+    \end{array}.
+  \end{equation*}
+  We want to express this problem as an SOCP. Let $1 \leq i \leq
+  K+L$. We compute
+  \begin{align*}
+    \sup\{a^T x + b : x \in \mathcal{E}_i\}
+      &= \sup\{a^T (P_iu + q_i) + b : \lVert u \rVert_2 \leq 1\} \\
+      &= b + a^T q_i + \sup\{a^T P_iu : \lVert u \rVert_2 \leq 1\} \\
+      &= b + a^T q_i
+        + a^T P_i \left( \frac{P_i^T a}{\lVert P_i a \rVert_2} \right) \\
+      &= b + a^T q_i + \lVert P_i a \rVert_2.
+  \end{align*}
+  Similarly, we compute
+  \begin{equation*}
+    \inf\{a^T x + b : x \in \mathcal{E}_j\}
+      = b + a^T q_j - \lVert P_j a \rVert_2.
+  \end{equation*}
+  The constraints in the original optimization problem given above are
+  therefore equivalent to the conditions
+  \begin{align*}
+    b + a^T q_i + \lVert P_i a \rVert_2 &\leq 1 \quad (1 \leq i \leq K) \\
+    b + a^T q_j - \lVert P_j a \rVert_2 &\geq -1 \quad (K \leq j \leq K+L).
+  \end{align*}
+  The problem can therefore be written as the following SOCP
+  feasibility problem:
+  \begin{equation*}
+    \begin{array}{ll@{}ll}
+      \text{find} & (a, b) \in \mathbb{R}^{n+1} \\
+      \text{subject to}
+        &b + a^T q_i + \lVert P_i a \rVert_2 &\leq 1 \quad (1 \leq i \leq K) \\
+        &b + a^T q_j - \lVert P_j a \rVert_2 &\geq -1 \quad (K \leq j \leq K+L).
+    \end{array}.
+  \end{equation*}
+
+\item (CVX problem)
+
 \end{enumerate}
 
 \end{document}
