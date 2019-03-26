@@ -1,5 +1,3 @@
-% TODO: How to properly use the array environment?
-
 \documentclass[letterpaper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
@@ -65,7 +63,7 @@
     -x_1 + 2x_3 + 3 \geq 0
       \quad \text{for every $x = (x_1, x_2, x_3) \in \mathcal{F}$}.
   \end{equation*}
-  But since $\mathcal{F} = [-1, 1]^3$, $y_i \in [-1, 1]$
+  But since $\mathcal{F} = [-1, 1]^3$, $x_i \in [-1, 1]$
   ($i = 1, 2, 3$), and it follows easily that this condition is
   satisfied. Thus $x^\star$ is optimal.
 
@@ -157,11 +155,11 @@
           \text{$l_i \leq x_i \leq u_i$ for every $1 \leq i \leq n$}\}.
   \end{equation*}
   The objective function is $f_0(x) = c^T x$. We can optimize $f_0$ in
-  each component $x_i$ of the optimization variable $x$. Specifically,
-  for every $1 \leq i \leq n$, we want to minimize $c_i x_i$ in $x_i$
-  subject to the constraint $l_i \leq x_i \leq u_i$. We can therefore
-  construct an optimal value $x^\star \in \mathcal{F}$ as follows: for
-  every $1 \leq i \leq n$,
+  each component $x_i$ of the optimization variable $x$
+  individually. Specifically, for every $1 \leq i \leq n$, we want to
+  minimize $c_i x_i$ in $x_i$ subject to the constraint
+  $l_i \leq x_i \leq u_i$. We can therefore construct an optimal value
+  $x^\star \in \mathcal{F}$ as follows: for every $1 \leq i \leq n$,
   \begin{itemize}
   \item if $c_i = 0$, any value $x^\star_i \in [l_i, u_i]$ is optimal;
   \item if $c_i < 0$, let $x^\star_i = u_i$;
@@ -194,13 +192,13 @@
   individually. Specifically, for every $1 \leq i \leq n$, we want to
   minimize $d_i y_i$ subject to the constraint $y_i \leq b_i$.
 
-  First, note that if $d_i > 0$ for some $1 \leq i \leq n$, then the
-  problem is unbounded below. To see this, let
-  $y = (b_1, \ldots, b_i - t, \ldots, b_n)$, where $t \geq 0$. Then
-  $y \in \mathcal{F}$, but
+  First, note that if $d_i > 0$ for some $1 \leq i \leq n$, i.e.,
+  $d = A^{-T} c \not \preceq 0$, then the problem is unbounded
+  below. To see this, let $y = (b_1, \ldots, b_i - t, \ldots, b_n)$,
+  where $t \geq 0$. Then $y \in \mathcal{F}$, but
   \begin{equation*}
     f_0(y) = d^T y = d^T b - d_i t \to -\infty
-      \quad \text{as} \quad t \to \infty
+      \quad \text{as} \quad t \to \infty.
   \end{equation*}
 
   On the other hand, if $d_i \geq 0$ for every $1 \leq i \leq n$,
@@ -225,14 +223,13 @@
 
 \item (Boyd \& Vandenberghe, Exercise 4.11)
 \begin{enumerate}
-% TODO: Sanity check some of these equivalence arguments.
 \item An equivalent LP is
   \begin{equation*}
-    \begin{array}{ll@{}ll}
+    \begin{array}{ll}
       \text{minimize} & t \\
       \text{subject to}
-        & Ax - b &\preceq t1 \\
-        &-(Ax - b) &\preceq t1
+        & Ax - b \preceq t1 \\
+        &-(Ax - b) \preceq t1
     \end{array},
   \end{equation*}
   where $t \in \mathbb{R}$.
@@ -247,11 +244,11 @@
 
 \item An equivalent LP is
   \begin{equation*}
-    \begin{array}{ll@{}ll}
+    \begin{array}{ll}
       \text{minimize} & 1^T t \\
       \text{subject to}
-        & Ax - b &\preceq t \\
-        &-(Ax - b) &\preceq t
+        & Ax - b \preceq t \\
+        &-(Ax - b) \preceq t
     \end{array},
   \end{equation*}
   where $t \in \mathbb{R}^m$.
@@ -267,13 +264,13 @@
 
 \item An equivalent LP is
   \begin{equation*}
-    \begin{array}{ll@{}ll}
+    \begin{array}{ll}
       \text{minimize} & 1^T t \\
       \text{subject to}
-        & Ax - b &\preceq t \\
-        &-(Ax - b) &\preceq t \\
-        &x &\preceq 1 \\
-        &-x &\preceq 1
+        & Ax - b \preceq t \\
+        &-(Ax - b) \preceq t \\
+        &x \preceq 1 \\
+        &-x \preceq 1
     \end{array},
   \end{equation*}
   where $t \in \mathbb{R}^m$.
@@ -289,13 +286,13 @@
 
 \item An equivalent LP is
   \begin{equation*}
-    \begin{array}{ll@{}ll}
+    \begin{array}{ll}
       \text{minimize} & 1^T t \\
       \text{subject to}
-        & Ax - b &\preceq 1 \\
-        &-(Ax - b) &\preceq 1 \\
-        &x &\preceq t \\
-        &-x &\preceq t
+        & Ax - b \preceq 1 \\
+        &-(Ax - b) \preceq 1 \\
+        &x \preceq t \\
+        &-x \preceq t
     \end{array},
   \end{equation*}
   where $t \in \mathbb{R}^n$.
@@ -311,13 +308,13 @@
 
 \item An equivalent LP is
   \begin{equation*}
-    \begin{array}{ll@{}ll}
+    \begin{array}{ll}
       \text{minimize} & 1^T t + s \\
       \text{subject to}
-        & Ax - b &\preceq t \\
-        &-(Ax - b) &\preceq t \\
-        &x &\preceq s1 \\
-        &-x &\preceq s1
+        & Ax - b \preceq t \\
+        &-(Ax - b) \preceq t \\
+        &x \preceq s1 \\
+        &-x \preceq s1
     \end{array},
   \end{equation*}
   where $t \in \mathbb{R}^m$ and $s \in \mathbb{R}$.
@@ -338,76 +335,110 @@
   \begin{align*}
     a^T x + b &> 0
       \quad \text{for every $x \in \mathcal{E}_i$ ($1 \leq i \leq K$)} \\
-      %\quad \text{for every $x \in \mathcal{E}_1 \cup \cdots \cup \mathcal{E}_K$} \\
     a^T x + b &< 0
       \quad \text{for every $x \in \mathcal{E}_j$ ($K+1 \leq j \leq K+L$)}
-      %\quad \text{for every $x \in \mathcal{E}_{K+1} \cup \cdots \cup \mathcal{E}_{K+L}$}
   \end{align*}
   if and only if there exists $\epsilon > 0$ such that
   \begin{align*}
     a^T x + b &\geq \epsilon
       \quad \text{for every $x \in \mathcal{E}_i$ ($1 \leq i \leq K$)} \\
-      %\quad \text{for every $x \in \mathcal{E}_1 \cup \cdots \cup \mathcal{E}_K$} \\
     a^T x + b &\leq -\epsilon
       \quad \text{for every $x \in \mathcal{E}_j$ ($K+1 \leq j \leq K+L$)}
-      %\quad \text{for every $x \in \mathcal{E}_{K+1} \cup \cdots \cup \mathcal{E}_{K+L}$}.
   \end{align*}
   If we write $\tilde{a} = a / \epsilon$ and
   $\tilde{b} = b / \epsilon$, then we obtain the equivalent conditions
   \begin{align*}
     \tilde{a}^T x + \tilde{b} &\geq 1
       \quad \text{for every $x \in \mathcal{E}_i$ ($1 \leq i \leq K$)} \\
-      %\quad \text{for every $x \in \mathcal{E}_1 \cup \cdots \cup \mathcal{E}_K$} \\
     \tilde{a}^T x + \tilde{b} &\leq -1
       \quad \text{for every $x \in \mathcal{E}_j$ ($K+1 \leq j \leq K+L$)}
-      %\quad \text{for every $x \in \mathcal{E}_{K+1} \cup \cdots \cup \mathcal{E}_{K+L}$}.
   \end{align*}
 
-  The optimization problem in question can therefore be written as
+  The feasibility problem in question can therefore be written as
   \begin{equation*}
-    \begin{array}{ll@{}ll}
+    \begin{array}{ll}
       \text{find} & (a, b) \in \mathbb{R}^{n+1} \\
       \text{subject to}
-        &a^T x + b &\geq 1
-          &\quad \text{for every $x \in \mathcal{E}_i$ ($1 \leq i \leq K$)} \\
-        &a^T x + b &\leq -1
-          &\quad \text{for every $x \in \mathcal{E}_j$ ($K+1 \leq j \leq K+L$)}
+        &a^T x + b \geq 1
+          \quad \text{for every $x \in \mathcal{E}_i$ ($1 \leq i \leq K$)} \\
+        &a^T x + b \leq -1
+          \quad \text{for every $x \in \mathcal{E}_j$ ($K+1 \leq j \leq K+L$)}
     \end{array}.
   \end{equation*}
-  We want to express this problem as an SOCP. Let $1 \leq i \leq
-  K+L$. We compute
+  We want to express this problem as an SOCP feasibility problem. Let
+  $1 \leq i \leq K$. We compute
   \begin{align*}
-    \sup\{a^T x + b : x \in \mathcal{E}_i\}
-      &= \sup\{a^T (P_iu + q_i) + b : \lVert u \rVert_2 \leq 1\} \\
-      &= b + a^T q_i + \sup\{a^T P_iu : \lVert u \rVert_2 \leq 1\} \\
+    \inf\{a^T x + b : x \in \mathcal{E}_i\}
+      &= \inf\{a^T (P_iu + q_i) + b : \lVert u \rVert_2 \leq 1\} \\
+      &= b + a^T q_i + \inf\{a^T P_iu : \lVert u \rVert_2 \leq 1\} \\
       &= b + a^T q_i
-        + a^T P_i \left( \frac{P_i^T a}{\lVert P_i a \rVert_2} \right) \\
-      &= b + a^T q_i + \lVert P_i a \rVert_2.
+        + a^T P_i \left( -\frac{P_i^T a}{\lVert P_i^T a \rVert_2} \right) \\
+      &= b + q_i^T a - \lVert P_i a \rVert_2.
   \end{align*}
-  Similarly, we compute
+  Similarly, for $K+1 \leq j \leq K+L$, we compute
   \begin{equation*}
-    \inf\{a^T x + b : x \in \mathcal{E}_j\}
-      = b + a^T q_j - \lVert P_j a \rVert_2.
+    \sup\{a^T x + b : x \in \mathcal{E}_j\}
+      = b + q_j^T a + \lVert P_j a \rVert_2.
   \end{equation*}
   The constraints in the original optimization problem given above are
   therefore equivalent to the conditions
   \begin{align*}
-    b + a^T q_i + \lVert P_i a \rVert_2 &\leq 1 \quad (1 \leq i \leq K) \\
-    b + a^T q_j - \lVert P_j a \rVert_2 &\geq -1 \quad (K \leq j \leq K+L).
+    b + q_i^T a - \lVert P_i a \rVert_2 &\geq 1 \quad (1 \leq i \leq K) \\
+    b + q_j^T a + \lVert P_j a \rVert_2 &\leq -1 \quad (K \leq j \leq K+L).
   \end{align*}
   The problem can therefore be written as the following SOCP
   feasibility problem:
   \begin{equation*}
-    \begin{array}{ll@{}ll}
+    \begin{array}{ll}
       \text{find} & (a, b) \in \mathbb{R}^{n+1} \\
       \text{subject to}
-        &b + a^T q_i + \lVert P_i a \rVert_2 &\leq 1 \quad (1 \leq i \leq K) \\
-        &b + a^T q_j - \lVert P_j a \rVert_2 &\geq -1 \quad (K \leq j \leq K+L).
+        &b + q_i^T a - \lVert P_i a \rVert_2 \geq 1 \quad (1 \leq i \leq K) \\
+        &b + q_j^T a + \lVert P_j a \rVert_2 \leq -1 \quad (K \leq j \leq K+L).
     \end{array}.
   \end{equation*}
 
-\item (CVX problem)
+\item (CVX problem) We solve the following LP using CVX:
+  \begin{equation*}
+    \begin{array}{ll}
+      \text{minimize} & 1^T u \\
+      \text{subject to}
+        &x \succeq 0 \\
+        &Ax \preceq c^{\text{max}} \\
+        &p_j x_j \geq u_j \quad (1 \leq j \leq n) \\
+        &p_j q_j + p^{\text{disc}}_j (x_j - q_j) \geq u_j \quad (1 \leq j \leq n)
+    \end{array}.
+  \end{equation*}
+  The code to solve this LP is contained in the file
+  \texttt{optimal\_activity\_levels.m}. Running this script, we obtain
+  the following output:
+  \begin{verbatim}
+Status: Solved
+Optimal value (cvx_optval): +192.5
+ 
+Optimal activity levels:
+    4.0000
+   22.5000
+   31.0000
+    1.5000
 
+Associated revenues:
+   12.0000
+   32.5000
+  139.0000
+    9.0000
+
+Total revenue: 192.5
+
+Average price per unit:
+    3.0000
+    1.4444
+    4.4839
+    6.0000
+  \end{verbatim}
+  From this output we see that among all activities, activities 2 and
+  3 have the highest optimal activity levels, along with the highest
+  associated revenues. In particular, among all activities, activity 3
+  contributes by far the most to the total revenue.
 \end{enumerate}
 
 \end{document}
