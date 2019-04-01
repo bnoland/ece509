@@ -1,0 +1,167 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+\setenumerate{parsep=0em, listparindent=\parindent}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\spn}{span}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+\title{Project Proposal}
+\author{Benjamin Noland}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Background}
+
+A common problem in applied statistics is estimation of a vector
+$\beta^\ast \in \mathbb{R}^p$ of unknown but fixed parameters in the
+linear model
+\begin{equation} \label{eq:linear_model}
+  y = X\beta^\ast + \epsilon,
+\end{equation}
+where $y \in \mathbb{R}^n$ is a vector of observed responses,
+$X \in \mathbb{R}^{n \times p}$ is the design matrix, and
+$\epsilon \in \mathbb{R}^n$ is a zero-mean random vector representing
+the uncertainty in the model.
+
+In the classical setting, we assume that the number of parameters $p$
+is small relative to the number of observations, specifically
+$p \leq n$. In this setting, assuming the design matrix $X$ has full
+row rank, straightforward linear algebra yields an explicit, unique
+least-squares estimator of $\beta^\ast$.
+
+However, the situation when there are more parameters than
+observations, i.e., $p > n$, is not so well understood, and belongs to
+the active area of research known as \textit{high-dimensional
+  statistics}. One of the strategies commonly employed in
+high-dimensional statistics is to assume that the data is \emph{truly
+  low-dimensional} in some sense. In the context of our linear model
+\eqref{eq:linear_model}, this means assuming that a large number of
+the entries of the true parameter vector $\beta^\ast$ are zero. To be
+precise, define the \textit{support} of $\beta^\ast$ by
+\begin{equation*}
+  S(\beta^\ast) = \{i \in \{1, \ldots, p\} : \beta^\ast_i \neq 0\},
+\end{equation*}
+and let $k = |S(\beta^\ast)|$ denote its cardinality, i.e., the number
+of non-zero entries of $\beta^\ast$. We assume that the vector
+$\beta^\ast$ is \textit{sparse}, in the sense that $k \ll p$. Under
+this \textit{sparsity assumption}, the problem reduces to that of
+computing the support $S(\beta^\ast)$, allowing us to identify which
+parameters in the vector $\beta^\ast$ are truly important. In this
+way, we have the potential to substantially reduce the dimensionality
+of the original problem.
+
+A computational tractable method for computing estimates of the
+parameters $\beta^\ast$ in the high-dimensional setting is the
+\textit{LASSO} \cite{tibshirani96} (Least Absolute Shrinkage And
+Selection Operator). The LASSO computes an estimate of $\beta^\ast$ as
+a solution to the following $l_1$-constrained quadratic program:
+\begin{equation*}
+  \begin{array}{ll}
+    \text{minimize} & \norm{y - X\beta}_2^2 \\
+    \text{subject to}
+      & \norm{\beta}_1 \leq C_n
+  \end{array},
+\end{equation*}
+or equivalently, as the solution to the unconstrained problem
+\begin{equation*}
+  \text{minimize} \
+    \frac{1}{2n} \norm{y - X\beta}_2^2 + \lambda_n \norm{\beta}_1,
+\end{equation*}
+where $\lambda_n > 0$ is a \textit{regularization parameter} that is
+in one-to-one correspondence with $C_n$ via Lagrangian duality
+\cite{wainwright06}.
+
+\section*{Project details}
+
+This project will explore the contributions of the paper
+\cite{wainwright06} to the problem of inferring the support
+$S(\beta^\ast)$ of $\beta^\ast$ (i.e., the problem of \textit{support
+  recovery}) in the linear model \eqref{eq:linear_model} using the
+LASSO as a means of estimating $\beta^\ast$.
+
+\subsection*{Overview of the paper}
+
+The paper \cite{wainwright06} provides both necessary and sufficient
+conditions for the LASSO to recover the \textit{signed support}
+$\mathbb{S}_\pm(\beta^\ast) \in \mathbb{R}^p$ of $\beta^\ast$ with
+high probability, where $\mathbb{S}_\pm(\beta)$ is defined as follows
+for any $\beta \in \mathbb{R}^p$:
+\begin{equation*}
+\mathbb{S}_\pm(\beta)_i =
+  \begin{cases}
+    +1 & \quad \text{if $\beta_i > 0$} \\
+    -1 & \quad \text{if $\beta_i < 0$} \\
+    0 & \quad \text{if $\beta_i = 0$}
+  \end{cases}
+  \quad (i = 1, \ldots, p).
+\end{equation*}
+Specifically, the authors consider the following two questions:
+\begin{itemize}
+\item What relationships between $n$, $p$, and $k$ yield a
+  \emph{unique} LASSO solution $\hat{\beta}$ satisfying
+  $\mathbb{S}_\pm(\hat{\beta}) = \mathbb{S}_\pm(\beta^\ast)$?
+\item For what relationships between $n$, $p$, and $k$ does \emph{no
+    solution} of the LASSO yield the correct signed support?
+\end{itemize}
+These questions are analyzed for both deterministic designs and random
+designs in the linear model \eqref{eq:linear_model}.
+
+In addition to providing theoretical guarantees, the authors detail
+the results of simulations to investigate the success/failure of the
+LASSO in recovering the true support for random designs under the
+following sparsity regimes:
+\begin{itemize}
+\item \textit{linear sparsity}: $k(p) = \ceil{\alpha p}$ for some
+  $\alpha \in (0, 1)$;
+\item \textit{sublinear sparsity}:
+  $k(p) = \ceil{\alpha p / \log(\alpha p)}$ for some
+  $\alpha \in (0, 1)$, and
+\item \textit{fractional power sparsity}:
+  $k(p) = \ceil{\alpha p^\delta}$ for some
+  $\alpha, \delta \in (0, 1)$.
+\end{itemize}
+In each case, the number of observations $n$ is taken to be
+proportional to $k\log(p - k)$.
+
+The first round of experiments samples the design matrix
+$X \in \mathbb{R}^{n \times p}$ from a uniform Gaussian ensemble; that
+is, its rows are sampled independently from the $p$-dimensional
+multivariate Gaussian distribution, $N_p(0, I)$. A second round of experiments samples $X$ from a $p$-dimensiona
+
+\begin{thebibliography}{9}
+\bibitem{wainwright06}
+  Wainwright, M. (2006).
+  \textit{Sharp thresholds for high-dimensional and noisy sparsity
+    recovery using $l_1$-constrained quadratic programming (Lasso)}.
+  Technical Report 709, Dept. Statistics, Univ. California,
+  Berkeley
+
+\bibitem{tibshirani96}
+  Tibshirani, R. (1996).
+  \textit{Regression shrinkage and selection via the Lasso.}
+  J. Roy. Statist. Soc. Ser. B \textbf{58} 267--288
+
+\bibitem{fan01}
+  Fan, J. and Li, R. (2001).
+  \textit{Variable selection via nonconcave penalized likelihood and
+    its oracle properties}.
+  J. Amer. Statist. Assoc. \textbf{96} 1348--1360
+
+\end{thebibliography}
+
+\end{document}
