@@ -163,7 +163,7 @@ where $\Sigma$ is a $p \times p$ Toeplitz matrix of the form
     1 & \mu & \mu^2 & \cdots & \mu^{p-2} & \mu^{p-1} \\
     \mu & 1 & \mu & \mu^2 & \cdots & \mu^{p-2} \\
     \mu^2 & \mu & 1 & \mu & \cdots & \mu^{p-3} \\
-    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
     \mu^{p-1} & \cdots & \mu^3 & \mu^2 & \mu & 1
   \end{pmatrix},
 \end{equation*}
@@ -180,13 +180,13 @@ implementation to those from \cite{wainwright06} (in particular, the
 true support to be recovered will be randomly generated). Some
 possibilities include:
 \begin{itemize}
-\item Ridge regression (i.e., $l_2$ penalization) with small
+\item Ridge regression (i.e., $l_2$-penalization) with small
   coefficients thresholded to zero;
 \item SCAD-penalization \cite{fan01}.
 \end{itemize}
 The R package
 \texttt{ncvreg}\footnote{\url{https://cran.r-project.org/web/packages/ncvreg/index.html}}
-provides efficient implementations of each of these models.
+provides efficient implementations of each of these methods.
 
 \begin{thebibliography}{9}
 \bibitem{wainwright06}
