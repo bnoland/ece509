@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{enumitem}
+\usepackage{hyperref}
 
 \setenumerate{parsep=0em, listparindent=\parindent}
 
@@ -12,6 +13,7 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\prob}{P}
 
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
@@ -123,8 +125,8 @@ designs in the linear model \eqref{eq:linear_model}.
 
 In addition to providing theoretical guarantees, the authors describe
 the results of simulations to investigate the success/failure of the
-LASSO in recovering the true support for random designs under the
-following sparsity regimes:
+LASSO in recovering the true signed support for random designs under
+each of the following sparsity regimes:
 \begin{itemize}
 \item \textit{linear sparsity}: $k(p) = \ceil{\alpha p}$ for some
   $\alpha \in (0, 1)$;
@@ -136,7 +138,17 @@ following sparsity regimes:
   $\alpha, \delta \in (0, 1)$.
 \end{itemize}
 In each case, the number of observations $n$ is taken to be
-proportional to $k\log(p - k)$.
+proportional to $k\log(p - k)$. The true support of the parameter
+vector is chosen at random.
+
+For each sparsity regime and for several values of $p$, the authors
+compute a sequence of values of the \textit{rescaled sample size}
+$\theta = n / (k \log(p -k))$ and for each such value, compute a
+sequence of corresponding LASSO solutions $\hat{\beta}$ in order to
+approximate the probability
+$\prob\{\mathbb{S}_\pm(\hat{\beta}) = \mathbb{S}_\pm(\beta^\ast)\}$ of
+recovering the true signed support. This approximated probability is
+then plotted against the rescaled sample size $\theta$.
 
 The first round of experiments samples the design matrix
 $X \in \mathbb{R}^{n \times p}$ from a uniform Gaussian ensemble; that
@@ -155,7 +167,26 @@ where $\Sigma$ is a $p \times p$ Toeplitz matrix of the form
     \mu^{p-1} & \cdots & \mu^3 & \mu^2 & \mu & 1
   \end{pmatrix},
 \end{equation*}
-for some $\mu \in (-1, +1)$.
+for some $\mu \in (-1, +1)$. In both cases, the authors note good
+agreement with the their theoretical predictions.
+
+\subsection*{Expected analysis}
+
+In addition to replicating the results of the simulation in
+\cite{wainwright06}, I intend to run some simulations in order to
+predict the probability of support recovery using penalty functions
+other than $l_1$ norm. These simulations will be similar in
+implementation to those from \cite{wainwright06} (in particular, the
+true support to be recovered will be randomly generated). Some
+possibilities include:
+\begin{itemize}
+\item Ridge regression (i.e., $l_2$ penalization) with small
+  coefficients thresholded to zero;
+\item SCAD-penalization \cite{fan01}.
+\end{itemize}
+The R package
+\texttt{ncvreg}\footnote{\url{https://cran.r-project.org/web/packages/ncvreg/index.html}}
+provides efficient implementations of each of these models.
 
 \begin{thebibliography}{9}
 \bibitem{wainwright06}
