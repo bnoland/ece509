@@ -8,19 +8,22 @@ image(image_data);
 %%
 N = 2;  % Number of training patches to sample from background.
 
-training_patches = cell(N+1, 1);
+bg_patches = cell(N, 1);
 for i = 1:N
-  training_patches{i} = input_training_patch(image_data);
+  rect = ginput(2);
+  bg_patches{i} = get_patch(image_data, rect);
 end
 
+X = cell2mat(bg_patches);
+
 % Collect a single training patch from the object we're trying to detect.
-training_patches{N+1} = input_training_patch(image_data);
+rect = ginput(2);
+Y = get_patch(image_data, rect);
 
-training_data = cell2mat(training_patches);
-
-function training_data = input_training_patch(image_data)
-  rect = ginput(2);
-
+% Extracts a patch of data from the image `image_data' defined by the
+% rectangle `rect', along with the associated pixel coordinates, and puts
+% the data in a format suitable for working with the classifier.
+function output = get_patch(image_data, rect)
   lim(1) = min(floor(rect(1)), floor(rect(2)));  % x min
   lim(2) = min(floor(rect(3)), floor(rect(4)));  % y min
   lim(3) = max(ceil(rect(1)), ceil(rect(2)));  % x max
@@ -35,7 +38,7 @@ function training_data = input_training_patch(image_data)
   patch = double(patch);
   patch = reshape(patch, 3, patch_size);
 
-  training_data = [
+  output = [
     repmat(y_coords, 1, length(x_coords))
     repmat(x_coords, 1, length(y_coords))
     patch
