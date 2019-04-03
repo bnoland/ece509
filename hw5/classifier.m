@@ -20,6 +20,10 @@ X = cell2mat(bg_patches);
 rect = ginput(2);
 Y = get_patch(image_data, rect);
 
+%%
+
+
+%%
 % Extracts a patch of data from the image `image_data' defined by the
 % rectangle `rect', along with the associated pixel coordinates, and puts
 % the data in a format suitable for working with the classifier.
