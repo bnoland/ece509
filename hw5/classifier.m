@@ -61,7 +61,30 @@ for i = 1:N
   class(y, x) = get_class(obs, a, b);
 end
 
+figure;
 image(class);
+
+%%
+
+% TODO: Maybe PCA isn't a good idea for visualization here...??
+% TODO: Need to plot with different colors for different classes.
+
+[coeff, score, latent] = pca([X; Y]);
+N = size(X, 1);
+M = size(Y, 1);
+figure;
+scatter3(score(1:N,1), score(1:N,2), score(1:N,3), 5, 'blue', 'filled');
+hold on;
+scatter3(score(N+1:N+M,1), score(N+1:N+M,2), score(N+1:N+M,3), 5, 'red', 'filled');
+
+%%
+x_0 = b * a / norm(a)^2;
+K = null(a');
+
+%[x_1, x_2, x_3, x_4, x_5] = ndgrid(0:5);
+
+P = coeff(:,1:3) * coeff(:,1:3)';
+L = P * K;
 
 %%
 % Extracts a patch of data from the image `image_data' defined by the
