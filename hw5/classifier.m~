@@ -1,12 +1,12 @@
 %%
-file = "hand.jpg";
+file = "apple.jpg";
 image_data = imread(file);
 
 %%
 image(image_data);
 
 %%
-N = 2;  % Number of training patches to sample from background.
+N = 3;  % Number of training patches to sample from background.
 
 bg_patches = cell(N, 1);
 for i = 1:N
@@ -51,9 +51,26 @@ Z = get_patch(image_data, rect);
 class = zeros(height, width);
 
 %%
-N 
+N = size(Z, 1);
+
+% Classify each pixel in the image.
+for i = 1:N
+  obs = Z(i,:);
+  x = obs(1);
+  y = obs(2);
+  class(y, x) = get_class(obs, a, b);
+end
 
 image(class);
+
+%%
+% fiddling
+
+%[x_1, x_2, x_3, x_4, x_5] = ndgrid(1:10:height, 1:10:width, 0:10:255, 0:10:255, 0:10:255);
+
+[x_1, x_2, x_3, x_4, x_5] = ndgrid(linspace(1, height, 20), linspace(1, width, 20), linspace(0, 255, 20), linspace(0, 255,), linspace(0, 255));
+
+%x = [linspace(1, height); linspace(1, width); linspace(0, 255); linspace(0, 255); linspace(0, 255)]'
 
 %%
 % Extracts a patch of data from the image `image_data' defined by the
@@ -81,12 +98,12 @@ function output = get_patch(image_data, rect)
   ]';
 end
 
-% Returns the class of an observation `x` as computed by the support
+% Returns the class of an observation `obs` as computed by the support
 % vector classifier defined by `a` and `b`.
-function output = get_class(x, a, b)
-  if x * a - b > 0
+function output = get_class(obs, a, b)
+  if obs * a - b > 0
     output = 0;  % background
   else
-    output = 1;  % object
+    output = 255;  % object
   end
 end
