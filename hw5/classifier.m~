@@ -58,13 +58,11 @@ for i = 1:N
   obs = Z(i,:);
   x = obs(1);
   y = obs(2);
-  %class(y, x) = get_svm_class(obs, a, b);
-  class(y, x) = get_color_threshold_class(obs);
+  class(y, x) = get_class(obs, a, b);
 end
 
 figure;
 image(class);
-colormap(gray(256));
 
 %%
 perp = null(a');
@@ -76,6 +74,8 @@ N = size(X, 1);
 M = size(Y, 1);
 W = P * [X; Y]';
 
+%x_0 = b * a / norm(a)^2;  % offset vector
+
 coeffs = basis \ W; % coefficients in the basis
 coeffs = coeffs';
 
@@ -84,9 +84,14 @@ scatter(coeffs(1:N,1), coeffs(1:N,2), 5, 'red', 'filled');
 hold on;
 scatter(coeffs(N+1:N+M,1), coeffs(N+1:N+M,2), 5, 'blue', 'filled');
 
-x = b / norm(a)^2 * [1 1];
-y = ylim;
-line(x, y);
+%sep = [b / norm(a)^2 1];
+%sep = linspace(0, 10)' * sep;
+%line(sep(:,1), sep(:,2));
+lims = ylim;
+start = [b / norm(a)^2 lims(1)];
+en
+
+line(repmat(b / norm(a)^2, 1, lims(2) - lims(1)), linspace(lims(1), lims(2)));
 
 %%
 % Extracts a patch of data from the image `image_data' defined by the
@@ -115,26 +120,11 @@ function output = get_patch(image_data, rect)
 end
 
 % Returns the class of an observation `obs` as computed by the support
-% vector machine defined by `a` and `b`.
-function output = get_svm_class(obs, a, b)
+% vector classifier defined by `a` and `b`.
+function output = get_class(obs, a, b)
   if obs * a - b > 0
     output = 0;  % background
   else
     output = 255;  % object
-  end
-end
-
-% Returns the class of an observation `obs` as computed using color
-% thresholding.
-% TODO: Need separate thresholds for apple and hand.
-function output = get_color_threshold_class(obs)
-  r = obs(3);
-  g = obs(4);
-  b = obs(5);
-  
-  if r < 150
-    output = 0; % background
-  else
-    output = 255; % object
   end
 end
