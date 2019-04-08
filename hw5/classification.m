@@ -49,6 +49,7 @@ cvx_end
 rect = [1 1; height width];
 Z = get_patch(image_data, rect);
 N = size(Z, 1);
+
 %%
 % Classify each pixel in the image using the SVM.
 class = zeros(height, width);
