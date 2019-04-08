@@ -1,9 +1,11 @@
 %%
-file = "apple.jpg";
+object_type = 'apple';  % either 'hand' or 'apple'
+file = strcat(object_type, '.jpg');
 image_data = imread(file);
 
 %%
 image(image_data);
+title('Original image');
 
 %%
 N = 3;  % Number of training patches to sample from background.
@@ -26,7 +28,7 @@ M = size(Y, 1);
 
 gamma = 0.1;
 
-% Compute the support vector classifier.
+% Train the support vector machine.
 cvx_begin
   variables a(5) b u(N) v(M);
   
@@ -45,28 +47,41 @@ cvx_end
 %%
 [width, height, depth] = size(image_data);
 rect = [1 1; height width];
-
 Z = get_patch(image_data, rect);
-
-class = zeros(height, width);
-
-%%
 N = size(Z, 1);
-
-% Classify each pixel in the image.
+%%
+% Classify each pixel in the image using the SVM.
+class = zeros(height, width);
 for i = 1:N
   obs = Z(i,:);
   x = obs(1);
   y = obs(2);
-  %class(y, x) = get_svm_class(obs, a, b);
-  class(y, x) = get_color_threshold_class(obs);
+  class(y, x) = get_svm_class(obs, a, b);
 end
 
 figure;
 image(class);
+title('SVM pixel classification');
 colormap(gray(256));
 
 %%
+% Classify each pixel in the image using color thresholding.
+class = zeros(height, width);
+for i = 1:N
+  obs = Z(i,:);
+  x = obs(1);
+  y = obs(2);
+  class(y, x) = get_color_threshold_class(obs, object_type);
+end
+
+figure;
+image(class);
+title('Color thresholding pixel classification');
+colormap(gray(256));
+
+%%
+% Project the data onto an appropriate 2D subspace and plot it.
+
 perp = null(a');
 v = perp(:,1);  % get a vector perpendicular to a
 basis = [a v];  % we want to project onto space with this basis
@@ -87,6 +102,8 @@ scatter(coeffs(N+1:N+M,1), coeffs(N+1:N+M,2), 5, 'blue', 'filled');
 x = b / norm(a)^2 * [1 1];
 y = ylim;
 line(x, y);
+
+title('2D projection of training data');
 
 %%
 % Extracts a patch of data from the image `image_data' defined by the
@@ -125,16 +142,24 @@ function output = get_svm_class(obs, a, b)
 end
 
 % Returns the class of an observation `obs` as computed using color
-% thresholding.
-% TODO: Need separate thresholds for apple and hand.
-function output = get_color_threshold_class(obs)
+% thresholding based on the object type `object_type` (either 'hand' or
+% 'apple').
+function output = get_color_threshold_class(obs, object_type)
   r = obs(3);
   g = obs(4);
   b = obs(5);
   
-  if r < 150
-    output = 0; % background
-  else
-    output = 255; % object
+  if strcmp(object_type, 'apple')
+    if r < 150
+      output = 0; % background
+    else
+      output = 255; % object
+    end
+  elseif strcmp(object_type, 'hand')
+    if abs(r - 245) <= 20 && abs(g - 245) <= 20 && abs(b - 220) <= 20
+      output = 255; % object
+    else
+      output = 0; % background
+    end
   end
 end
