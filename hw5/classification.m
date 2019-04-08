@@ -1,5 +1,5 @@
 %%
-object_type = 'apple';  % either 'hand' or 'apple'
+object_type = 'hand';  % either 'hand' or 'apple'
 file = strcat(object_type, '.jpg');
 image_data = imread(file);
 
