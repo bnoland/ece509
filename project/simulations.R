@@ -70,16 +70,23 @@ lambda_n <- function(n, p, k, sigma) {
 #p_values <- c(128, 256, 512)
 p_values <- 128
 theta_seq <- seq(0.01, 2.4, length.out = 100)
-n_trials <- 200
+n_trials <- 20
 alpha <- 0.4
 delta <- 0.75
 sigma <- 0.5
+mu <- 0.1
 
 for (p in p_values) {
   k <- fractional_power_sparsity(p, alpha, delta)
+  #k <- sublinear_sparsity(p, alpha)
+  #k <- linear_sparsity(p, alpha)
+  
   S <- random_support(p, k)
   beta_star <- true_beta(p, S)
   S_signed <- signed_support(beta_star)
+  
+  #cov_matrix <- diag(p)
+  cov_matrix <- toeplitz(mu^(0:(p-1)))
   
   probs <- numeric(length(theta_seq))
   for (i in seq_along(theta_seq)) {
@@ -94,7 +101,7 @@ for (p in p_values) {
     
     count <- 0
     for (j in 1:n_trials) {
-      X <- random_design(n, p, diag(p))
+      X <- random_design(n, p, cov_matrix)
       y <- X %*% beta_star + rnorm(n, sd = sigma)
       
       lambda <- lambda_n(n, p, k, sigma)
