@@ -37,13 +37,13 @@ linear_sparsity <- function(p, alpha) {
 # Returns the sublinear sparsity index corresponding to size `p' of the
 # parameter vector and parameter `alpha'.
 sublinear_sparsity <- function(p, alpha) {
-  # TODO
+  ceiling(alpha * p / log(alpha * p))
 }
 
 # Returns the fractional power sparsity index corresponding to size `p' of the
 # parameter vector and parameters `alpha' and `delta'.
 fractional_power_sparsity <- function(p, alpha, delta) {
-  # TODO
+  ceiling(alpha * p^delta)
 }
 
 # Returns a random `n' x `p' design matrix whose columns are generated from a
@@ -72,12 +72,11 @@ p_values <- 128
 theta_seq <- seq(0.01, 2.4, length.out = 100)
 n_trials <- 200
 alpha <- 0.4
+delta <- 0.75
 sigma <- 0.5
 
-sparsity <- linear_sparsity
-
 for (p in p_values) {
-  k <- sparsity(p, alpha)
+  k <- fractional_power_sparsity(p, alpha, delta)
   S <- random_support(p, k)
   beta_star <- true_beta(p, S)
   S_signed <- signed_support(beta_star)
@@ -96,7 +95,7 @@ for (p in p_values) {
     count <- 0
     for (j in 1:n_trials) {
       X <- random_design(n, p, diag(p))
-      y <- X %*% beta_star + rnorm(n)
+      y <- X %*% beta_star + rnorm(n, sd = sigma)
       
       lambda <- lambda_n(n, p, k, sigma)
       fit <- glmnet(X, y, intercept = FALSE)#, standardize = FALSE)
