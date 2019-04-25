@@ -1,5 +1,9 @@
 library(glmnet)
 library(MASS)
+library(ggplot2)
+library(tibble)
+library(dplyr)
+library(latex2exp)
 
 # Returns a random support with sparsity index `k' for a true parameter vector
 # of size `p'.
@@ -67,14 +71,21 @@ lambda_n <- function(n, p, k, sigma) {
   sqrt((2 * sigma^2 * log(k) * log(p - k)) / n)
 }
 
-#p_values <- c(128, 256, 512)
-p_values <- 128
-theta_seq <- seq(0.01, 2.4, length.out = 100)
+p_values <- c(128, 256, 512)
+theta_seq <- seq(0.01, 2.4, length.out = 15)
 n_trials <- 20
 alpha <- 0.4
 delta <- 0.75
 sigma <- 0.5
 mu <- 0.1
+
+# Center plot titles.
+theme_update(plot.title = element_text(hjust = 0.5))
+
+success_prob_plot <- function(p, uniform, mixture = 1, sparsity_fn, ...) {
+}
+
+plot_data_list <- list()
 
 for (p in p_values) {
   k <- fractional_power_sparsity(p, alpha, delta)
@@ -93,7 +104,7 @@ for (p in p_values) {
     theta <- theta_seq[[i]]
     n <- sample_size(theta, p, k)
     
-    # TODO
+    # TODO: Should we try to avoid this from ever occurring?
     if (n == 1) {
       cat("n = 1 -- skipping")
       next
@@ -105,7 +116,9 @@ for (p in p_values) {
       y <- X %*% beta_star + rnorm(n, sd = sigma)
       
       lambda <- lambda_n(n, p, k, sigma)
-      fit <- glmnet(X, y, intercept = FALSE)#, standardize = FALSE)
+      # TODO: In order to speed up coefficient prediction, may want to
+      # precompute the sequence of regularization parameters.
+      fit <- glmnet(X, y, intercept = FALSE)
       beta <- as.numeric(predict(fit, s = lambda, type = "coefficients",
                                  exact = TRUE, x = X, y = y))[-1]
       count <- count + all(signed_support(beta) == S_signed)
@@ -114,5 +127,16 @@ for (p in p_values) {
     probs[[i]] <- count / n_trials
   }
   
-  plot(theta_seq, probs)
+  plot_data_list[[p]] <- tibble(theta_seq, probs, p)
 }
+
+plot_data <- bind_rows(plot_data_list)
+plot_data$p <- factor(plot_data$p, levels = p_values)
+ggplot(plot_data, aes(theta_seq, probs, color = p)) +
+  coord_cartesian(xlim = c(0, 2.4), ylim = c(0, 1)) +
+  geom_point() +
+  geom_line() +
+  labs(color = TeX("$p$")) +
+  xlab(TeX("Control parameter $\\theta(n, p, k)$")) +
+  ylab("Probability of success") +
+  theme(aspect.ratio = 1)
