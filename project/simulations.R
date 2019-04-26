@@ -59,8 +59,8 @@ random_design <- function(n, p, cov_matrix) {
   X
 }
 
-# Returns the sample size corresponding to control parameter `theta', `p', and
-# sparsity index return `k'.
+# Returns the sample size corresponding to `p', sparsity index `k', and control
+# parameter `theta'.
 sample_size <- function(theta, p, k) {
   ceiling(2 * theta * k * log(p - k))
 }
@@ -72,16 +72,17 @@ lambda_n <- function(n, p, k, sigma) {
 }
 
 # Returns a plot of probability of successful signed support recovery vs.
-# control parameter for the values of p given in `p_values'. `uniform' is true
-# if the random designs are to be generated using a uniform Gaussian ensemble,
-# and false for non-uniform. `alpha' is the elastic net mixing parameter.
-# `sparsity_fn' is the function defining the sparsity index, and any extra
-# parameters `...' are passed to this function.
-success_prob_plot <- function(p_values, uniform, alpha, sparsity_fn, ...) {
+# control parameter for the values of p given in `p_values'. `title' is the plot
+# title. `uniform' is true if the random designs are to be generated using a
+# uniform Gaussian ensemble, and false for non-uniform. `alpha' is the elastic
+# net mixing parameter. `sparsity_fn' is the function defining the sparsity
+# index, and any extra parameters `...' are passed to this function.
+success_prob_plot <- function(p_values, title, uniform, alpha,
+                              sparsity_fn, ...) {
   theta_seq <- seq(0.01, 2.4, length.out = 15)  # Control parameters
   sigma <- 0.5  # Noise level
   mu <- 0.1     # Defines the Toeplitz covariance matrix in non-uniform case
-  n_trials <- 1
+  n_trials <- 200
   
   plot_data_list <- list()
   
@@ -98,7 +99,7 @@ success_prob_plot <- function(p_values, uniform, alpha, sparsity_fn, ...) {
     else
       cov_matrix <- toeplitz(mu^(0:(p-1)))
     
-    # Estimate the probability of successful signed recovery support for each
+    # Estimate the probability of successful signed support recovery for each
     # value of the control parameter.
     probs <- numeric(length(theta_seq))
     for (i in seq_along(theta_seq)) {
@@ -108,7 +109,8 @@ success_prob_plot <- function(p_values, uniform, alpha, sparsity_fn, ...) {
       # TODO: Due to standardization, glmnet doesn't like this case. Should we
       # try to avoid this from ever occurring?
       if (n == 1) {
-        cat("n = 1 -- skipping")
+        warning("Got n = 1 with theta = ", signif(theta), "; skipping.",
+                call. = FALSE, immediate. = TRUE)
         next
       }
       
@@ -147,12 +149,19 @@ success_prob_plot <- function(p_values, uniform, alpha, sparsity_fn, ...) {
     geom_point() +
     geom_line() +
     geom_vline(xintercept = 1, linetype = "dotted") +
-    labs(color = TeX("$p$")) +
+    labs(title = title, color = TeX("$p$")) +
     xlab(TeX("Control parameter $\\theta(n, p, k)$")) +
     ylab("Probability of success") +
     theme(aspect.ratio = 1)
   
   invisible(plot)
+}
+
+# Writes the plot `plot' to disk with appropriate options. `filename' is the
+# filename. Returns `plot' for use in pipe operator chains.
+save_plot <- function(plot, filename) {
+  ggsave(filename, plot, device = "png", width = 4, height = 4)
+  plot
 }
 
 # Set global theme for plots.
@@ -166,13 +175,150 @@ p_values <- c(128, 256, 512)
 gamma <- 0.4
 delta <- 0.75
 
-plot <- success_prob_plot(
+# Simulations from the paper ----------------------------------------------
+
+# Uniform Gaussian ensemble.
+
+success_prob_plot(
   p_values,
+  title = "Linear sparsity",
+  uniform = TRUE,
+  alpha = 1,
+  sparsity_fn = linear_sparsity,
+  gamma
+) %>%
+  save_plot("uniform_linear_sparsity_alpha_1.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Sublinear sparsity",
+  uniform = TRUE,
+  alpha = 1,
+  sparsity_fn = sublinear_sparsity,
+  gamma
+) %>%
+  save_plot("uniform_sublinear_sparsity_alpha_1.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Fractional power sparsity",
+  uniform = TRUE,
+  alpha = 1,
+  sparsity_fn = fractional_power_sparsity,
+  gamma,
+  delta
+) %>%
+  save_plot("uniform_fractional_power_sparsity_alpha_1.png") %>%
+  print
+
+# Non-uniform Gaussian ensemble.
+
+success_prob_plot(
+  p_values,
+  title = "Linear sparsity",
+  uniform = FALSE,
+  alpha = 1,
+  sparsity_fn = linear_sparsity,
+  gamma
+) %>%
+  save_plot("nonuniform_linear_sparsity_alpha_1.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Sublinear sparsity",
+  uniform = FALSE,
+  alpha = 1,
+  sparsity_fn = sublinear_sparsity,
+  gamma
+) %>%
+  save_plot("nonuniform_sublinear_sparsity_alpha_1.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Fractional power sparsity",
   uniform = FALSE,
   alpha = 1,
   sparsity_fn = fractional_power_sparsity,
   gamma,
   delta
-)
+) %>%
+  save_plot("nonuniform_fractional_power_sparsity_alpha_1.png") %>%
+  print
 
-plot
+# Custom simulations ------------------------------------------------------
+
+# alpha = 0.75
+
+success_prob_plot(
+  p_values,
+  title = "Linear sparsity",
+  uniform = TRUE,
+  alpha = 0.75,
+  sparsity_fn = linear_sparsity,
+  gamma
+) %>%
+  save_plot("uniform_linear_sparsity_alpha_075.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Sublinear sparsity",
+  uniform = TRUE,
+  alpha = 0.75,
+  sparsity_fn = sublinear_sparsity,
+  gamma
+) %>%
+  save_plot("uniform_sublinear_sparsity_alpha_075.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Fractional power sparsity",
+  uniform = TRUE,
+  alpha = 0.75,
+  sparsity_fn = fractional_power_sparsity,
+  gamma,
+  delta
+) %>%
+  save_plot("uniform_fractional_power_sparsity_alpha_075.png") %>%
+  print
+
+# alpha = 0.25
+
+success_prob_plot(
+  p_values,
+  title = "Linear sparsity",
+  uniform = TRUE,
+  alpha = 0.25,
+  sparsity_fn = linear_sparsity,
+  gamma
+) %>%
+  save_plot("uniform_linear_sparsity_alpha_025.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Sublinear sparsity",
+  uniform = TRUE,
+  alpha = 0.25,
+  sparsity_fn = sublinear_sparsity,
+  gamma
+) %>%
+  save_plot("uniform_sublinear_sparsity_alpha_025.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Fractional power sparsity",
+  uniform = TRUE,
+  alpha = 0.25,
+  sparsity_fn = fractional_power_sparsity,
+  gamma,
+  delta
+) %>%
+  save_plot("uniform_fractional_power_sparsity_alpha_025.png") %>%
+  print
