@@ -19,7 +19,7 @@
 \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 
-\title{Project Proposal}
+\title{Final Project}
 \author{Benjamin Noland}
 \date{}
 
@@ -27,7 +27,7 @@
 
 \maketitle
 
-\section*{Background}
+\section*{Introduction}
 
 A common problem in applied statistics is estimation of a vector
 $\beta^\ast \in \mathbb{R}^p$ of unknown but fixed parameters in the
@@ -71,24 +71,25 @@ A computational tractable method for computing estimates of the
 parameters $\beta^\ast$ in the high-dimensional setting is the
 \textit{LASSO} \cite{tibshirani96} (Least Absolute Shrinkage And
 Selection Operator). The LASSO computes an estimate of $\beta^\ast$ as
-a solution to the following $l_1$-constrained quadratic program:
-\begin{equation*}
+a solution $\beta \in \mathbb{R}^p$ to the following $l_1$-constrained
+quadratic program:
+\begin{equation} \label{eq:constrained_problem}
   \begin{array}{ll}
     \text{minimize} & \norm{y - X\beta}_2^2 \\
     \text{subject to}
       & \norm{\beta}_1 \leq C_n
   \end{array},
-\end{equation*}
+\end{equation}
 or equivalently, as the solution to the unconstrained problem
-\begin{equation*}
+\begin{equation} \label{eq:unconstrained_problem}
   \text{minimize} \
     \frac{1}{2n} \norm{y - X\beta}_2^2 + \lambda_n \norm{\beta}_1,
-\end{equation*}
-where $\lambda_n > 0$ is a \textit{regularization parameter} that is
-in one-to-one correspondence with $C_n$ via Lagrangian duality
+\end{equation}
+where $\lambda_n \geq 0$ is a \textit{regularization parameter} that
+is in one-to-one correspondence with $C_n$ via Lagrangian duality
 \cite{wainwright06}.
 
-\section*{Project details}
+\section*{Project overview}
 
 This project will explore the contributions of the paper
 \cite{wainwright06} to the problem of inferring the support
@@ -128,27 +129,28 @@ the results of simulations to investigate the success/failure of the
 LASSO in recovering the true signed support for random designs under
 each of the following sparsity regimes:
 \begin{itemize}
-\item \textit{linear sparsity}: $k(p) = \ceil{\alpha p}$ for some
-  $\alpha \in (0, 1)$;
+\item \textit{linear sparsity}: $k(p) = \ceil{\gamma p}$ for some
+  $\gamma \in (0, 1)$;
 \item \textit{sublinear sparsity}:
-  $k(p) = \ceil{\alpha p / \log(\alpha p)}$ for some
-  $\alpha \in (0, 1)$, and
+  $k(p) = \ceil{\gamma p / \log(\gamma p)}$ for some
+  $\gamma \in (0, 1)$, and
 \item \textit{fractional power sparsity}:
-  $k(p) = \ceil{\alpha p^\delta}$ for some
-  $\alpha, \delta \in (0, 1)$.
+  $k(p) = \ceil{\gamma p^\delta}$ for some
+  $\gamma, \delta \in (0, 1)$.
 \end{itemize}
-In each case, the number of observations $n$ is taken to be
-proportional to $k\log(p - k)$. The true support of the parameter
-vector is chosen at random.
+In each case, the authors take $\gamma = 0.40$ and $\delta = 0.75$,
+and the number of observations $n$ is taken to be proportional to
+$k\log(p - k)$. The true support of the parameter vector is chosen at
+random.
 
 For each sparsity regime and for several values of $p$, the authors
-compute a sequence of values of the \textit{rescaled sample size}
-$\theta = n / (k \log(p -k))$ and for each such value, compute a
-sequence of corresponding LASSO solutions $\hat{\beta}$ in order to
-approximate the probability
+compute a sequence of values of the \textit{rescaled sample size} (or
+\textit{control parameter}) $\theta = n / (k \log(p -k))$ and for each
+such value, compute a sequence of corresponding LASSO solutions
+$\hat{\beta}$ in order to approximate the probability
 $\prob\{\mathbb{S}_\pm(\hat{\beta}) = \mathbb{S}_\pm(\beta^\ast)\}$ of
 recovering the true signed support. This approximated probability is
-then plotted against the rescaled sample size $\theta$.
+then plotted against the control parameter $\theta$.
 
 The first round of experiments samples the design matrix
 $X \in \mathbb{R}^{n \times p}$ from a uniform Gaussian ensemble; that
@@ -167,26 +169,49 @@ where $\Sigma$ is a $p \times p$ Toeplitz matrix of the form
     \mu^{p-1} & \cdots & \mu^3 & \mu^2 & \mu & 1
   \end{pmatrix},
 \end{equation*}
-for some $\mu \in (-1, +1)$. In both cases, the authors note good
-agreement with the their theoretical predictions.
+where $\mu = 0.10$. In both cases, the authors note good agreement
+with the their theoretical predictions.
 
-\subsection*{Expected analysis}
+\subsection*{This project}
 
-In addition to replicating the results of the simulation in
-\cite{wainwright06}, I intend to run some simulations in order to
-predict the probability of support recovery using penalty functions
-other than $l_1$ norm. These simulations will be similar in
-implementation to those from \cite{wainwright06} (in particular, the
-true support to be recovered will be randomly generated). Some
-possibilities include:
-\begin{itemize}
-\item Ridge regression (i.e., $l_2$-penalization) with small
-  coefficients thresholded to zero;
-\item SCAD-penalization \cite{fan01}.
-\end{itemize}
-The R package
-\texttt{ncvreg}\footnote{\url{https://cran.r-project.org/web/packages/ncvreg/index.html}}
-provides efficient implementations of each of these methods.
+In addition to duplicating the simulations from the paper
+\cite{wainwright06}, this project extends the simulations by
+considering the more general case of \textit{elastic net} penalties
+\cite{zou_hastie05}, which extend the $l_1$ penalty in
+\eqref{eq:unconstrained_problem} to include an $l_2$ term as
+well. Specifically, we consider solutions $\beta \in \mathbb{R}^p$ to
+the problem
+\begin{equation*}
+  \text{minimize} \
+    \frac{1}{2n} \norm{y - X\beta}_2^2
+      + \lambda_n \left( \frac{1}{2} (1 - \alpha) \norm{\beta}_2^2
+      + \alpha \norm{\beta}_1 \right ),
+\end{equation*}
+where $\alpha \in [0, 1]$ is the elastic net \textit{mixing
+  parameter}. We repeat the simulations described in
+\cite{wainwright06} for the case of uniform Gaussian ensembles, but
+instead use elastic net solutions $\beta$ for each of $\alpha = 0.75$
+and $\alpha = 0.25$ to estimate the probability of signed support
+recovery. We compare the results to those from the original
+simulations.
+
+\section*{Theoretical results}
+
+\subsection*{Unconstrained form of the problem}
+
+As noted in the introduction, the $l_1$-constrained problem
+\eqref{eq:constrained_problem} is equivalent to the unconstrained
+problem \eqref{eq:unconstrained_problem} in the following sense: for
+every value of $C_n$ in \eqref{eq:constrained_problem} there exists a
+value $\lambda_n \geq 0$ in \eqref{eq:unconstrained_problem} such that
+\eqref{eq:unconstrained_problem} is equivalent to
+\eqref{eq:constrained_problem}, and vice versa (in fact, it can be
+shown that $C_n$ and $\lambda_n$ are in one-to-one correspondence). We
+now demonstrate this equivalence.
+
+\subsection*{Conditions for signed support recovery}
+
+\section*{Simulations}
 
 \begin{thebibliography}{9}
 \bibitem{wainwright06}
@@ -198,14 +223,13 @@ provides efficient implementations of each of these methods.
 
 \bibitem{tibshirani96}
   Tibshirani, R. (1996).
-  \textit{Regression shrinkage and selection via the Lasso.}
+  \textit{Regression shrinkage and selection via the Lasso}.
   J. Roy. Statist. Soc. Ser. B \textbf{58} 267--288
 
-\bibitem{fan01}
-  Fan, J. and Li, R. (2001).
-  \textit{Variable selection via nonconcave penalized likelihood and
-    its oracle properties}.
-  J. Amer. Statist. Assoc. \textbf{96} 1348--1360
+\bibitem{zou_hastie05}
+  Zou, H. and Hastie, T. (2005)
+  \textit{Regularization and variable selection via the elastic net}
+  J. Roy. Statist. Soc. Ser. B \textbf{67} 301--320
 
 \end{thebibliography}
 
