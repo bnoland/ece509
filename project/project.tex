@@ -15,6 +15,7 @@
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\prob}{P}
+\DeclareMathOperator{\E}{E}
 \DeclareMathOperator{\conv}{conv}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -38,6 +39,9 @@
 
 \newcustomtheorem{customthm}{Theorem}
 \newcustomtheorem{customlemma}{Lemma}
+
+
+\newtheorem{theorem}{Theorem}
 
 \title{Final Project}
 \author{Benjamin Noland}
@@ -211,7 +215,7 @@ where $\alpha \in [0, 1]$ is the elastic net \textit{mixing
   parameter}. We repeat the simulations described in
 \cite{wainwright06} for the case of uniform Gaussian ensembles, but
 instead use elastic net solutions $\beta$ for each of $\alpha = 0.75$
-and $\alpha = 0.25$ to estimate the probability of signed support
+and $\alpha = 0.50$ to estimate the probability of signed support
 recovery. We compare the results to those from the original
 simulations.
 
@@ -253,10 +257,10 @@ e_i$. Assume without loss of generality that $a_1, \ldots, a_m \geq 0$
 and $a_{m+1}, \ldots, a_p < 0$. Then we can write
 \begin{align*}
   \beta &= \sum_{i=1}^p a_i e_i \\
-        &= \sum_{i=1}^m \left ( \frac{a_i}{C_n} \right ) (C_n e_i)
-          + \sum_{i=m+1}^p \left ( -\frac{a_i}{C_n} \right ) (-C_n e_i) \\
-        &= \sum_{i=1}^m \left | \frac{a_i}{C_n} \right | (C_n e_i)
-          + \sum_{i=m+1}^p \left | \frac{a_i}{C_n} \right | (-C_n e_i).
+    &= \sum_{i=1}^m \left ( \frac{a_i}{C_n} \right ) (C_n e_i)
+      + \sum_{i=m+1}^p \left ( -\frac{a_i}{C_n} \right ) (-C_n e_i) \\
+    &= \sum_{i=1}^m \left | \frac{a_i}{C_n} \right | (C_n e_i)
+      + \sum_{i=m+1}^p \left | \frac{a_i}{C_n} \right | (-C_n e_i).
 \end{align*}
 Then the coefficients $|a_i / C_n| \geq 0$ for every
 $1 \leq i \leq p$, and since $\norm{\beta}_1 \leq C_n$, we have
@@ -348,15 +352,138 @@ The paper \cite{wainwright06} provides necessary and sufficient
 conditions for the LASSO to recover the signed support of the true
 parameter $\beta^\ast$ in the model \eqref{eq:linear_model} for both
 deterministic and random designs. Here, we restrict our attention to
-the case of random design, and describe the pertinent results from
+the case of random design, and state the pertinent results from
 \cite{wainwright06}.
 
-First, we need some definitions. % TODO: Do this part.
+The design matrix $X \in \mathbb{R}^{n \times p}$ is in this case
+drawn from a random Gaussian ensemble; that is, its rows are sampled
+independently from the distribution $N_p(0, \Sigma)$ for some choice
+of covariance matrix $\Sigma$.
 
-\begin{customthm}{3} \label{sufficiency}
+The results given below rely upon (subsets of) the following
+conditions on $\Sigma$ being satisfied:
+\begin{subequations}
+  \begin{align}
+    \norm{\Sigma_{S^c S} \Sigma_{SS}^{-1}}_\infty &\leq 1 - \gamma
+      \quad \text{for some $\gamma \in (0, 1]$}
+      \label{eq:cov_cond_a} \\
+    \Lambda_{\mathrm{min}}(\Sigma_{SS}) &\geq C_{\mathrm{min}} > 0
+      \label{eq:cov_cond_b} \\
+    \Lambda_{\mathrm{max}}(\Sigma_{SS}) &\leq C_{\mathrm{max}} < \infty,
+      \label{eq:cov_cond_c}
+  \end{align}
+\end{subequations}
+where $\gamma$ is known as an \textit{incoherence parameter}, and
+\begin{align*}
+  \Sigma_{SS} &= \E \left ( \frac{1}{n} X_S^T X_S \right ) \\
+  \Sigma_{S^c S} &= \E \left ( \frac{1}{n} X_{S^c}^T X_S \right ),
+\end{align*}
+and similarly for $\Sigma_{SS^c}$ and $\Sigma_{S^c S^c}$. The
+expressions $\Lambda_{\mathrm{min}}(\Sigma_{SS})$ and
+$\Lambda_{\mathrm{max}}(\Sigma_{SS})$ denote the minimum and maximum
+eigenvalues of $\Sigma_{SS}$, respectively.
+
+For a positive semidefinite matrix $A$, define
+\begin{align*}
+  \rho_l(A) &= \frac{1}{2} \min_{i \neq j} (A_{ii} + A_{jj} - 2A_{ij}) \\
+  \rho_u(A) &= \max_i A_{ii}.
+\end{align*}
+It is not difficult to show that
+\begin{equation*}
+  0 \leq \rho_l(A) \leq \rho_u(A).
+\end{equation*}
+
+Finally, using the conditional covariance matrix
+\begin{equation*}
+  \Sigma_{S^c | S}
+    = \Sigma_{S^c S^c} - \Sigma_{S^c S} \Sigma_{SS}^{-1} \Sigma_{SS^c}
+    \succeq 0
+\end{equation*}
+of $(X_{S^c} | X_S)$, we define
+\begin{align*}
+  \theta_l(\Sigma) &= \frac{\rho_l(\Sigma_{S^c | S})}
+    {C_{\mathrm{max}} (2 - \gamma(\Sigma))} \\
+  \theta_u(\Sigma) &= \frac{\rho_u(\Sigma_{S^c | S})}
+    {C_{\mathrm{min}} \gamma(\Sigma)^2},
+\end{align*}
+where $\gamma(\Sigma) \in (0, 1]$ is the incoherence parameter in
+\eqref{eq:cov_cond_a}. Moreover, we have the inequalities
+\begin{equation*}
+  0 \leq \theta_l(\Sigma) \leq \theta_u(\Sigma) < \infty.
+\end{equation*}
+
+With these definitions and conditions in place, we are now able to
+state the pertinent results from \cite{wainwright06}. The first
+result, Theorem~\ref{sufficiency} from \cite{wainwright06}, provides
+sufficient conditions for the LASSO to recover the signed support of
+the true parameter $\beta^\ast$ in the linear model
+\eqref{eq:linear_model}.
+\begin{customthm}{3}[Sufficiency] \label{sufficiency}
+
+  Consider the linear model \eqref{eq:linear_model} with random
+  Gaussian design $X \in \mathbb{R}^{n \times p}$ and error term
+  $\epsilon \sim N_n(0, \sigma^2 I_n)$. Assume that the covariance
+  matrix $\Sigma$ satisfies conditions \eqref{eq:cov_cond_a} and
+  \eqref{eq:cov_cond_b}. Consider the sequence $(\lambda_n)$ of
+  regularization parameters given by
+  \begin{equation} \label{eq:lambda_sequence}
+    \lambda_n = \lambda_n(\phi_p)
+      = \sqrt{\frac{\phi_p \rho_u(\Sigma_{S^c|S})}{\gamma^2}
+        \frac{2\sigma^2 \log p}{n}},
+  \end{equation}
+  where $\phi_p \geq 2$. Suppose there exists $\delta > 0$ such that
+  the sequences $(n, p, k)$ and $(\lambda_n)$ satisfy
+  \begin{equation*}
+    \frac{n}{2k \log (p - k)}
+      > (1 + \delta) \theta_u(\Sigma)
+        \left ( 1 + \frac{\sigma^2 C_{\mathrm{min}}}{\lambda_n^2 k}
+        \right ).
+  \end{equation*}
+  Then the following properties hold with probability
+  $> 1 - c_1 \exp(-c_2 \min\{k, \log(p - k)\})$:
+  \begin{enumerate}[label=(\roman*)]
+  \item The LASSO has a unique solution $\hat{\beta} \in \mathbb{R}^p$
+    with $S(\hat{\beta}) \subseteq S(\beta^\ast)$ (i.e., its support
+    is contained in the true support).
+
+  \item Define
+    \begin{equation*}
+      g(\lambda_n) = c_3 \lambda_n \norm{\Sigma_{SS}^{-1/2}}_\infty^2
+        + 20\sqrt{\frac{\sigma^2 \log k}{C_{\mathrm{min}} n}}.
+    \end{equation*}
+    Then if $\beta_{\mathrm{min}} = \min_{i \in S} |\beta^\ast_i|$
+    satisfies $\beta_{\mathrm{min}} > g(\lambda_n)$, we have
+    \begin{equation*}
+      \mathbb{S}_\pm(\hat{\beta}) = \mathbb{S}_\pm(\beta^\ast)
+    \end{equation*}
+    and
+    \begin{equation*}
+      \norm{\hat{\beta}_S - \beta^\ast_s}_\infty \leq g(\lambda_n).
+    \end{equation*}
+  \end{enumerate}
 \end{customthm}
+The second result, Theorem~\ref{necessity} from \cite{wainwright06}
+provides \emph{necessary} conditions for signed support recovery to be
+successful. Specifically, it provides sufficient conditions for signed
+support recovery to fail.
+\begin{customthm}{4}[Necessity] \label{necessity}
 
-\begin{customthm}{4} \label{necessity}
+  Consider the linear model \eqref{eq:linear_model} with random
+  Gaussian design $X \in \mathbb{R}^{n \times p}$ and error term
+  $\epsilon \sim N_n(0, \sigma^2 I_n)$. Assume that the covariance
+  matrix $\Sigma$ satisfies conditions \eqref{eq:cov_cond_a},
+  \eqref{eq:cov_cond_b}, and \eqref{eq:cov_cond_c}. Consider the
+  sequence $(\lambda_n)$ of regularization parameters
+  \eqref{eq:lambda_sequence}. Suppose there exists $\delta > 0$ such
+  that the sequences $(n, p, k)$ and $(\lambda_n)$ satisfy
+  \begin{equation*}
+    \frac{n}{2k \log (p - k)}
+      < (1 - \delta) \theta_l(\Sigma)
+        \left ( 1 + \frac{\sigma^2 C_{\mathrm{max}}}{\lambda_n^2 k}
+        \right ).
+  \end{equation*}
+  Then with probability converging to one, no solution of the LASSO
+  has the correct signed support.
 \end{customthm}
 
 \section*{Simulations}
