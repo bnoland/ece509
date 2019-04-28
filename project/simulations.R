@@ -287,6 +287,42 @@ success_prob_plot(
   save_plot("uniform_fractional_power_sparsity_alpha_075.png") %>%
   print
 
+# alpha = 0.50
+
+success_prob_plot(
+  p_values,
+  title = "Linear sparsity",
+  uniform = TRUE,
+  alpha = 0.5,
+  sparsity_fn = linear_sparsity,
+  gamma
+) %>%
+  save_plot("uniform_linear_sparsity_alpha_050.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Sublinear sparsity",
+  uniform = TRUE,
+  alpha = 0.5,
+  sparsity_fn = sublinear_sparsity,
+  gamma
+) %>%
+  save_plot("uniform_sublinear_sparsity_alpha_050.png") %>%
+  print
+
+success_prob_plot(
+  p_values,
+  title = "Fractional power sparsity",
+  uniform = TRUE,
+  alpha = 0.5,
+  sparsity_fn = fractional_power_sparsity,
+  gamma,
+  delta
+) %>%
+  save_plot("uniform_fractional_power_sparsity_alpha_050.png") %>%
+  print
+
 # alpha = 0.25
 
 success_prob_plot(
