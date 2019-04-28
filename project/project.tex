@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -14,10 +15,29 @@
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\prob}{P}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
 \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{customthm}{Theorem}
+\newcustomtheorem{customlemma}{Lemma}
 
 \title{Final Project}
 \author{Benjamin Noland}
@@ -209,9 +229,143 @@ value $\lambda_n \geq 0$ in \eqref{eq:unconstrained_problem} such that
 shown that $C_n$ and $\lambda_n$ are in one-to-one correspondence). We
 now demonstrate this equivalence.
 
+First, we need a lemma. We need to show that the constraint
+\begin{equation} \label{eq:l1_constraint}
+  \norm{\beta}_1 \leq C_n
+\end{equation}
+in \eqref{eq:constrained_problem} is equivalent to a finite collection
+of linear equality and inequality constraints on $\beta$. Consider the
+$l_1$-ball $B = \{\beta \in \mathbb{R}^p : \norm{\beta}_1 \leq
+C_n\}$. Let $\{e_1, \ldots, e_p\}$ denote the standard ordered basis
+for $\mathbb{R}^p$. We claim that $B = \conv S$, where
+\begin{equation*}
+  S = \conv\{C_n e_1, \ldots, C_n e_p, -C_n e_1, \ldots, -C_n e_p\}.
+\end{equation*}
+If we can show that $B = \conv S$, then $B$ is a polyhedron, so that
+the constraint \eqref{eq:l1_constraint} is equivalent to a finite
+collection of linear equalities and inequalities.
+
+Note that $S \subseteq B$, and since $B$ is a convex set, and
+$\conv S$ is the smallest convex set containing $S$, we have
+$\conv S \subseteq B$. Conversely, let $\beta \in B$. Then there exist
+$a_1, \ldots, a_p \in \mathbb{R}$ with $\beta = \sum_{i=1}^p a_i
+e_i$. Assume without loss of generality that $a_1, \ldots, a_m \geq 0$
+and $a_{m+1}, \ldots, a_p < 0$. Then we can write
+\begin{align*}
+  \beta &= \sum_{i=1}^p a_i e_i \\
+        &= \sum_{i=1}^m \left ( \frac{a_i}{C_n} \right ) (C_n e_i)
+          + \sum_{i=m+1}^p \left ( -\frac{a_i}{C_n} \right ) (-C_n e_i) \\
+        &= \sum_{i=1}^m \left | \frac{a_i}{C_n} \right | (C_n e_i)
+          + \sum_{i=m+1}^p \left | \frac{a_i}{C_n} \right | (-C_n e_i).
+\end{align*}
+Then the coefficients $|a_i / C_n| \geq 0$ for every
+$1 \leq i \leq p$, and since $\norm{\beta}_1 \leq C_n$, we have
+\begin{equation*}
+  \frac{\norm{\beta}_1}{C_n}
+    = \sum_{i=1}^p \left | \frac{a_i}{C_n} \right | \leq 1.
+\end{equation*}
+Let $K = \sum_{i=1}^p |a_i / C_n|$, so that $0 \leq K \leq 1$. Now,
+$0 \in \conv S$ since we can write
+$0 = (1/2) (C_n e_1) + (1/2) (-C_n e_1)$. Therefore,
+\begin{equation*}
+  \beta = \sum_{i=1}^m \left | \frac{a_i}{C_n} \right | (C_n e_i)
+    + \sum_{i=m+1}^p \left | \frac{a_i}{C_n} \right | (-C_n e_i)
+    + (1 - K) \cdot 0 \in \conv S.
+\end{equation*}
+This shows that $B \subseteq \conv S$, and therefore $B = \conv S$.
+
+Now for the main argument. Let $\hat{\beta} \in \mathbb{R}^p$ be a
+solution to the constrained problem
+\eqref{eq:constrained_problem}. The Lagrangian of this problem is
+\begin{equation*}
+  L(\beta, \lambda) = \frac{1}{2n} \norm{y - X\beta}_2^2
+    + \lambda(\norm{\beta}_1 - C_n),
+\end{equation*}
+where $\lambda \in \mathbb{R}$, and so the Lagrange dual function is
+given by
+\begin{equation*}
+  g(\lambda) = \inf_{\beta \in \mathbb{R}^p} L(\beta, \lambda)
+    = \inf_{\beta \in \mathbb{R}^p} \left [ \frac{1}{2n} \norm{y - X\beta}_2^2
+      + \lambda(\norm{\beta}_1 - C_n) \right ].
+\end{equation*}
+Note that for any $\lambda \geq 0$, $g(\lambda) > -\infty$, so that
+the dual problem
+\begin{equation} \label{eq:dual_problem}
+  \begin{array}{ll}
+    \text{maximize} & g(\lambda) \\
+    \text{subject to}
+      & \lambda \geq 0
+  \end{array}
+\end{equation}
+is always feasible. Now, since $\hat{\beta}$ is a solution to the
+primal problem \eqref{eq:constrained_problem}, it in particular
+satisfies $\norm{\beta}_1 \leq C_n$ (i.e., $\hat{\beta}$ is feasible
+for the primal problem). By the lemma above, this $l_1$-constraint is
+equivalent to a finite number of linear equality and inequality
+constraints. Thus Slater's condition is satisfied for
+\eqref{eq:constrained_problem}, so that strong duality holds. Since
+this problem is convex and its dual problem \eqref{eq:dual_problem} is
+feasible, this also implies the existence of a dual solution
+$\lambda_n$. We therefore conclude that
+\begin{align*}
+  \hat{\beta} &= \argmin_{\beta \in \mathbb{R}^p} L(\beta, \lambda_n) \\
+    &= \argmin_{\beta \in \mathbb{R}^p} \left [ \frac{1}{2n}
+      \norm{y - X\beta}_2^2 + \lambda_n (\norm{\beta}_1 - C_n) \right ] \\
+    &= \argmin_{\beta \in \mathbb{R}^p} \left [ \frac{1}{2n}
+      \norm{y - X\beta}_2^2 + \lambda_n \norm{\beta}_1 \right ],
+\end{align*}
+i.e., $\hat{\beta}$ is a solution to the unconstrained problem
+\eqref{eq:unconstrained_problem}.
+
+Conversely, let $\hat{\beta} \in \mathbb{R}^p$ be a solution to the
+unconstrained problem \eqref{eq:unconstrained_problem}. We claim that
+$\hat{\beta}$ is a solution to the constrained problem
+\eqref{eq:constrained_problem} with $C_n =
+\norm{\hat{\beta}}_1$. First, note that $\hat{\beta}_1$ is clearly
+feasible due to the choice of $C_n$. Suppose it is \emph{not} optimal,
+i.e., there exists a feasible point $\tilde{\beta} \in \mathbb{R}^p$
+with
+\begin{equation*}
+  \frac{1}{2n} \norm{y - X\tilde{\beta}}_2^2
+    < \frac{1}{2n} \norm{y - X\hat{\beta}}_2^2.
+\end{equation*}
+Since $\tilde{\beta}$ is feasible,
+$\norm{\tilde{\beta}}_1 \leq C_n = \norm{\hat{\beta}}_1$. Thus,
+\begin{equation*}
+  \frac{1}{2n} \norm{y - X\tilde{\beta}}_2^2 + \lambda_n \norm{\tilde{\beta}}_1
+    < \frac{1}{2n} \norm{y - X\hat{\beta}}_2^2
+      + \lambda_n \norm{\tilde{\beta}}_1
+    \leq \frac{1}{2n} \norm{y - X\hat{\beta}}_2^2
+      + \lambda_n \norm{\hat{\beta}}_1,
+\end{equation*}
+contradicting the assumption that $\hat{\beta}$ was optimal for
+\eqref{eq:unconstrained_problem}. Hence $\hat{\beta}$ is a solution to
+\eqref{eq:constrained_problem} with this choice of $C_n$.
+
 \subsection*{Conditions for signed support recovery}
 
+The paper \cite{wainwright06} provides necessary and sufficient
+conditions for the LASSO to recover the signed support of the true
+parameter $\beta^\ast$ in the model \eqref{eq:linear_model} for both
+deterministic and random designs. Here, we restrict our attention to
+the case of random design, and describe the pertinent results from
+\cite{wainwright06}.
+
+First, we need some definitions. % TODO: Do this part.
+
+\begin{customthm}{3} \label{sufficiency}
+\end{customthm}
+
+\begin{customthm}{4} \label{necessity}
+\end{customthm}
+
 \section*{Simulations}
+
+\subsection*{Set up}
+
+\subsection*{Simulations from the paper}
+
+\subsection*{Custom simulations}
 
 \begin{thebibliography}{9}
 \bibitem{wainwright06}
