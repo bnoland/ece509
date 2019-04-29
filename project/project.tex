@@ -183,7 +183,7 @@ $N_p(0, I_p)$. A second round of experiments samples $X$ from a
 non-uniform Gaussian ensemble; specifically, one such that the rows
 are sampled independently from the distribution $N_p(0, \Sigma)$,
 where $\Sigma$ is a $p \times p$ Toeplitz matrix of the form
-\begin{equation*}
+\begin{equation} \label{eq:toeplitz_covariance}
   \Sigma =
   \begin{pmatrix}
     1 & \mu & \mu^2 & \cdots & \mu^{p-2} & \mu^{p-1} \\
@@ -192,7 +192,7 @@ where $\Sigma$ is a $p \times p$ Toeplitz matrix of the form
     \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
     \mu^{p-1} & \cdots & \mu^3 & \mu^2 & \mu & 1
   \end{pmatrix},
-\end{equation*}
+\end{equation}
 where $\mu = 0.10$. In both cases, the authors note good agreement
 with the their theoretical predictions.
 
@@ -221,6 +221,14 @@ simulations.
 
 \section*{Theoretical results}
 
+Before describing the simulations in detail, we need to detail their
+theoretical basis. We first demonstrate the equivalence of the
+$l_1$-constrained QP \eqref{eq:constrained_problem} and the
+unconstrained problem, the latter of which is the formulation used in
+the simulations. We then provide the results from \cite{wainwright06}
+that give necessary and sufficient conditions for signed support
+recovery using the LASSO.
+
 \subsection*{Unconstrained form of the problem}
 
 As noted in the introduction, the $l_1$-constrained problem
@@ -238,12 +246,13 @@ First, we need a lemma. We need to show that the constraint
   \norm{\beta}_1 \leq C_n
 \end{equation}
 in \eqref{eq:constrained_problem} is equivalent to a finite collection
-of linear equality and inequality constraints on $\beta$. Consider the
+of linear equality and inequality constraints on $\beta$. We can
+assume without loss of generality that $C_n = 1$. Consider the
 $l_1$-ball $B = \{\beta \in \mathbb{R}^p : \norm{\beta}_1 \leq
-C_n\}$. Let $\{e_1, \ldots, e_p\}$ denote the standard ordered basis
-for $\mathbb{R}^p$. We claim that $B = \conv S$, where
+1\}$. Let $\{e_1, \ldots, e_p\}$ denote the standard ordered basis for
+$\mathbb{R}^p$. We claim that $B = \conv S$, where
 \begin{equation*}
-  S = \conv\{C_n e_1, \ldots, C_n e_p, -C_n e_1, \ldots, -C_n e_p\}.
+  S = \conv\{e_1, \ldots, e_p, -e_1, \ldots, -e_p\}.
 \end{equation*}
 If we can show that $B = \conv S$, then $B$ is a polyhedron, so that
 the constraint \eqref{eq:l1_constraint} is equivalent to a finite
@@ -257,24 +266,21 @@ e_i$. Assume without loss of generality that $a_1, \ldots, a_m \geq 0$
 and $a_{m+1}, \ldots, a_p < 0$. Then we can write
 \begin{align*}
   \beta &= \sum_{i=1}^p a_i e_i \\
-    &= \sum_{i=1}^m \left ( \frac{a_i}{C_n} \right ) (C_n e_i)
-      + \sum_{i=m+1}^p \left ( -\frac{a_i}{C_n} \right ) (-C_n e_i) \\
-    &= \sum_{i=1}^m \left | \frac{a_i}{C_n} \right | (C_n e_i)
-      + \sum_{i=m+1}^p \left | \frac{a_i}{C_n} \right | (-C_n e_i).
+    &= \sum_{i=1}^m a_i e_i
+      + \sum_{i=m+1}^p (-a_i)(-e_i) \\
+    &= \sum_{i=1}^m |a_i| e_i
+      + \sum_{i=m+1}^p |a_i| (-e_i).
 \end{align*}
-Then the coefficients $|a_i / C_n| \geq 0$ for every
-$1 \leq i \leq p$, and since $\norm{\beta}_1 \leq C_n$, we have
+Then the coefficients $|a_i| \geq 0$ for every $1 \leq i \leq p$, and
+since $\norm{\beta}_1 \leq 1$, we have
 \begin{equation*}
-  \frac{\norm{\beta}_1}{C_n}
-    = \sum_{i=1}^p \left | \frac{a_i}{C_n} \right | \leq 1.
+  \sum_{i=1}^p |a_i| = \norm{\beta}_1 \leq 1.
 \end{equation*}
-Let $K = \sum_{i=1}^p |a_i / C_n|$, so that $0 \leq K \leq 1$. Now,
-$0 \in \conv S$ since we can write
-$0 = (1/2) (C_n e_1) + (1/2) (-C_n e_1)$. Therefore,
+Now, $0 \in \conv S$ since we can write
+$0 = (1/2) e_1 + (1/2) (-e_1)$. Therefore,
 \begin{equation*}
-  \beta = \sum_{i=1}^m \left | \frac{a_i}{C_n} \right | (C_n e_i)
-    + \sum_{i=m+1}^p \left | \frac{a_i}{C_n} \right | (-C_n e_i)
-    + (1 - K) \cdot 0 \in \conv S.
+  \beta = \sum_{i=1}^m |a_i| e_i + \sum_{i=m+1}^p |a_i| (-e_i)
+    + (1 - \norm{\beta}_1) \cdot 0 \in \conv S.
 \end{equation*}
 This shows that $B \subseteq \conv S$, and therefore $B = \conv S$.
 
@@ -359,6 +365,13 @@ The design matrix $X \in \mathbb{R}^{n \times p}$ is in this case
 drawn from a random Gaussian ensemble; that is, its rows are sampled
 independently from the distribution $N_p(0, \Sigma)$ for some choice
 of covariance matrix $\Sigma$.
+
+First, some notation. Let $S = S(\beta^\ast)$ denote the true support
+set. For any subset $A \subseteq \{1, 2, \ldots, p\}$, let $X_A$
+denote the $n \times |A|$ matrix formed by concatenating the columns
+$\{X_i : i \in A\}$ indexed by $A$. The symbols $c_1, c_2$,
+etc. denote positive constants whose values may differ from line to
+line.
 
 The results given below rely upon (subsets of) the following
 conditions on $\Sigma$ being satisfied:
@@ -465,7 +478,9 @@ the true parameter $\beta^\ast$ in the linear model
 The second result, Theorem~\ref{necessity} from \cite{wainwright06}
 provides \emph{necessary} conditions for signed support recovery to be
 successful. Specifically, it provides sufficient conditions for signed
-support recovery to fail.
+support recovery to fail. Thus, in order for the LASSO to recover the
+true signed support with high probability, the conditions of
+Theorem~\ref{necessity} \emph{must not} be satisfied.
 \begin{customthm}{4}[Necessity] \label{necessity}
 
   Consider the linear model \eqref{eq:linear_model} with random
@@ -488,7 +503,83 @@ support recovery to fail.
 
 \section*{Simulations}
 
-\subsection*{Set up}
+We are now prepared to describe the simulations. The first two sets of
+simulations duplicate those from \cite{wainwright06}, using LASSO
+solutions to calculate the probability of signed support recovery for
+a variety of problem sizes $p$ in the following two cases,
+respectively:
+\begin{enumerate}
+\item the design matrix $X$ is drawn from a uniform Gaussian ensemble
+  ($\Sigma = I_p$);
+\item the design matrix $X$ is drawn from a non-uniform Gaussian
+  ensemble where $\Sigma$ is Toeplitz of the form
+  \eqref{eq:toeplitz_covariance}.
+\end{enumerate}
+These simulations are conducted for linear, sublinear, and fractional
+power sparsity regimes.
+
+The second two sets of simulations are the same as the first set
+(uniform Gaussian ensemble), except that the penalty function in the
+LASSO objective is generalized to an elastic net penalty. For these
+last two simulations we use elastic net mixing parameters
+$\alpha = 0.75$ and $\alpha = 0.50$, respectively.
+
+The simulation code is written in R, and can be found in the file
+\texttt{simulations.R}.
+
+\subsection*{Methodology}
+
+We fix $\gamma = 0.40$ and $\delta = 0.75$ for computing the sparsity
+indices, and fix a noise parameter $\sigma = 0.5$. For a fixed
+sparsity regime, the following is then repeated for each of the
+problem sizes $p \in \{128, 256, 512\}$:
+
+\begin{enumerate}
+\item We first compute the sparsity index $k$ (under the chosen
+  sparsity regime) from the problem size $p$. We then generate a
+  support set $S$ of size $p$ and with sparsity index $k$ uniformly at
+  random, and use $S$ to generate the true parameter $\beta^\star$
+  whose signed support is to be estimated. Specifically, for each
+  $i \in S$, we set $\beta^\ast_i = \beta_{\mathrm{min}}$ or
+  $\beta^\ast_i = -\beta_{\mathrm{min}}$, where
+  $\beta_{\mathrm{min}} = 0.5$, uniformly at random, and set
+  $\beta^\ast_i = 0$ for each $i \in S^c$. Thus $\beta^\ast$ has
+  support $S$. We then compute the signed support
+  $\mathbb{S}_\pm(\beta^\ast)$ of $\beta^\ast$.
+
+\item We compute a sequence of 15 equally-spaced contol parameters
+  $\theta$ in the range $[0.01, 2.4]$. For each of these values
+  $\theta$, we compute the associated sample size
+  $n = \ceil{2 \theta k \log(p - k)}$ and regularization parameter
+  $\lambda_n$, given by
+    \begin{equation*}
+      \lambda_n = \sqrt{\frac{2\sigma^2 \log k \log(p - k)}{n}},
+    \end{equation*}
+    and repeat the following for 200 trials:
+  \begin{enumerate}
+  \item Sample a design matrix $X \in \mathbb{R}^{n \times p}$ from
+    the chosen Gaussian ensemble (uniform or non-uniform).
+  \item Sample error terms $\epsilon \sim N_n(0, \sigma^2 I_n)$ and
+    compute $y = X\beta^\ast + \epsilon$.
+  \item Fit a model (LASSO or elastic net) corresponding to the
+    regularization parameter $\lambda_n$ and compare the signed
+    support $\mathbb{S}_\pm(\hat{\beta})$ of the estimated parameter
+    vector $\hat{\beta} \in \mathbb{R}^p$ to the signed support
+    $\mathbb{S}_\pm(\beta^\ast)$ of the true parameter. We keep track
+    of the number of times the model recovered the correct signed
+    support.
+  \end{enumerate}
+  Finally, we use the results of these 200 trials to compute an
+  estimate of the probability
+  $\prob\{\mathbb{S}_\pm(\hat{\beta}) = \mathbb{S}_\pm(\beta^\ast)\}$
+  of recovering the true signed support.
+
+\item We then plot the value of the control parameter $\theta$ against
+  our corresponding estimate of
+  $\prob\{\mathbb{S}_\pm(\hat{\beta}) =
+  \mathbb{S}_\pm(\beta^\ast)\}$. The results for each of the problem
+  sizes $p \in \{128, 256, 512\}$ are overlayed on the same graph.
+\end{enumerate}
 
 \subsection*{Simulations from the paper}
 
