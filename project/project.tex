@@ -207,12 +207,12 @@ considering the more general case of \textit{elastic net} penalties
 \eqref{eq:unconstrained_problem} to include an $l_2$ term as
 well. Specifically, we consider solutions $\beta \in \mathbb{R}^p$ to
 the problem
-\begin{equation*}
+\begin{equation} \label{eq:elastic_net_problem}
   \text{minimize} \
     \frac{1}{2n} \norm{y - X\beta}_2^2
       + \lambda_n \left( \frac{1}{2} (1 - \alpha) \norm{\beta}_2^2
       + \alpha \norm{\beta}_1 \right ),
-\end{equation*}
+\end{equation}
 where $\alpha \in [0, 1]$ is the elastic net \textit{mixing
   parameter}. We repeat the simulations described in
 \cite{wainwright06} for the case of uniform Gaussian ensembles, but
@@ -517,8 +517,24 @@ respectively:
   ensemble where $\Sigma$ is Toeplitz of the form
   \eqref{eq:toeplitz_covariance}.
 \end{enumerate}
-These simulations are conducted for linear, sublinear, and fractional
-power sparsity regimes.
+We consider models fit using the family of regularization parameters
+$\lambda_n$ given by
+\begin{equation*}
+  \lambda_n = \sqrt{\frac{2\sigma^2 \log k \log(p - k)}{n}},
+\end{equation*}
+where $\sigma = 0.5$ is a fixed noise level. For this choice of
+$\lambda_n$, Theorem~\ref{necessity} predicts failure with high
+probability for sequences $(n, p, k)$ satisfying
+\begin{equation*}
+  \frac{n}{2k \log(p - k)} < \theta_l(\Sigma),
+\end{equation*}
+and Theorem~\ref{sufficiency} predicts success with high probability
+for sequences $(n, p, k)$ such that
+\begin{equation*}
+  \frac{n}{2k \log(p - k)} > \theta_u(\Sigma)
+\end{equation*}
+(see \cite{wainwright06}). These simulations are conducted for linear,
+sublinear, and fractional power sparsity regimes.
 
 The second two sets of simulations are the same as the first set
 (uniform Gaussian ensemble), except that the penalty function in the
@@ -532,9 +548,9 @@ The simulation code is written in R, and can be found in the file
 \subsection*{Methodology}
 
 We fix $\gamma = 0.40$ and $\delta = 0.75$ for computing the sparsity
-indices, and fix a noise parameter $\sigma = 0.5$. For a fixed
-sparsity regime, the following is then repeated for each of the
-problem sizes $p \in \{128, 256, 512\}$:
+indices, and fix a noise level $\sigma = 0.5$. For a fixed sparsity
+regime, the following is then repeated for each of the problem sizes
+$p \in \{128, 256, 512\}$:
 
 \begin{enumerate}
 \item We first compute the sparsity index $k$ (under the chosen
@@ -585,29 +601,138 @@ problem sizes $p \in \{128, 256, 512\}$:
 
 \subsection*{Simulations from the paper}
 
+The first set of simulations from the paper considers signed support
+recovery when the design $X \in \mathbb{R}^{n \times p}$ is drawn from
+a uniform Gaussian ensemble. In this case, we have $\Sigma = I_p$, and
+$\theta_l(I_p) = \theta_u(I_p) = 1$ (see \cite{wainwright06}). Thus we
+expect the LASSO to fail to recover the true signed support with high
+probability for values of the control parameter
+\begin{equation*}
+  \theta = \frac{n}{2k \log(p - k)}
+\end{equation*}
+satisfying $\theta < 1$, and to successfully recover the true signed
+support with high probability for values $\theta > 1$. Indeed, the
+simulations demonstrate this behavior for each of the three sparsity
+regimes in question (see Figure~\ref{fig:uniform_alpha_1}). For
+$\theta < 1$, the probability of success is considerably less than 1,
+while the probability approaches 1 very quickly for $\theta > 1$. The
+behavior for $\theta > 1$ is particularly pronounced for the largest
+problem size, $p = 512$.
+
 \begin{figure}[h]
   \centering
-  \begin{subfigure}{0.48\textwidth}
+  \begin{subfigure}{0.32\textwidth}
     \includegraphics[width=0.9\linewidth]{uniform_linear_sparsity_alpha_1}
     \caption{Linear sparsity}
     \label{fig:uniform_linear_sparsity_alpha_1}
   \end{subfigure}
-  \begin{subfigure}{0.48\textwidth}
+  \begin{subfigure}{0.32\textwidth}
     \includegraphics[width=0.9\linewidth]{uniform_sublinear_sparsity_alpha_1}
     \caption{Sublinear sparsity}
     \label{fig:uniform_sublinear_sparsity_alpha_1}
   \end{subfigure}
-
-  \begin{subfigure}{0.48\textwidth}
+  \begin{subfigure}{0.32\textwidth}
     \includegraphics[width=0.9\linewidth]{uniform_fractional_power_sparsity_alpha_1}
     \caption{Fractional power sparsity}
     \label{fig:uniform_fractional_power_sparsity_alpha_1}
   \end{subfigure}
-  \caption{Uniform Gaussian ensemble, $\alpha = 1$}
+  \caption{Uniform Gaussian ensemble with LASSO}
   \label{fig:uniform_alpha_1}
 \end{figure}
 
+The results of the second simulation are similar. In this case the
+design matrices are drawn from a non-uniform Gaussian ensemble with
+covariance matrix $\Sigma$ of the form \eqref{eq:toeplitz_covariance},
+and we have $\theta_l(\Sigma) < 1$ and $\theta_u(\Sigma) > 1$, but
+with both values close to 1 (see \cite{wainwright06}). The results of
+this set of simulations are given in
+Figure~\ref{fig:nonuniform_alpha_1}.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.32\textwidth}
+    \includegraphics[width=0.9\linewidth]{nonuniform_linear_sparsity_alpha_1}
+    \caption{Linear sparsity}
+    \label{fig:nonuniform_linear_sparsity_alpha_1}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \includegraphics[width=0.9\linewidth]{nonuniform_sublinear_sparsity_alpha_1}
+    \caption{Sublinear sparsity}
+    \label{fig:nonuniform_sublinear_sparsity_alpha_1}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \includegraphics[width=0.9\linewidth]{nonuniform_fractional_power_sparsity_alpha_1}
+    \caption{Fractional power sparsity}
+    \label{fig:nonuniform_fractional_power_sparsity_alpha_1}
+  \end{subfigure}
+  \caption{Non-uniform Gaussian ensemble with LASSO}
+  \label{fig:nonuniform_alpha_1}
+\end{figure}
+
 \subsection*{Custom simulations}
+
+Unlike with the simulations from the paper, the custom simulations
+have no theoretical guarantee of incorrect or correct signed support
+recovery. Intuitively, since the elastic net penalty is linear
+combination an $l_1$-penalty and an $l_2$-penalty, we expect the
+theoretical results from \cite{wainwright06} to deteriorate as the
+contribution of the $l_1$-penalty term is diminished. Specifically, we
+consider the results using elastic net mixing parameters of
+$\alpha = 0.75$ and $\alpha = 0.50$. The contribution of the
+$l_1$-penalty term decreases as $\alpha$ decreases. In particular, the
+LASSO corresponds to $\alpha = 1$ (see
+\eqref{eq:elastic_net_problem}).
+
+Indeed, the two sets of simulations demonstrate this exact
+behavior. In particular, for $\alpha = 0.75$ the estimated probability
+of correct signed support recovery is below 1 throughout the range of
+control parameters, and \emph{considerably} below 1 for
+$\alpha = 0.50$. However, for $\alpha = 0.50$, the elastic net model
+performs considerably better under the linear sparsity regime than
+under either sublinear or fractional power sparsity. See
+Figures~\ref{fig:uniform_alpha_075} and \ref{fig:uniform_alpha_050}.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.32\textwidth}
+    \includegraphics[width=0.9\linewidth]{uniform_linear_sparsity_alpha_075}
+    \caption{Linear sparsity}
+    \label{fig:uniform_linear_sparsity_alpha_1}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \includegraphics[width=0.9\linewidth]{uniform_sublinear_sparsity_alpha_075}
+    \caption{Sublinear sparsity}
+    \label{fig:uniform_sublinear_sparsity_alpha_1}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \includegraphics[width=0.9\linewidth]{uniform_fractional_power_sparsity_alpha_075}
+    \caption{Fractional power sparsity}
+    \label{fig:uniform_fractional_power_sparsity_alpha_1}
+  \end{subfigure}
+  \caption{Uniform Gaussian ensemble, $\alpha = 0.75$}
+  \label{fig:uniform_alpha_075}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.32\textwidth}
+    \includegraphics[width=0.9\linewidth]{uniform_linear_sparsity_alpha_050}
+    \caption{Linear sparsity}
+    \label{fig:uniform_linear_sparsity_alpha_1}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \includegraphics[width=0.9\linewidth]{uniform_sublinear_sparsity_alpha_050}
+    \caption{Sublinear sparsity}
+    \label{fig:uniform_sublinear_sparsity_alpha_1}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \includegraphics[width=0.9\linewidth]{uniform_fractional_power_sparsity_alpha_050}
+    \caption{Fractional power sparsity}
+    \label{fig:uniform_fractional_power_sparsity_alpha_1}
+  \end{subfigure}
+  \caption{Uniform Gaussian ensemble, $\alpha = 0.50$}
+  \label{fig:uniform_alpha_050}
+\end{figure}
 
 \begin{thebibliography}{9}
 \bibitem{wainwright06}
