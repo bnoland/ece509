@@ -6,6 +6,8 @@
 \usepackage{amsfonts}
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{graphicx}
 
 \setenumerate{parsep=0em, listparindent=\parindent}
 
@@ -582,6 +584,28 @@ problem sizes $p \in \{128, 256, 512\}$:
 \end{enumerate}
 
 \subsection*{Simulations from the paper}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=0.9\linewidth]{uniform_linear_sparsity_alpha_1}
+    \caption{Linear sparsity}
+    \label{fig:uniform_linear_sparsity_alpha_1}
+  \end{subfigure}
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=0.9\linewidth]{uniform_sublinear_sparsity_alpha_1}
+    \caption{Sublinear sparsity}
+    \label{fig:uniform_sublinear_sparsity_alpha_1}
+  \end{subfigure}
+
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=0.9\linewidth]{uniform_fractional_power_sparsity_alpha_1}
+    \caption{Fractional power sparsity}
+    \label{fig:uniform_fractional_power_sparsity_alpha_1}
+  \end{subfigure}
+  \caption{Uniform Gaussian ensemble, $\alpha = 1$}
+  \label{fig:uniform_alpha_1}
+\end{figure}
 
 \subsection*{Custom simulations}
 
