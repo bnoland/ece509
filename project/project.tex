@@ -42,7 +42,6 @@
 \newcustomtheorem{customthm}{Theorem}
 \newcustomtheorem{customlemma}{Lemma}
 
-
 \newtheorem{theorem}{Theorem}
 
 \title{Final Project}
@@ -93,7 +92,7 @@ parameters in the vector $\beta^\ast$ are truly important. In this
 way, we have the potential to substantially reduce the dimensionality
 of the original problem.
 
-A computational tractable method for computing estimates of the
+A computationally tractable method for computing estimates of the
 parameters $\beta^\ast$ in the high-dimensional setting is the
 \textit{LASSO} \cite{tibshirani96} (Least Absolute Shrinkage And
 Selection Operator). The LASSO computes an estimate of $\beta^\ast$ as
@@ -106,7 +105,8 @@ quadratic program:
       & \norm{\beta}_1 \leq C_n
   \end{array},
 \end{equation}
-or equivalently, as the solution to the unconstrained problem
+where $C_n > 0$, or equivalently, as the solution to the unconstrained
+problem
 \begin{equation} \label{eq:unconstrained_problem}
   \text{minimize} \
     \frac{1}{2n} \norm{y - X\beta}_2^2 + \lambda_n \norm{\beta}_1,
@@ -121,7 +121,8 @@ This project will explore the contributions of the paper
 \cite{wainwright06} to the problem of inferring the support
 $S(\beta^\ast)$ of $\beta^\ast$ (i.e., the problem of \textit{support
   recovery}) in the linear model \eqref{eq:linear_model} using the
-LASSO as a means of estimating $\beta^\ast$.
+LASSO as a means of estimating $\beta^\ast$, as well as consider the
+effects of altering the LASSO $l_1$-penalty on support recovery.
 
 \subsection*{Overview of the paper}
 
@@ -166,13 +167,13 @@ each of the following sparsity regimes:
 \end{itemize}
 In each case, the authors take $\gamma = 0.40$ and $\delta = 0.75$,
 and the number of observations $n$ is taken to be proportional to
-$k\log(p - k)$. The true support of the parameter vector is chosen at
-random.
+$k\log(p - k)$. The true support of the parameter vector is chosen
+uniformly at random subject to the chosen sparsity regime.
 
 For each sparsity regime and for several values of $p$, the authors
 compute a sequence of values of the \textit{rescaled sample size} (or
-\textit{control parameter}) $\theta = n / (k \log(p -k))$ and for each
-such value, compute a sequence of corresponding LASSO solutions
+\textit{control parameter}) $\theta = n / (2k \log(p -k))$ and for
+each such value, compute a sequence of corresponding LASSO solutions
 $\hat{\beta}$ in order to approximate the probability
 $\prob\{\mathbb{S}_\pm(\hat{\beta}) = \mathbb{S}_\pm(\beta^\ast)\}$ of
 recovering the true signed support. This approximated probability is
@@ -226,22 +227,23 @@ simulations.
 Before describing the simulations in detail, we need to detail their
 theoretical basis. We first demonstrate the equivalence of the
 $l_1$-constrained QP \eqref{eq:constrained_problem} and the
-unconstrained problem, the latter of which is the formulation used in
-the simulations. We then provide the results from \cite{wainwright06}
-that give necessary and sufficient conditions for signed support
-recovery using the LASSO.
+unconstrained problem \eqref{eq:unconstrained_problem}, the latter of
+which is the formulation used directly in the simulations. We then
+provide the results from \cite{wainwright06} that give necessary and
+sufficient conditions for signed support recovery using the LASSO.
 
-\subsection*{Unconstrained form of the problem}
+\subsection*{Equivalence of constrained and unconstrained problems}
 
 As noted in the introduction, the $l_1$-constrained problem
 \eqref{eq:constrained_problem} is equivalent to the unconstrained
 problem \eqref{eq:unconstrained_problem} in the following sense: for
-every value of $C_n$ in \eqref{eq:constrained_problem} there exists a
-value $\lambda_n \geq 0$ in \eqref{eq:unconstrained_problem} such that
-\eqref{eq:unconstrained_problem} is equivalent to
+every value of $C_n > 0$ in \eqref{eq:constrained_problem} there
+exists a value $\lambda_n \geq 0$ in \eqref{eq:unconstrained_problem}
+such that \eqref{eq:unconstrained_problem} is equivalent to
 \eqref{eq:constrained_problem}, and vice versa (in fact, it can be
-shown that $C_n$ and $\lambda_n$ are in one-to-one correspondence). We
-now demonstrate this equivalence.
+shown that $C_n$ and $\lambda_n$ are in one-to-one
+correspondence\footnote{Although this fact will not be proven
+  here.}). We now demonstrate this equivalence.
 
 First, we need a lemma. We need to show that the constraint
 \begin{equation} \label{eq:l1_constraint}
@@ -318,7 +320,7 @@ constraints. Thus Slater's condition is satisfied for
 \eqref{eq:constrained_problem}, so that strong duality holds. Since
 this problem is convex and its dual problem \eqref{eq:dual_problem} is
 feasible, this also implies the existence of a dual solution
-$\lambda_n$. We therefore conclude that
+$\lambda_n \geq 0$. We therefore conclude that
 \begin{align*}
   \hat{\beta} &= \argmin_{\beta \in \mathbb{R}^p} L(\beta, \lambda_n) \\
     &= \argmin_{\beta \in \mathbb{R}^p} \left [ \frac{1}{2n}
@@ -333,7 +335,7 @@ Conversely, let $\hat{\beta} \in \mathbb{R}^p$ be a solution to the
 unconstrained problem \eqref{eq:unconstrained_problem}. We claim that
 $\hat{\beta}$ is a solution to the constrained problem
 \eqref{eq:constrained_problem} with $C_n =
-\norm{\hat{\beta}}_1$. First, note that $\hat{\beta}_1$ is clearly
+\norm{\hat{\beta}}_1$. First, note that $\hat{\beta}$ is clearly
 feasible due to the choice of $C_n$. Suppose it is \emph{not} optimal,
 i.e., there exists a feasible point $\tilde{\beta} \in \mathbb{R}^p$
 with
@@ -371,7 +373,10 @@ of covariance matrix $\Sigma$.
 First, some notation. Let $S = S(\beta^\ast)$ denote the true support
 set. For any subset $A \subseteq \{1, 2, \ldots, p\}$, let $X_A$
 denote the $n \times |A|$ matrix formed by concatenating the columns
-$\{X_i : i \in A\}$ indexed by $A$. The symbols $c_1, c_2$,
+$\{X_i : i \in A\}$ indexed by $A$. When applied to matrices $M$, the
+notation $\norm{M}_\infty$ denotes the norm defined by
+$\norm{M}_\infty = \max_i \sum_j |M_{ij}|$; when applied to vectors,
+it denotes the usual $l_\infty$ norm. The symbols $c_1, c_2$,
 etc. denote positive constants whose values may differ from line to
 line.
 
@@ -542,8 +547,10 @@ LASSO objective is generalized to an elastic net penalty. For these
 last two simulations we use elastic net mixing parameters
 $\alpha = 0.75$ and $\alpha = 0.50$, respectively.
 
-The simulation code is written in R, and can be found in the file
-\texttt{simulations.R}.
+The simulation code was written in R and can be found in the file
+\texttt{simulations.R}. The R package
+\texttt{glmnet}\footnote{\url{https://cran.r-project.org/web/packages/glmnet/index.html}}
+was used to compute LASSO and elastic net solutions.
 
 \subsection*{Methodology}
 
@@ -565,7 +572,7 @@ $p \in \{128, 256, 512\}$:
   support $S$. We then compute the signed support
   $\mathbb{S}_\pm(\beta^\ast)$ of $\beta^\ast$.
 
-\item We compute a sequence of 15 equally-spaced contol parameters
+\item We compute a sequence of 15 equally-spaced control parameters
   $\theta$ in the range $[0.01, 2.4]$. For each of these values
   $\theta$, we compute the associated sample size
   $n = \ceil{2 \theta k \log(p - k)}$ and regularization parameter
@@ -643,8 +650,8 @@ problem size, $p = 512$.
 The results of the second simulation are similar. In this case the
 design matrices are drawn from a non-uniform Gaussian ensemble with
 covariance matrix $\Sigma$ of the form \eqref{eq:toeplitz_covariance},
-and we have $\theta_l(\Sigma) < 1$ and $\theta_u(\Sigma) > 1$, but
-with both values close to 1 (see \cite{wainwright06}). The results of
+and we have $\theta_l(\Sigma) \approx 1$ and
+$\theta_u(\Sigma) \approx 1$ (see \cite{wainwright06}). The results of
 this set of simulations are given in
 Figure~\ref{fig:nonuniform_alpha_1}.
 
@@ -673,8 +680,8 @@ Figure~\ref{fig:nonuniform_alpha_1}.
 
 Unlike with the simulations from the paper, the custom simulations
 have no theoretical guarantee of incorrect or correct signed support
-recovery. Intuitively, since the elastic net penalty is linear
-combination an $l_1$-penalty and an $l_2$-penalty, we expect the
+recovery. Intuitively, since the elastic net penalty is a linear
+combination of an $l_1$-penalty and an $l_2$-penalty, we expect the
 theoretical results from \cite{wainwright06} to deteriorate as the
 contribution of the $l_1$-penalty term is diminished. Specifically, we
 consider the results using elastic net mixing parameters of
@@ -749,7 +756,7 @@ Figures~\ref{fig:uniform_alpha_075} and \ref{fig:uniform_alpha_050}.
 
 \bibitem{zou_hastie05}
   Zou, H. and Hastie, T. (2005)
-  \textit{Regularization and variable selection via the elastic net}
+  \textit{Regularization and variable selection via the elastic net}.
   J. Roy. Statist. Soc. Ser. B \textbf{67} 301--320
 
 \end{thebibliography}

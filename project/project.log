@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.26)  30 APR 2019 15:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.26)  1 MAY 2019 17:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -344,20 +344,20 @@ ly defined.
 )
 \openout1 = `project.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -394,7 +394,7 @@ LaTeX Font Info:    ... okay on input line 52.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 52.
+Package hyperref Info: Link coloring OFF on input line 51.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -403,9 +403,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 52.
-LaTeX Info: Redefining \pageref on input line 52.
-LaTeX Info: Redefining \nameref on input line 52.
+LaTeX Info: Redefining \ref on input line 51.
+LaTeX Info: Redefining \pageref on input line 51.
+LaTeX Info: Redefining \nameref on input line 51.
 
 (./project.out) (./project.out)
 \@outlinefile=\write3
@@ -444,145 +444,140 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 55.
+LaTeX Font Info:    Try loading font information for U+msa on input line 54.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 55.
+LaTeX Font Info:    Try loading font information for U+msb on input line 54.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 144.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 145.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 144.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 145.
  [2] [3] [4] [5]
 [6] [7] [8]
-<uniform_linear_sparsity_alpha_1.png, id=139, 289.08pt x 289.08pt>
+Overfull \hbox (3.33797pt too wide) in paragraph at lines 575--580
+[]\OT1/cmr/m/n/12 We com-pute a se-quence of 15 equally-spaced con-trol pa-ram-
+e-ters $\OML/cmm/m/it/12 ^^R$ \OT1/cmr/m/n/12 in the range $[0\OML/cmm/m/it/12 
+:\OT1/cmr/m/n/12 01\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 2\OML/cmm/m/it/12 :\OT1/c
+mr/m/n/12 4]$.
+ []
+
+[9]
+<uniform_linear_sparsity_alpha_1.png, id=158, 289.08pt x 289.08pt>
 File: uniform_linear_sparsity_alpha_1.png Graphic file (type png)
 <use uniform_linear_sparsity_alpha_1.png>
 Package pdftex.def Info: uniform_linear_sparsity_alpha_1.png  used on input lin
-e 625.
+e 632.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-<uniform_sublinear_sparsity_alpha_1.png, id=140, 289.08pt x 289.08pt>
+<uniform_sublinear_sparsity_alpha_1.png, id=159, 289.08pt x 289.08pt>
 File: uniform_sublinear_sparsity_alpha_1.png Graphic file (type png)
 <use uniform_sublinear_sparsity_alpha_1.png>
 Package pdftex.def Info: uniform_sublinear_sparsity_alpha_1.png  used on input 
-line 630.
+line 637.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-<uniform_fractional_power_sparsity_alpha_1.png, id=141, 289.08pt x 289.08pt>
+<uniform_fractional_power_sparsity_alpha_1.png, id=160, 289.08pt x 289.08pt>
 File: uniform_fractional_power_sparsity_alpha_1.png Graphic file (type png)
 <use uniform_fractional_power_sparsity_alpha_1.png>
 Package pdftex.def Info: uniform_fractional_power_sparsity_alpha_1.png  used on
- input line 635.
+ input line 642.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<nonuniform_linear_sparsity_alpha_1.png, id=145, 289.08pt x 289.08pt>
+<nonuniform_linear_sparsity_alpha_1.png, id=164, 289.08pt x 289.08pt>
 File: nonuniform_linear_sparsity_alpha_1.png Graphic file (type png)
 <use nonuniform_linear_sparsity_alpha_1.png>
 Package pdftex.def Info: nonuniform_linear_sparsity_alpha_1.png  used on input 
-line 654.
+line 661.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-<nonuniform_sublinear_sparsity_alpha_1.png, id=146, 289.08pt x 289.08pt>
+<nonuniform_sublinear_sparsity_alpha_1.png, id=165, 289.08pt x 289.08pt>
 File: nonuniform_sublinear_sparsity_alpha_1.png Graphic file (type png)
 <use nonuniform_sublinear_sparsity_alpha_1.png>
 Package pdftex.def Info: nonuniform_sublinear_sparsity_alpha_1.png  used on inp
-ut line 659.
+ut line 666.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-<nonuniform_fractional_power_sparsity_alpha_1.png, id=147, 289.08pt x 289.08pt>
+<nonuniform_fractional_power_sparsity_alpha_1.png, id=166, 289.08pt x 289.08pt>
 
 File: nonuniform_fractional_power_sparsity_alpha_1.png Graphic file (type png)
 <use nonuniform_fractional_power_sparsity_alpha_1.png>
 Package pdftex.def Info: nonuniform_fractional_power_sparsity_alpha_1.png  used
- on input line 664.
+ on input line 671.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[9]
-<uniform_linear_sparsity_alpha_075.png, id=164, 289.08pt x 289.08pt>
+ [10 <./uniform_linear_sparsity_alpha_1.png (PNG copy)> <./uniform_sublinear_sp
+arsity_alpha_1.png (PNG copy)> <./uniform_fractional_power_sparsity_alpha_1.png
+ (PNG copy)> <./nonuniform_linear_sparsity_alpha_1.png (PNG copy)> <./nonunifor
+m_sublinear_sparsity_alpha_1.png (PNG copy)> <./nonuniform_fractional_power_spa
+rsity_alpha_1.png (PNG copy)>]
+<uniform_linear_sparsity_alpha_075.png, id=178, 289.08pt x 289.08pt>
 File: uniform_linear_sparsity_alpha_075.png Graphic file (type png)
 <use uniform_linear_sparsity_alpha_075.png>
 Package pdftex.def Info: uniform_linear_sparsity_alpha_075.png  used on input l
-ine 698.
+ine 705.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-<uniform_sublinear_sparsity_alpha_075.png, id=165, 289.08pt x 289.08pt>
+<uniform_sublinear_sparsity_alpha_075.png, id=179, 289.08pt x 289.08pt>
 File: uniform_sublinear_sparsity_alpha_075.png Graphic file (type png)
 <use uniform_sublinear_sparsity_alpha_075.png>
 Package pdftex.def Info: uniform_sublinear_sparsity_alpha_075.png  used on inpu
-t line 703.
+t line 710.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-<uniform_fractional_power_sparsity_alpha_075.png, id=166, 289.08pt x 289.08pt>
+<uniform_fractional_power_sparsity_alpha_075.png, id=180, 289.08pt x 289.08pt>
 File: uniform_fractional_power_sparsity_alpha_075.png Graphic file (type png)
 <use uniform_fractional_power_sparsity_alpha_075.png>
 Package pdftex.def Info: uniform_fractional_power_sparsity_alpha_075.png  used 
-on input line 708.
+on input line 715.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<uniform_linear_sparsity_alpha_050.png, id=167, 289.08pt x 289.08pt>
+<uniform_linear_sparsity_alpha_050.png, id=181, 289.08pt x 289.08pt>
 File: uniform_linear_sparsity_alpha_050.png Graphic file (type png)
 <use uniform_linear_sparsity_alpha_050.png>
 Package pdftex.def Info: uniform_linear_sparsity_alpha_050.png  used on input l
-ine 719.
+ine 726.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-<uniform_sublinear_sparsity_alpha_050.png, id=168, 289.08pt x 289.08pt>
+<uniform_sublinear_sparsity_alpha_050.png, id=182, 289.08pt x 289.08pt>
 File: uniform_sublinear_sparsity_alpha_050.png Graphic file (type png)
 <use uniform_sublinear_sparsity_alpha_050.png>
 Package pdftex.def Info: uniform_sublinear_sparsity_alpha_050.png  used on inpu
-t line 724.
+t line 731.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-<uniform_fractional_power_sparsity_alpha_050.png, id=169, 289.08pt x 289.08pt>
+<uniform_fractional_power_sparsity_alpha_050.png, id=183, 289.08pt x 289.08pt>
 File: uniform_fractional_power_sparsity_alpha_050.png Graphic file (type png)
 <use uniform_fractional_power_sparsity_alpha_050.png>
 Package pdftex.def Info: uniform_fractional_power_sparsity_alpha_050.png  used 
-on input line 729.
+on input line 736.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10 <./uniform_linear_sparsity_alpha_1.png (PNG copy)> <./uniform_sublinear_spa
-rsity_alpha_1.png (PNG copy)> <./uniform_fractional_power_sparsity_alpha_1.png 
-(PNG copy)> <./nonuniform_linear_sparsity_alpha_1.png (PNG copy)> <./nonuniform
-_sublinear_sparsity_alpha_1.png (PNG copy)> <./nonuniform_fractional_power_spar
-sity_alpha_1.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 757.
  [11 <./uniform_linear_sparsity_alpha_075.png (PNG copy)> <./uniform_sublinear_
 sparsity_alpha_075.png (PNG copy)> <./uniform_fractional_power_sparsity_alpha_0
 75.png (PNG copy)> <./uniform_linear_sparsity_alpha_050.png (PNG copy)> <./unif
 orm_sublinear_sparsity_alpha_050.png (PNG copy)> <./uniform_fractional_power_sp
 arsity_alpha_050.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 757.
- (./project.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 757.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 757.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 764.
+ [12]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 764.
+
+(./project.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 764.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 764.
 Package rerunfilecheck Info: File `project.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 757.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 764.
  ) 
 Here is how much of TeX's memory you used:
- 7782 strings out of 494586
- 119569 string characters out of 6177801
- 214180 words of memory out of 5000000
- 11275 multiletter control sequences out of 15000+600000
- 13864 words of font info for 54 fonts, out of 8000000 for 9000
+ 7787 strings out of 494586
+ 119619 string characters out of 6177801
+ 213220 words of memory out of 5000000
+ 11276 multiletter control sequences out of 15000+600000
+ 14032 words of font info for 55 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  42i,13n,40p,279b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
@@ -593,15 +588,17 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on project.pdf (11 pages, 1270141 bytes).
+msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on project.pdf (12 pages, 1293403 bytes).
 PDF statistics:
- 243 PDF objects out of 1000 (max. 8388607)
- 201 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
+ 261 PDF objects out of 1000 (max. 8388607)
+ 216 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
