@@ -44,7 +44,7 @@
 
 \newtheorem{theorem}{Theorem}
 
-\title{Final Project}
+\title{Final Project: Signed Support Recovery with the LASSO}
 \author{Benjamin Noland}
 \date{}
 
@@ -96,8 +96,8 @@ A computationally tractable method for computing estimates of the
 parameters $\beta^\ast$ in the high-dimensional setting is the
 \textit{LASSO} \cite{tibshirani96} (Least Absolute Shrinkage And
 Selection Operator). The LASSO computes an estimate of $\beta^\ast$ as
-a solution $\beta \in \mathbb{R}^p$ to the following $l_1$-constrained
-quadratic program:
+a solution $\hat{\beta} \in \mathbb{R}^p$ to the following
+$l_1$-constrained quadratic program:
 \begin{equation} \label{eq:constrained_problem}
   \begin{array}{ll}
     \text{minimize} & \norm{y - X\beta}_2^2 \\
@@ -143,7 +143,8 @@ for any $\beta \in \mathbb{R}^p$:
 Specifically, the authors consider the following two questions:
 \begin{itemize}
 \item What relationships between $n$, $p$, and $k$ yield a
-  \emph{unique} LASSO solution $\hat{\beta}$ satisfying
+  \emph{unique} LASSO solution $\hat{\beta} \in \mathbb{R}^p$
+  satisfying
   $\mathbb{S}_\pm(\hat{\beta}) = \mathbb{S}_\pm(\beta^\ast)$?
 \item For what relationships between $n$, $p$, and $k$ does \emph{no
     solution} of the LASSO yield the correct signed support?
@@ -174,7 +175,7 @@ For each sparsity regime and for several values of $p$, the authors
 compute a sequence of values of the \textit{rescaled sample size} (or
 \textit{control parameter}) $\theta = n / (2k \log(p -k))$ and for
 each such value, compute a sequence of corresponding LASSO solutions
-$\hat{\beta}$ in order to approximate the probability
+$\hat{\beta} \in \mathbb{R}^p$ in order to approximate the probability
 $\prob\{\mathbb{S}_\pm(\hat{\beta}) = \mathbb{S}_\pm(\beta^\ast)\}$ of
 recovering the true signed support. This approximated probability is
 then plotted against the control parameter $\theta$.
@@ -197,7 +198,7 @@ where $\Sigma$ is a $p \times p$ Toeplitz matrix of the form
   \end{pmatrix},
 \end{equation}
 where $\mu = 0.10$. In both cases, the authors note good agreement
-with the their theoretical predictions.
+with their theoretical predictions.
 
 \subsection*{This project}
 
@@ -206,21 +207,21 @@ In addition to duplicating the simulations from the paper
 considering the more general case of \textit{elastic net} penalties
 \cite{zou_hastie05}, which extend the $l_1$ penalty in
 \eqref{eq:unconstrained_problem} to include an $l_2$ term as
-well. Specifically, we consider solutions $\beta \in \mathbb{R}^p$ to
-the problem
+well. Specifically, we consider solutions
+$\hat{\beta} \in \mathbb{R}^p$ to the problem
 \begin{equation} \label{eq:elastic_net_problem}
   \text{minimize} \
     \frac{1}{2n} \norm{y - X\beta}_2^2
       + \lambda_n \left( \frac{1}{2} (1 - \alpha) \norm{\beta}_2^2
       + \alpha \norm{\beta}_1 \right ),
 \end{equation}
-where $\alpha \in [0, 1]$ is the elastic net \textit{mixing
-  parameter}. We repeat the simulations described in
+where $\lambda_n \geq 0$, and $\alpha \in [0, 1]$ is the elastic net
+\textit{mixing parameter}. We repeat the simulations described in
 \cite{wainwright06} for the case of uniform Gaussian ensembles, but
-instead use elastic net solutions $\beta$ for each of $\alpha = 0.75$
-and $\alpha = 0.50$ to estimate the probability of signed support
-recovery. We compare the results to those from the original
-simulations.
+instead use elastic net solutions $\hat{\beta} \in \mathbb{R}^p$ for
+each of $\alpha = 0.75$ and $\alpha = 0.50$ to estimate the
+probability of signed support recovery. We compare the results to
+those from the original simulations.
 
 \section*{Theoretical results}
 
@@ -361,7 +362,7 @@ contradicting the assumption that $\hat{\beta}$ was optimal for
 The paper \cite{wainwright06} provides necessary and sufficient
 conditions for the LASSO to recover the signed support of the true
 parameter $\beta^\ast$ in the model \eqref{eq:linear_model} for both
-deterministic and random designs. Here, we restrict our attention to
+deterministic and random designs. Here we restrict our attention to
 the case of random design, and state the pertinent results from
 \cite{wainwright06}.
 
@@ -376,7 +377,7 @@ denote the $n \times |A|$ matrix formed by concatenating the columns
 $\{X_i : i \in A\}$ indexed by $A$. When applied to matrices $M$, the
 notation $\norm{M}_\infty$ denotes the norm defined by
 $\norm{M}_\infty = \max_i \sum_j |M_{ij}|$; when applied to vectors,
-it denotes the usual $l_\infty$ norm. The symbols $c_1, c_2$,
+it denotes the usual $l_\infty$-norm. The symbols $c_1, c_2$,
 etc. denote positive constants whose values may differ from line to
 line.
 
@@ -599,11 +600,11 @@ $p \in \{128, 256, 512\}$:
   $\prob\{\mathbb{S}_\pm(\hat{\beta}) = \mathbb{S}_\pm(\beta^\ast)\}$
   of recovering the true signed support.
 
-\item We then plot the value of the control parameter $\theta$ against
-  our corresponding estimate of
+\item We then plot the values of the control parameter $\theta$
+  against our corresponding estimates of
   $\prob\{\mathbb{S}_\pm(\hat{\beta}) =
   \mathbb{S}_\pm(\beta^\ast)\}$. The results for each of the problem
-  sizes $p \in \{128, 256, 512\}$ are overlayed on the same graph.
+  sizes $p \in \{128, 256, 512\}$ are overlaid on the same graph.
 \end{enumerate}
 
 \subsection*{Simulations from the paper}
@@ -740,6 +741,23 @@ Figures~\ref{fig:uniform_alpha_075} and \ref{fig:uniform_alpha_050}.
   \caption{Uniform Gaussian ensemble, $\alpha = 0.50$}
   \label{fig:uniform_alpha_050}
 \end{figure}
+
+\section*{Conclusion}
+
+This project explored necessary and sufficient conditions for the
+LASSO to recover with high probability the true signed support of the
+unknown parameter $\beta^\ast$ in the linear model
+\eqref{eq:linear_model}. We considered the results concerning signed
+support recovery from the paper \cite{wainwright06} in the case of
+random design, and reproduced the simulations from this paper in order
+to empirically demonstrate these results. Furthermore, we generalized
+the simulations from \cite{wainwright06} to the case of elastic net
+penalties \cite{zou_hastie05} in the case when the design matrix is
+drawn from a uniform Gaussian ensemble. In this case, we have no
+theoretical guarantees on the recovery/non-recovery of the true signed
+support and, unsurprisingly, these simulations fail to recover the
+true signed support with high probability under the conditions
+prescribed by \cite{wainwright06}.
 
 \begin{thebibliography}{9}
 \bibitem{wainwright06}

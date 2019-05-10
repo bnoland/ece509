@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.26)  1 MAY 2019 17:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.26)  10 MAY 2019 16:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -466,7 +466,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 145.
  [2] [3] [4] [5]
 [6] [7] [8]
-Overfull \hbox (3.33797pt too wide) in paragraph at lines 575--580
+Overfull \hbox (3.33797pt too wide) in paragraph at lines 576--581
 []\OT1/cmr/m/n/12 We com-pute a se-quence of 15 equally-spaced con-trol pa-ram-
 e-ters $\OML/cmm/m/it/12 ^^R$ \OT1/cmr/m/n/12 in the range $[0\OML/cmm/m/it/12 
 :\OT1/cmr/m/n/12 01\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 2\OML/cmm/m/it/12 :\OT1/c
@@ -478,38 +478,38 @@ mr/m/n/12 4]$.
 File: uniform_linear_sparsity_alpha_1.png Graphic file (type png)
 <use uniform_linear_sparsity_alpha_1.png>
 Package pdftex.def Info: uniform_linear_sparsity_alpha_1.png  used on input lin
-e 632.
+e 633.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <uniform_sublinear_sparsity_alpha_1.png, id=159, 289.08pt x 289.08pt>
 File: uniform_sublinear_sparsity_alpha_1.png Graphic file (type png)
 <use uniform_sublinear_sparsity_alpha_1.png>
 Package pdftex.def Info: uniform_sublinear_sparsity_alpha_1.png  used on input 
-line 637.
+line 638.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <uniform_fractional_power_sparsity_alpha_1.png, id=160, 289.08pt x 289.08pt>
 File: uniform_fractional_power_sparsity_alpha_1.png Graphic file (type png)
 <use uniform_fractional_power_sparsity_alpha_1.png>
 Package pdftex.def Info: uniform_fractional_power_sparsity_alpha_1.png  used on
- input line 642.
+ input line 643.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <nonuniform_linear_sparsity_alpha_1.png, id=164, 289.08pt x 289.08pt>
 File: nonuniform_linear_sparsity_alpha_1.png Graphic file (type png)
 <use nonuniform_linear_sparsity_alpha_1.png>
 Package pdftex.def Info: nonuniform_linear_sparsity_alpha_1.png  used on input 
-line 661.
+line 662.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <nonuniform_sublinear_sparsity_alpha_1.png, id=165, 289.08pt x 289.08pt>
 File: nonuniform_sublinear_sparsity_alpha_1.png Graphic file (type png)
 <use nonuniform_sublinear_sparsity_alpha_1.png>
 Package pdftex.def Info: nonuniform_sublinear_sparsity_alpha_1.png  used on inp
-ut line 666.
+ut line 667.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <nonuniform_fractional_power_sparsity_alpha_1.png, id=166, 289.08pt x 289.08pt>
 
 File: nonuniform_fractional_power_sparsity_alpha_1.png Graphic file (type png)
 <use nonuniform_fractional_power_sparsity_alpha_1.png>
 Package pdftex.def Info: nonuniform_fractional_power_sparsity_alpha_1.png  used
- on input line 671.
+ on input line 672.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
  [10 <./uniform_linear_sparsity_alpha_1.png (PNG copy)> <./uniform_sublinear_sp
 arsity_alpha_1.png (PNG copy)> <./uniform_fractional_power_sparsity_alpha_1.png
@@ -520,62 +520,62 @@ rsity_alpha_1.png (PNG copy)>]
 File: uniform_linear_sparsity_alpha_075.png Graphic file (type png)
 <use uniform_linear_sparsity_alpha_075.png>
 Package pdftex.def Info: uniform_linear_sparsity_alpha_075.png  used on input l
-ine 705.
+ine 706.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <uniform_sublinear_sparsity_alpha_075.png, id=179, 289.08pt x 289.08pt>
 File: uniform_sublinear_sparsity_alpha_075.png Graphic file (type png)
 <use uniform_sublinear_sparsity_alpha_075.png>
 Package pdftex.def Info: uniform_sublinear_sparsity_alpha_075.png  used on inpu
-t line 710.
+t line 711.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <uniform_fractional_power_sparsity_alpha_075.png, id=180, 289.08pt x 289.08pt>
 File: uniform_fractional_power_sparsity_alpha_075.png Graphic file (type png)
 <use uniform_fractional_power_sparsity_alpha_075.png>
 Package pdftex.def Info: uniform_fractional_power_sparsity_alpha_075.png  used 
-on input line 715.
+on input line 716.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <uniform_linear_sparsity_alpha_050.png, id=181, 289.08pt x 289.08pt>
 File: uniform_linear_sparsity_alpha_050.png Graphic file (type png)
 <use uniform_linear_sparsity_alpha_050.png>
 Package pdftex.def Info: uniform_linear_sparsity_alpha_050.png  used on input l
-ine 726.
+ine 727.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <uniform_sublinear_sparsity_alpha_050.png, id=182, 289.08pt x 289.08pt>
 File: uniform_sublinear_sparsity_alpha_050.png Graphic file (type png)
 <use uniform_sublinear_sparsity_alpha_050.png>
 Package pdftex.def Info: uniform_sublinear_sparsity_alpha_050.png  used on inpu
-t line 731.
+t line 732.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
 <uniform_fractional_power_sparsity_alpha_050.png, id=183, 289.08pt x 289.08pt>
 File: uniform_fractional_power_sparsity_alpha_050.png Graphic file (type png)
 <use uniform_fractional_power_sparsity_alpha_050.png>
 Package pdftex.def Info: uniform_fractional_power_sparsity_alpha_050.png  used 
-on input line 736.
+on input line 737.
 (pdftex.def)             Requested size: 135.29161pt x 135.28976pt.
  [11 <./uniform_linear_sparsity_alpha_075.png (PNG copy)> <./uniform_sublinear_
 sparsity_alpha_075.png (PNG copy)> <./uniform_fractional_power_sparsity_alpha_0
 75.png (PNG copy)> <./uniform_linear_sparsity_alpha_050.png (PNG copy)> <./unif
 orm_sublinear_sparsity_alpha_050.png (PNG copy)> <./uniform_fractional_power_sp
 arsity_alpha_050.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 764.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 782.
  [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 764.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 782.
 
 (./project.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 764.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 764.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 782.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 782.
 Package rerunfilecheck Info: File `project.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 764.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 782.
  ) 
 Here is how much of TeX's memory you used:
- 7787 strings out of 494586
- 119619 string characters out of 6177801
- 213220 words of memory out of 5000000
+ 7788 strings out of 494586
+ 119630 string characters out of 6177801
+ 213260 words of memory out of 5000000
  11276 multiletter control sequences out of 15000+600000
  14032 words of font info for 55 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -595,10 +595,10 @@ cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on project.pdf (12 pages, 1293403 bytes).
+Output written on project.pdf (12 pages, 1297387 bytes).
 PDF statistics:
- 261 PDF objects out of 1000 (max. 8388607)
- 216 compressed objects within 3 object streams
- 58 named destinations out of 1000 (max. 500000)
+ 267 PDF objects out of 1000 (max. 8388607)
+ 222 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
